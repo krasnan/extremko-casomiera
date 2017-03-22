@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "perfectTiming", "perfectTiming\perfectTiming.csproj", "{FC9F41D7-B35C-4CA5-9337-8A9DBEC2636F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerfectTimingTest", "PerfectTimingTest\PerfectTimingTest.csproj", "{EA6E13B2-8142-4584-B37E-21248646119A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC9F41D7-B35C-4CA5-9337-8A9DBEC2636F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC9F41D7-B35C-4CA5-9337-8A9DBEC2636F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC9F41D7-B35C-4CA5-9337-8A9DBEC2636F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC9F41D7-B35C-4CA5-9337-8A9DBEC2636F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA6E13B2-8142-4584-B37E-21248646119A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6E13B2-8142-4584-B37E-21248646119A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6E13B2-8142-4584-B37E-21248646119A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6E13B2-8142-4584-B37E-21248646119A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
