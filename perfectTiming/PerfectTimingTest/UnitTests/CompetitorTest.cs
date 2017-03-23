@@ -15,6 +15,7 @@ namespace PerfectTimingTest.UnitTests
         {
             CompetitorController ctrl = new CompetitorController();
             Competitor c = new Competitor { email = "test@test.sk", name = "Tester Novy", phone = "+421944123456", birth_date = DateTime.Now };
+            //conflict asdf as fa s
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.AddCompetitor(c).Status);
         }
 
