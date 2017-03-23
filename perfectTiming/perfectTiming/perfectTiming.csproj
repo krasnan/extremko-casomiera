@@ -83,6 +83,9 @@
   <ItemGroup>
     <Compile Include="Controller\ICompetitorController.cs" />
     <Compile Include="Controller\CompetitorController.cs" />
+    <Compile Include="Controller\IRegistrationController.cs" />
+    <Compile Include="Controller\ITimingController.cs" />
+    <Compile Include="Controller\RegistrationController.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
