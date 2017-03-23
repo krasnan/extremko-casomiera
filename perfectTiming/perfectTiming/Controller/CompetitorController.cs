@@ -44,6 +44,7 @@ namespace perfectTiming.Controller
 
                 _competitors.Add(item);
 
+
                 return new RequestResult<Competitor>{ Status = Enums.RequestStatus.Success, Message = "Účastník úspešne uložený.", Data = item };
             }
             catch (Exception ex)
