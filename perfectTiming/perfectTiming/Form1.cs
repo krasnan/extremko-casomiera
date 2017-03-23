@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using perfectTiming.Controller;
+using perfectTiming.Model;
 
 namespace perfectTiming
 {
@@ -15,6 +17,8 @@ namespace perfectTiming
         public Form1()
         {
             InitializeComponent();
+            CompetitorController ctrl = new CompetitorController();
+
         }
     }
 }
