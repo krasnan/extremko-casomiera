@@ -16,6 +16,7 @@ namespace perfectTiming.Controller
         RequestResult<Competitor> AddCompetitor(Competitor item);
         RequestResult<Competitor> UpdateCompetitor(Competitor item);
         RequestResult<Competitor> RemoveCompetitor(Competitor item);
+
         RequestResult<List<Competitor>> RemoveRangeCompetitors(List<Competitor> range);
     }
 }
