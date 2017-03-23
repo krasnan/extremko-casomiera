@@ -21,7 +21,7 @@ namespace perfectTiming.Controller
         public CompetitorController()
         {
             _context = new perfecttimingEntities(); 
-            _competitors = _context.Competitors.ToList(); 
+            _competitors = _context.Competitors.ToList();
         }
 
         public CompetitorController(List<Competitor> range)
