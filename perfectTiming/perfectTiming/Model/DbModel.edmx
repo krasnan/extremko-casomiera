@@ -48,8 +48,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="competitor_id" Type="int" Nullable="false" />
-          <Property Name="race_id" Type="int" Nullable="false" />
+          <Property Name="registration_id" Type="int" Nullable="false" />
           <Property Name="lap_time" Type="double" />
           <Property Name="lap_number" Type="int" />
         </EntityType>
@@ -95,31 +94,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Timing_ibfk_1">
-          <End Role="Competitor" Type="Self.Competitor" Multiplicity="1">
+        <Association Name="Timing_ibfk_3">
+          <End Role="Registration" Type="Self.Registration" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Timing" Type="Self.Timing" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Competitor">
+            <Principal Role="Registration">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Timing">
-              <PropertyRef Name="competitor_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Timing_ibfk_2">
-          <End Role="Race" Type="Self.Race" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Timing" Type="Self.Timing" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Race">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Timing">
-              <PropertyRef Name="race_id" />
+              <PropertyRef Name="registration_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -141,12 +126,8 @@
             <End Role="Competitor" EntitySet="Competitor" />
             <End Role="Registration" EntitySet="Registration" />
           </AssociationSet>
-          <AssociationSet Name="Timing_ibfk_1" Association="Self.Timing_ibfk_1">
-            <End Role="Competitor" EntitySet="Competitor" />
-            <End Role="Timing" EntitySet="Timing" />
-          </AssociationSet>
-          <AssociationSet Name="Timing_ibfk_2" Association="Self.Timing_ibfk_2">
-            <End Role="Race" EntitySet="Race" />
+          <AssociationSet Name="Timing_ibfk_3" Association="Self.Timing_ibfk_3">
+            <End Role="Registration" EntitySet="Registration" />
             <End Role="Timing" EntitySet="Timing" />
           </AssociationSet>
         </EntityContainer>
@@ -174,7 +155,6 @@
           <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Registrations" Relationship="Self.Registration_ibfk_3" FromRole="Competitor" ToRole="Registration" />
-          <NavigationProperty Name="Timings" Relationship="Self.Timing_ibfk_1" FromRole="Competitor" ToRole="Timing" />
         </EntityType>
         <EntityType Name="Race">
           <Key>
@@ -186,7 +166,6 @@
           <Property Name="start_date" Type="DateTime" Nullable="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Registrations" Relationship="Self.Registration_ibfk_2" FromRole="Race" ToRole="Registration" />
-          <NavigationProperty Name="Timings" Relationship="Self.Timing_ibfk_2" FromRole="Race" ToRole="Timing" />
         </EntityType>
         <EntityType Name="Registration">
           <Key>
@@ -200,18 +179,17 @@
           <NavigationProperty Name="Category" Relationship="Self.Registration_ibfk_1" FromRole="Registration" ToRole="Category" />
           <NavigationProperty Name="Competitor" Relationship="Self.Registration_ibfk_3" FromRole="Registration" ToRole="Competitor" />
           <NavigationProperty Name="Race" Relationship="Self.Registration_ibfk_2" FromRole="Registration" ToRole="Race" />
+          <NavigationProperty Name="Timings" Relationship="Self.Timing_ibfk_3" FromRole="Registration" ToRole="Timing" />
         </EntityType>
         <EntityType Name="Timing">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="competitor_id" Type="Int32" Nullable="false" />
-          <Property Name="race_id" Type="Int32" Nullable="false" />
+          <Property Name="registration_id" Type="Int32" Nullable="false" />
           <Property Name="lap_time" Type="Double" />
           <Property Name="lap_number" Type="Int32" />
-          <NavigationProperty Name="Competitor" Relationship="Self.Timing_ibfk_1" FromRole="Timing" ToRole="Competitor" />
-          <NavigationProperty Name="Race" Relationship="Self.Timing_ibfk_2" FromRole="Timing" ToRole="Race" />
+          <NavigationProperty Name="Registration" Relationship="Self.Timing_ibfk_3" FromRole="Timing" ToRole="Registration" />
         </EntityType>
         <Association Name="Registration_ibfk_1">
           <End Role="Category" Type="Self.Category" Multiplicity="1">
@@ -241,20 +219,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Timing_ibfk_1">
-          <End Role="Competitor" Type="Self.Competitor" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Timing" Type="Self.Timing" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Competitor">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Timing">
-              <PropertyRef Name="competitor_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="Registration_ibfk_2">
           <End Role="Race" Type="Self.Race" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -269,17 +233,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Timing_ibfk_2">
-          <End Role="Race" Type="Self.Race" Multiplicity="1">
+        <Association Name="Timing_ibfk_3">
+          <End Role="Registration" Type="Self.Registration" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Timing" Type="Self.Timing" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Race">
+            <Principal Role="Registration">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Timing">
-              <PropertyRef Name="race_id" />
+              <PropertyRef Name="registration_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -297,16 +261,12 @@
             <End Role="Competitor" EntitySet="Competitors" />
             <End Role="Registration" EntitySet="Registrations" />
           </AssociationSet>
-          <AssociationSet Name="Timing_ibfk_1" Association="Self.Timing_ibfk_1">
-            <End Role="Competitor" EntitySet="Competitors" />
-            <End Role="Timing" EntitySet="Timings" />
-          </AssociationSet>
           <AssociationSet Name="Registration_ibfk_2" Association="Self.Registration_ibfk_2">
             <End Role="Race" EntitySet="Races" />
             <End Role="Registration" EntitySet="Registrations" />
           </AssociationSet>
-          <AssociationSet Name="Timing_ibfk_2" Association="Self.Timing_ibfk_2">
-            <End Role="Race" EntitySet="Races" />
+          <AssociationSet Name="Timing_ibfk_3" Association="Self.Timing_ibfk_3">
+            <End Role="Registration" EntitySet="Registrations" />
             <End Role="Timing" EntitySet="Timings" />
           </AssociationSet>
         </EntityContainer>
@@ -362,8 +322,7 @@
             <EntityTypeMapping TypeName="perfecttimingModel.Timing">
               <MappingFragment StoreEntitySet="Timing">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="competitor_id" ColumnName="competitor_id" />
-                <ScalarProperty Name="race_id" ColumnName="race_id" />
+                <ScalarProperty Name="registration_id" ColumnName="registration_id" />
                 <ScalarProperty Name="lap_time" ColumnName="lap_time" />
                 <ScalarProperty Name="lap_number" ColumnName="lap_number" />
               </MappingFragment>

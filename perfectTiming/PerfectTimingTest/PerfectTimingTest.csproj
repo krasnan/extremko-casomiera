@@ -68,6 +68,7 @@
     <Compile Include="UnitTests\RaceTest.cs" />
     <Compile Include="UnitTests\CompetitorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\RegistrationTest.cs" />
     <Compile Include="UnitTests\TimingTest.cs" />
     <Compile Include="UnitTests\CategoryTest.cs" />
   </ItemGroup>

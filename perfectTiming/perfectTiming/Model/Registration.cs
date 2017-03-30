@@ -14,6 +14,12 @@ namespace perfectTiming.Model
     
     public partial class Registration
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Registration()
+        {
+            this.Timings = new HashSet<Timing>();
+        }
+    
         public int id { get; set; }
         public int race_id { get; set; }
         public int competitor_id { get; set; }
@@ -23,5 +29,7 @@ namespace perfectTiming.Model
         public virtual Category Category { get; set; }
         public virtual Competitor Competitor { get; set; }
         public virtual Race Race { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Timing> Timings { get; set; }
     }
 }

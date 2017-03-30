@@ -18,7 +18,6 @@ namespace perfectTiming.Model
         public Competitor()
         {
             this.Registrations = new HashSet<Registration>();
-            this.Timings = new HashSet<Timing>();
         }
     
         public int id { get; set; }
@@ -29,7 +28,5 @@ namespace perfectTiming.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Registration> Registrations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Timing> Timings { get; set; }
     }
 }
