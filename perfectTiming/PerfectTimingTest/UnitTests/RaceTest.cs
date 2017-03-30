@@ -14,26 +14,80 @@ namespace PerfectTimingTest.UnitTests
         public void AddRaceTest()
         {
             RaceController ctrl = new RaceController();
-            Race c = new Race { name = "Pridany Vecerny beh mestom AAA", location = "test", start_date = DateTime.Now, status = (int)Enums.RaceStatus.NotStarted }; ;
+            Race c = new Race { name = "NewRace", location = "XY", start_date = DateTime.Now, status = (int)Enums.RaceStatus.NotStarted }; ;
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c).Status);
-        }
-
-        [TestMethod] 
-        public void UpdateRaceTest()
-        {
-            RaceController ctrl = new RaceController();
-            Race c = new Race { name = "Pridany Vecerny beh mestom UPRAVENY", location = "test",  start_date = DateTime.Now , status = (int)Enums.RaceStatus.NotStarted };
-            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c).Status);
-            c.name = "Tester Zmeneny";
-            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Update(c).Status);
         }
 
         [TestMethod]
-        public void RemoveRaceTest()
+        public void AddRaceTestVstupDate()
+        {
+           RaceController ctrl = new RaceController();
+
+           DateTime time = DateTime.Now;
+           time.AddMinutes(-1);
+
+            // Past time 
+            Race c = new Race { name = "Back to the past", location = "Past", start_date = time, status = (int)Enums.RaceStatus.NotStarted }; ;
+            Assert.AreEqual(Enums.RequestStatus.Error, ctrl.Add(c).Status);
+        }
+
+        public void AddRaceTestVstupName()
         {
             RaceController ctrl = new RaceController();
-            Race c = new Race { name = "Vecerny beh mestom", location = "test", start_date = DateTime.Now, status = (int)Enums.RaceStatus.NotStarted };
+
+            Race c = new Race {
+                            name = "",
+                            location = "XY",
+                            start_date = DateTime.Now,
+                            status = (int)Enums.RaceStatus.NotStarted
+                        }; 
+            // Emtpy name
+            Assert.AreEqual(Enums.RequestStatus.Error, ctrl.Add(c).Status);
+            // Long Name
+            c.name = new string('a',256);
+            Assert.AreEqual(Enums.RequestStatus.Error, ctrl.Add(c).Status);
+            // OK Name
+            c.name = new string('a', 255);
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c).Status);
+
+        }
+
+        [TestMethod] 
+        public void UpdateRace()
+        {
+            RaceController ctrl = new RaceController();
+            Race old = new Race
+            {
+                name = "OldSuperRace",
+                location = "OldLocation",
+                start_date = DateTime.Now,
+                status = (int)Enums.RaceStatus.NotStarted
+            };
+
+            ctrl.Add(old);
+            // upravenie lokacie
+            Race nnew = ctrl.Races[ctrl.Races.Count - 1];
+            nnew.location = "NewLocation";
+            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Update(nnew).Status);
+            Assert.AreEqual(old.location, ctrl.Races[ctrl.Races.Count - 1].location);
+
+            // Meno prazdne
+            old.name = "";
+            Assert.AreEqual(Enums.RequestStatus.Error, ctrl.Update(old).Status);
+            Assert.AreEqual(nnew.location, ctrl.Races[ctrl.Races.Count - 1].location);
+
+            // Upravenie mena
+            old.name = "UpdatedOldSuperRace";
+            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Update(old).Status);
+            Assert.AreEqual(nnew.location, ctrl.Races[ctrl.Races.Count - 1].location);
+        }
+
+        [TestMethod]
+        public void RemoveRaceSimple()
+        {
+            RaceController ctrl = new RaceController();
+            Race c = new Race { name = "RemoveTest", location = "RemovedLocation", start_date = DateTime.Now, status = (int)Enums.RaceStatus.NotStarted };
+            ctrl.Add(c);
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Remove(c).Status);
         }
 
@@ -41,8 +95,16 @@ namespace PerfectTimingTest.UnitTests
         public void RemoveRangeRaceTest()
         {
             RaceController ctrl = new RaceController();
-            List<Race> range = ctrl.Races.FindAll(item => item.name == "Pridany Vecerny beh mestom UPRAVENY");
+            int countBefore = ctrl.Races.Count;
+
+            for(int i = 0; i < 50; i++)
+            {
+                ctrl.Add(new Race { name = "RemoveMe", location = "RemovedLocation", start_date = DateTime.Now, status = (int)Enums.RaceStatus.NotStarted });
+            }
+            List<Race> range = ctrl.Races.FindAll(item => item.name == "RemoveMe");
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.RemoveRange(range).Status);
+
+            Assert.AreEqual(countBefore, ctrl.Races.Count);
         }
     }
 }
