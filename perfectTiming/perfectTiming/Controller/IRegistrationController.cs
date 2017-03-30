@@ -13,10 +13,12 @@ namespace perfectTiming.Controller
     {
         List<Registration> Registrations { get; set; }
 
+
         RequestResult<Registration> Add(Registration item);
         RequestResult<Registration> Update(Registration item);
         RequestResult<Registration> Remove(Registration item);
         RequestResult<Registration> RemoveRange(List<Registration> range);
+        bool IsValidStartNumber(Registration item);
 
         RequestResult<List<Competitor>> GetCompetitors();
         RequestResult<List<Category>> GetCategories();

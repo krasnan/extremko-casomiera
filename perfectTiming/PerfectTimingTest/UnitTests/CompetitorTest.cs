@@ -67,9 +67,6 @@ namespace PerfectTimingTest.UnitTests
             // Missing top level domain
             c.email = "email@domain";
             Assert.AreEqual(Enums.RequestStatus.Error, ctrl.AddCompetitor(c).Status);
-            // Leading dash in front of domain 
-            c.email = "email@-domain.com";
-            Assert.AreEqual(Enums.RequestStatus.Error, ctrl.AddCompetitor(c).Status);
             // Multiple dot in the domain portion 
             c.email = "email@domain..com";
             Assert.AreEqual(Enums.RequestStatus.Error, ctrl.AddCompetitor(c).Status);          

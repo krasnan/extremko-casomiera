@@ -16,7 +16,10 @@ namespace perfectTiming.Controller
         RequestResult<Competitor> AddCompetitor(Competitor item);
         RequestResult<Competitor> UpdateCompetitor(Competitor item);
         RequestResult<Competitor> RemoveCompetitor(Competitor item);
-
+        bool IsValidEmial(Competitor item);
+        bool IsValidName(Competitor item);
+        bool IsValidBirthDate(Competitor item);
+        bool IsValidPhone(Competitor item);
         RequestResult<List<Competitor>> RemoveRangeCompetitors(List<Competitor> range);
     }
 }

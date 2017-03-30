@@ -45,5 +45,10 @@ namespace perfectTiming.Controller
         {
             throw new NotImplementedException();
         }
+
+        public bool IsValidStartNumber(Registration item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

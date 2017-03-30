@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using perfectTiming.Model;
 using perfectTiming.Helpers;
+using System.Text.RegularExpressions;
 
 namespace perfectTiming.Controller
 {
@@ -123,6 +124,39 @@ namespace perfectTiming.Controller
             {
                 return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Error, Message = "Záznamy sa nepodarilo odstrániť.", Detail = ex.Message };
             }
+        }
+
+        public bool IsValidEmial(Competitor item)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(item.email);
+                return addr.Address == item.email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool IsValidName(Competitor item)
+        {
+            if (item.name.All(char.IsLetter))
+                return true;
+            return false;
+        }
+
+        public bool IsValidBirthDate(Competitor item)
+        {
+            if (item.birth_date <= DateTime.Now)
+                return true;
+            return false;
+        }
+
+        public bool IsValidPhone(Competitor item)
+        {
+            return Regex.Match(item.phone, @"^(\+421)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$").Success
+                || Regex.Match(item.phone, @"^([0-9]{10})$").Success;
         }
     }
 }
