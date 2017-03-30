@@ -4,17 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e6d955f7387f4f7db6f4688e7487ee32" Name="Diagram1">
-        <EntityTypeShape EntityType="perfecttimingModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="perfecttimingModel.Competitor" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="perfecttimingModel.Race" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="perfecttimingModel.Registration" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="perfecttimingModel.Timing" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+      <Diagram DiagramId="5009fe5671014de7a6228eccffdaa42b" Name="Diagram1">
+        <EntityTypeShape EntityType="perfecttimingModel.Category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="perfecttimingModel.Competitor" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="perfecttimingModel.Race" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="perfecttimingModel.Registration" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="perfecttimingModel.Timing" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="perfecttimingModel.Registration_ibfk_1" ManuallyRouted="false" />
         <AssociationConnector Association="perfecttimingModel.Registration_ibfk_3" ManuallyRouted="false" />
-        <AssociationConnector Association="perfecttimingModel.Timing_ibfk_1" ManuallyRouted="false" />
         <AssociationConnector Association="perfecttimingModel.Registration_ibfk_2" ManuallyRouted="false" />
-        <AssociationConnector Association="perfecttimingModel.Timing_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="perfecttimingModel.Timing_ibfk_3" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

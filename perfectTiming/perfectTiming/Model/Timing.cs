@@ -15,12 +15,10 @@ namespace perfectTiming.Model
     public partial class Timing
     {
         public int id { get; set; }
-        public int competitor_id { get; set; }
-        public int race_id { get; set; }
+        public int registration_id { get; set; }
         public Nullable<double> lap_time { get; set; }
         public Nullable<int> lap_number { get; set; }
     
-        public virtual Competitor Competitor { get; set; }
-        public virtual Race Race { get; set; }
+        public virtual Registration Registration { get; set; }
     }
 }
