@@ -21,7 +21,7 @@ namespace PerfectTimingTest.UnitTests
                 description = "Women Category"
             };
 
-            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c));
+            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c).Status);
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace PerfectTimingTest.UnitTests
                 name = "",
                 description = "Women Category"
             };
-            Assert.AreEqual(Enums.RequestStatus.Error, ctrl.Add(c));
+            Assert.AreEqual(Enums.RequestStatus.Error, ctrl.Add(c).Status);
         }
 
         public void CategoryAddSameName()
@@ -51,8 +51,8 @@ namespace PerfectTimingTest.UnitTests
                 description = "EQdescription1"
             };
 
-            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c));
-            Assert.AreEqual(Enums.RequestStatus.Error, ctrl.Add(c1));
+            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c).Status);
+            Assert.AreEqual(Enums.RequestStatus.Error, ctrl.Add(c1).Status);
         }
 
 
@@ -72,6 +72,7 @@ namespace PerfectTimingTest.UnitTests
 
             // Change name
             nnew.name = "NewName";
+           
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Update(nnew).Status);
             Assert.AreEqual(nnew.name, ctrl.Categories[ctrl.Categories.Count - 1].name);
 
@@ -105,7 +106,7 @@ namespace PerfectTimingTest.UnitTests
             Category c = new Category { name = "Example", description = "void" };
 
             ctrl.Add(c);
-            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Remove(c));
+            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Remove(c).Status);
         }
     }
 }

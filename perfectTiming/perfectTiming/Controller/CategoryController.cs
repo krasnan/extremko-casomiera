@@ -40,7 +40,25 @@ namespace perfectTiming.Controller
         /// <returns></returns>
         public RequestResult<Category> Add(Category item)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                if (item.name == "" || (_categories.FindIndex(o => o.name == item.name) != -1))
+                    return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategóriu sa nepodarilo pridať" };
+                
+                _context.Categories.Add(item);
+                _categories.Add(item);
+
+                return new RequestResult<Category> { Status = Enums.RequestStatus.Success, Message = "Kategória bola pridaná", Data = item };
+
+            }
+            catch (Exception ex)
+            {
+
+                return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategóriu sa nepodarilo pridať", Detail = ex.Message };
+
+            }
+
         }
 
         /// <summary>
@@ -50,16 +68,61 @@ namespace perfectTiming.Controller
         /// <returns></returns>
         public RequestResult<Category> Remove(Category item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Categories.Attach(item);
+                _context.Categories.Remove(item);
+                _categories.Remove(item);
+
+                return new RequestResult<Category> { Status = Enums.RequestStatus.Success, Message = "Kategória vymazaná", Data = item };
+            }
+            catch (Exception ex)
+            {
+                return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategória nebola vymazaná", Detail = ex.Message };
+                
+            }
         }
         /// <summary>
         ///Upraví kategoriu v databaze
         /// </summary>
-        /// <param name="item">Objekty ktory ma byt odstraneny</param>
+        /// <param name="item">Objekty ktory ma byt upraveny</param>
         /// <returns></returns>
         public RequestResult<Category> Update(Category item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if(item.name == "")
+                    throw new Exception();
+
+                int index = _categories.FindIndex(o => o.id == item.id);
+                if (index != -1) {
+
+                    if (_categories[index].name != item.name)
+                    {
+                        if (_categories.FindIndex(o => o.name == item.name) != -1)
+                            return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategória nebola upravená", Detail = ex.Message };
+
+                    }
+
+
+                    _context.Categories.Attach(item);
+                    var entry = _context.Entry(item);
+                    entry.State = System.Data.Entity.EntityState.Modified;
+                    _categories[index] = item;
+
+                } else {
+
+                    throw new Exception();
+                }
+
+
+                return new RequestResult<Category> { Status = Enums.RequestStatus.Success, Message = "Kategória upravená", Data = item };
+            }
+            catch (Exception ex)
+            {
+
+                
+            }
         }
     }
 }
