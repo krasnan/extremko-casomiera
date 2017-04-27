@@ -71,6 +71,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -132,6 +133,30 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RacesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RacesView.Designer.cs">
+      <DependentUpon>RacesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucDashboard.Designer.cs">
+      <DependentUpon>ucDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucStart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucStart.Designer.cs">
+      <DependentUpon>ucStart.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -140,7 +165,20 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RacesView.resx">
+      <DependentUpon>RacesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucDashboard.resx">
+      <DependentUpon>ucDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucStart.resx">
+      <DependentUpon>ucStart.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Model\DbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DbModel.Designer.cs</LastGenOutput>
@@ -149,6 +187,7 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\perfectTiming.Model.Race.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -165,9 +204,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
@@ -182,6 +219,96 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
       <LastGenOutput>DbModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\ic_undo_black_18dp.png" />
+    <None Include="Resources\ic_undo_black_48dp.png" />
+    <None Include="Resources\ic_check_circle_white_48dp1.png" />
+    <None Include="Resources\ic_check_circle_white_36dp1.png" />
+    <None Include="Resources\ic_check_circle_white_24dp1.png" />
+    <None Include="Resources\ic_check_circle_white_18dp1.png" />
+    <None Include="Resources\ic_check_circle_black_48dp1.png" />
+    <None Include="Resources\ic_check_circle_black_36dp1.png" />
+    <None Include="Resources\ic_check_circle_black_24dp1.png" />
+    <None Include="Resources\ic_check_circle_black_18dp1.png" />
+    <None Include="Resources\ic_verified_user_white_48dp.png" />
+    <None Include="Resources\ic_verified_user_white_36dp.png" />
+    <None Include="Resources\ic_verified_user_white_24dp.png" />
+    <None Include="Resources\ic_verified_user_white_18dp.png" />
+    <None Include="Resources\ic_verified_user_black_48dp.png" />
+    <None Include="Resources\ic_verified_user_black_36dp.png" />
+    <None Include="Resources\ic_verified_user_black_24dp.png" />
+    <None Include="Resources\ic_verified_user_black_18dp.png" />
+    <None Include="Resources\ic_perm_identity_white_48dp.png" />
+    <None Include="Resources\ic_perm_identity_white_36dp.png" />
+    <None Include="Resources\ic_perm_identity_white_24dp.png" />
+    <None Include="Resources\ic_perm_identity_white_18dp.png" />
+    <None Include="Resources\ic_perm_identity_black_48dp.png" />
+    <None Include="Resources\ic_perm_identity_black_36dp.png" />
+    <None Include="Resources\ic_perm_identity_black_24dp.png" />
+    <None Include="Resources\ic_perm_identity_black_18dp.png" />
+    <None Include="Resources\ic_donut_small_white_48dp.png" />
+    <None Include="Resources\ic_donut_small_white_36dp.png" />
+    <None Include="Resources\ic_donut_small_white_24dp.png" />
+    <None Include="Resources\ic_donut_small_white_18dp.png" />
+    <None Include="Resources\ic_donut_small_black_48dp.png" />
+    <None Include="Resources\ic_donut_small_black_36dp.png" />
+    <None Include="Resources\ic_donut_small_black_24dp.png" />
+    <None Include="Resources\ic_donut_small_black_18dp.png" />
+    <None Include="Resources\ic_date_range_white_48dp.png" />
+    <None Include="Resources\ic_date_range_white_36dp.png" />
+    <None Include="Resources\ic_date_range_white_24dp.png" />
+    <None Include="Resources\ic_date_range_white_18dp.png" />
+    <None Include="Resources\ic_date_range_black_48dp.png" />
+    <None Include="Resources\ic_date_range_black_36dp.png" />
+    <None Include="Resources\ic_date_range_black_24dp.png" />
+    <None Include="Resources\ic_date_range_black_18dp.png" />
+    <None Include="Resources\ic_assessment_white_48dp.png" />
+    <None Include="Resources\ic_assessment_white_36dp.png" />
+    <None Include="Resources\ic_assessment_white_24dp.png" />
+    <None Include="Resources\ic_assessment_white_18dp.png" />
+    <None Include="Resources\ic_assessment_black_48dp.png" />
+    <None Include="Resources\ic_assessment_black_36dp.png" />
+    <None Include="Resources\ic_assessment_black_24dp.png" />
+    <None Include="Resources\ic_assessment_black_18dp.png" />
+    <None Include="Resources\ic_check_circle_white_48dp.png" />
+    <None Include="Resources\ic_check_circle_white_36dp.png" />
+    <None Include="Resources\ic_check_circle_white_24dp.png" />
+    <None Include="Resources\ic_check_circle_white_18dp.png" />
+    <None Include="Resources\ic_check_circle_black_48dp.png" />
+    <None Include="Resources\ic_check_circle_black_36dp.png" />
+    <None Include="Resources\ic_check_circle_black_24dp.png" />
+    <None Include="Resources\ic_check_circle_black_18dp.png" />
+    <None Include="Resources\ic_alarm_on_white_48dp.png" />
+    <None Include="Resources\ic_alarm_on_white_36dp.png" />
+    <None Include="Resources\ic_alarm_on_white_24dp.png" />
+    <None Include="Resources\ic_alarm_on_white_18dp.png" />
+    <None Include="Resources\ic_alarm_on_black_48dp.png" />
+    <None Include="Resources\ic_alarm_on_black_36dp.png" />
+    <None Include="Resources\ic_alarm_on_black_24dp.png" />
+    <None Include="Resources\ic_alarm_on_black_18dp.png" />
+    <None Include="Resources\ic_account_circle_white_48dp.png" />
+    <None Include="Resources\ic_account_circle_white_36dp.png" />
+    <None Include="Resources\ic_account_circle_white_24dp.png" />
+    <None Include="Resources\ic_account_circle_white_18dp.png" />
+    <None Include="Resources\ic_account_circle_black_48dp.png" />
+    <None Include="Resources\ic_account_circle_black_36dp.png" />
+    <None Include="Resources\ic_account_circle_black_24dp.png" />
+    <None Include="Resources\ic_account_circle_black_18dp.png" />
+    <None Include="Resources\ic_settings_applications_white_48dp.png" />
+    <None Include="Resources\ic_settings_applications_white_36dp.png" />
+    <None Include="Resources\ic_settings_applications_white_24dp.png" />
+    <None Include="Resources\ic_settings_applications_white_18dp.png" />
+    <None Include="Resources\ic_settings_applications_black_48dp.png" />
+    <None Include="Resources\ic_settings_applications_black_36dp.png" />
+    <None Include="Resources\ic_settings_applications_black_24dp.png" />
+    <None Include="Resources\ic_settings_applications_black_18dp.png" />
+    <None Include="Resources\ic_power_settings_new_black_48dp.png" />
+    <None Include="Resources\ic_power_settings_new_black_36dp.png" />
+    <None Include="Resources\ic_power_settings_new_black_24dp.png" />
+    <None Include="Resources\ic_power_settings_new_black_18dp.png" />
+    <None Include="Resources\ic_power_settings_new_white_48dp.png" />
+    <None Include="Resources\ic_power_settings_new_white_36dp.png" />
+    <None Include="Resources\ic_power_settings_new_white_24dp.png" />
+    <None Include="Resources\ic_power_settings_new_white_18dp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

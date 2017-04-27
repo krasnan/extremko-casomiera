@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using perfectTiming.View;
 
 namespace perfectTiming
 {
@@ -14,10 +15,12 @@ namespace perfectTiming
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
 
+            System.Globalization.CultureInfo cultureInfo = new System.Globalization.CultureInfo("sk-SK");
+            Application.CurrentCulture = cultureInfo;
+            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainView());
         }
     }
 }
