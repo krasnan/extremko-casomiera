@@ -10,19 +10,27 @@ using System.Windows.Forms;
 using perfectTiming.Controller;
 using System.Deployment.Application;
 using System.Reflection;
-
+using perfectTiming.Model;
 namespace perfectTiming.View
 {
     public partial class RacesEditorView : MetroFramework.Forms.MetroForm
     {
-        public RacesEditorView()
+        public RacesEditorView(Race item)
         {
+            bsRace.DataSource = item;
             InitializeComponent();
         }
 
-        private void RacesEditorView_Load(object sender, EventArgs e)
+
+        private void btnCancel_Click(object sender, EventArgs e)
         {
 
         }
+        
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

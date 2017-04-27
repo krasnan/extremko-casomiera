@@ -30,12 +30,41 @@ namespace perfectTiming.View
         }
         private void btnEditItem_Click(object sender, EventArgs e)
         {
+            Race item = (Race)dataGridView.CurrentRow.DataBoundItem;
+            if (item != null)
+            {
+                using (RacesEditorView frm = new RacesEditorView(item))
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        RequestResult<Race> result = ctrl.Update(item);
+                        if (result.Status == Enums.RequestStatus.Success)
+                            MetroFramework.MetroMessageBox.Show(this, "Udalosť úspešne upravená", "Udalosť upravená", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                        else
+                            MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní udalosti", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            Race item = new Race();
 
+            using (RacesEditorView frm = new RacesEditorView(item))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    RequestResult<Race> result = ctrl.Update(item);
+                    if (result.Status == Enums.RequestStatus.Success)
+                        MetroFramework.MetroMessageBox.Show(this, "Udalosť úspešne vložená", "Udalosť vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    else
+                        MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní udalosti", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            
         }
 
         private void btnDeleteItem_Click(object sender, EventArgs e)
