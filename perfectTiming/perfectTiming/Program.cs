@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using perfectTiming.View;
-
+using perfectTiming.Controller;
 namespace perfectTiming
 {
     static class Program
@@ -20,7 +20,9 @@ namespace perfectTiming
             Application.CurrentCulture = cultureInfo;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            new AppController();
             Application.Run(new MainView());
+            
         }
     }
 }

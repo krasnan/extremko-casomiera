@@ -14,15 +14,15 @@ namespace perfectTiming.Controller
         private perfecttimingEntities _context; // context databazy
 
 
-        public List<Race> Races { get { return _races; } set { _races = value; } }
+        public List<Race> Races { get { return _context.Races.ToList(); } }
 
         /// <summary>
         /// Controller na spravu jednotlivých závodov
         /// </summary>
-        public RaceController()
+        public RaceController(ref perfecttimingEntities  context)
         {
 
-            _context = new perfecttimingEntities();
+            _context = context;
             _races = _context.Races.ToList();
         }
 

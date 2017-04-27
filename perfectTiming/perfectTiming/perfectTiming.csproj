@@ -83,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AppController.cs" />
     <Compile Include="Controller\CategoryController.cs" />
     <Compile Include="Controller\ICompetitorController.cs" />
     <Compile Include="Controller\CompetitorController.cs" />
