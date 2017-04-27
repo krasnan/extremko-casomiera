@@ -37,6 +37,18 @@ namespace perfectTiming.Controller
         /// <returns></returns>
         public RequestResult<Timing> Add(Timing item)
         {
+
+            try
+            {
+                _context.Timings.Add(item);
+                _timings.Add(item);
+
+                return new RequestResult<Timing> { Status = Enums.RequestStatus.Success, Message = "Čas bola pridaný", Data = item };
+            }
+            catch (Exception ex )
+            {
+                return new RequestResult<Timing> { Status = Enums.RequestStatus.Error, Message = "Čas sa nepodarilo pridať", Detail = ex.Message };
+            }
             throw new NotImplementedException();
         }
 
@@ -47,7 +59,19 @@ namespace perfectTiming.Controller
         /// <returns></returns>
         public RequestResult<Timing> Remove(Timing item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Timings.Attach(item);
+                _context.Timings.Remove(item);
+                _timings.Remove(item);
+
+                return new RequestResult<Timing> { Status = Enums.RequestStatus.Success, Message = "Kategória vymazaná", Data = item };
+            }
+            catch (Exception ex)
+            {
+                return new RequestResult<Timing> { Status = Enums.RequestStatus.Error, Message = "Kategória nebola vymazaná", Detail = ex.Message };
+
+            }
         }
         /// <summary>
         /// Upraví záznam o meraní
@@ -55,7 +79,25 @@ namespace perfectTiming.Controller
         /// <param name="item">Meranie ktoré ma byt upravené</param>
         public RequestResult<Timing> Update(Timing item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int index = _timings.FindIndex(o => o.id == item.id);
+                if (index != -1){
+                    _context.Timings.Attach(item);
+                    var entry = _context.Entry(item);
+                    entry.State = System.Data.Entity.EntityState.Modified;
+                    _timings[index] = item;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+                return new RequestResult<Timing> { Status = Enums.RequestStatus.Success, Message = "Čas upravený", Data = item };
+            }
+            catch (Exception ex)
+            { 
+                return new RequestResult<Timing> { Status = Enums.RequestStatus.Error, Message = "Čas nebol upravený", Detail = ex.Message };
+            }
         }
     }
 }

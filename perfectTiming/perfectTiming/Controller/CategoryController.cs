@@ -100,10 +100,9 @@ namespace perfectTiming.Controller
                     if (_categories[index].name != item.name)
                     {
                         if (_categories.FindIndex(o => o.name == item.name) != -1)
-                            return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategória nebola upravená", Detail = ex.Message };
+                            return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategória nebola upravená" };
 
                     }
-
 
                     _context.Categories.Attach(item);
                     var entry = _context.Entry(item);
@@ -121,7 +120,7 @@ namespace perfectTiming.Controller
             catch (Exception ex)
             {
 
-                
+                return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategória nebola upravená", Detail = ex.Message };
             }
         }
     }
