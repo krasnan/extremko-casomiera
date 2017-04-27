@@ -12,43 +12,149 @@ namespace perfectTiming.Controller
     {
         private List<Registration> _registrations;
         public List<Registration> Registrations { get { return _registrations; } set { _registrations = value; } }
-        public List<Competitor> Competitors { get { return this.GetCompetitors().Data; } }
-        //public List<Competitor>
+
+
+        private perfecttimingEntities _context; // context databazy
+
+
+        public RegistrationController()
+        {
+            _context = new perfecttimingEntities();
+            _registrations = _context.Registrations.ToList();
+
+        }
+
 
         public RequestResult<Registration> Add(Registration item)
         {
-            throw new NotImplementedException();
+            
+            try
+            {
+                _context.Registrations.Add(item);
+                //_context.SaveChanges();
+                _registrations.Add(item);
+                return new RequestResult<Registration> { Status = Enums.RequestStatus.Success, Message = "Záznam úspešne uložený", Data = item };
+            }
+            catch (Exception ex)
+            {
+                return new RequestResult<Registration> { Status = Enums.RequestStatus.Error, Message = "Záznam sa nepodarilo vložiť", Detail = ex.Message };
+            }
+
+
+        }
+        public RequestResult<Registration> Update(Registration item)
+        {
+            try
+            {
+
+                int index = _registrations.FindIndex(o => o.id == item.id);
+                if( index != -1)
+                {
+
+                    _context.Registrations.Attach(item);
+                    var entry = _context.Entry(item);
+                    entry.State = System.Data.Entity.EntityState.Modified;
+                    //_context.SaveChanges();
+                    _registrations[index] = item;
+
+                }
+                return new RequestResult<Registration> { Status = Enums.RequestStatus.Success, Message = "Záznam úspešne uložený", Data = item };
+            }
+            catch (Exception ex )
+            {
+
+                return new RequestResult<Registration> { Status = Enums.RequestStatus.Error, Message = "Záznam sa nepodarilo zmeniť.", Detail = ex.Message };
+            }
+
         }
 
-        public RequestResult<List<Category>> GetCategories()
+        public RequestResult<List<Competitor>> GetCompetitors(Race item)
         {
-            throw new NotImplementedException();
-            //return Registrations.Select(i => i.Category).ToList();
-        }
 
-        public RequestResult<List<Competitor>> GetCompetitors()
-        {
-            throw new NotImplementedException();
+            List<Competitor> result = new List<Competitor>();
+
+            try
+            {
+                foreach (Registration reg in _registrations)
+                {
+                    if (reg.id == item.id)
+                    {
+                        result.Add(reg.Competitor);
+                    }
+
+                }
+                return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Success, Message = "Registrácie jazdcov pre závod načítané", Data = result };
+
+            }
+            catch (Exception ex)
+            {
+                return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Error, Message = "Kategóriu sa nepodarilo pridať", Detail = ex.Message };
+            }
+           
         }
 
         public RequestResult<Registration> Remove(Registration item)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                _context.Registrations.Attach(item);
+                _context.Registrations.Remove(item);
+                _registrations.Remove(item);
+
+                return new RequestResult<Registration> { Status = Enums.RequestStatus.Success, Message = "Kategória vymazaná", Data = item };
+            }
+            catch (Exception ex)
+            {
+
+                return new RequestResult<Registration> { Status = Enums.RequestStatus.Error, Message = "Registrácia nebola vymazaná", Detail = ex.Message };
+            }
         }
 
-        public RequestResult<Registration> RemoveRange(List<Registration> range)
+        public RequestResult<List<Category>> GetCategories(Race item)
         {
-            throw new NotImplementedException();
+            List<Category> result = new List<Category>();
+
+            try
+            {
+                foreach (Registration reg in _registrations)
+                {
+                    if (reg.id == item.id && !result.Contains(reg.Category))
+                            result.Add(reg.Category);
+                    
+                }
+
+                return new RequestResult<List<Category>> { Status = Enums.RequestStatus.Success, Message = "Zoznam kategorií načítaný", Data = result };
+            }
+            catch (Exception ex)
+            {
+
+                return new RequestResult<List<Category>> { Status = Enums.RequestStatus.Error, Message = "Kategórie sa nepodarilo načítať", Detail = ex.Message };
+            }
         }
 
-        public RequestResult<Registration> Update(Registration item)
+        public RequestResult<List<Competitor>> GetCategoryCompetitors(Category item)
         {
-            throw new NotImplementedException();
-        }
 
-        public bool IsValidStartNumber(Registration item)
-        {
-            throw new NotImplementedException();
+            List<Competitor> result = new List<Competitor>();
+            try
+            {
+
+                foreach (Registration reg in _registrations)
+                {
+                    if (reg.id == item.id)
+                    {
+                        result.Add(reg.Competitor);
+                    }
+                }
+                return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Success, Message = "Zoznam kategorií načítaný", Data = result };
+            }
+            catch (Exception ex)
+            {
+
+                return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Error, Message = "Súťažiacich sa nepodarilo načítať", Detail = ex.Message };
+            }
+            
         }
     }
 }
