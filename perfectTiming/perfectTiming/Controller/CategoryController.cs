@@ -20,9 +20,9 @@ namespace perfectTiming.Controller
         /// <summary>
         /// Controller na spravu ucastnikov
         /// </summary>
-        public CategoryController()
+        public CategoryController(ref perfecttimingEntities context)
         {
-            _context = new perfecttimingEntities();
+            _context = context;
             _categories = _context.Categories.ToList();
         }
 
@@ -121,6 +121,20 @@ namespace perfectTiming.Controller
             {
 
                 return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategória nebola upravená", Detail = ex.Message };
+            }
+        }
+
+        public RequestResult<bool> Save()
+        {
+            try
+            { 
+                _context.SaveChanges();
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Success, Message = "Kategória uložená", Data = true };
+            }
+            catch (Exception)
+            {
+
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Error, Message = "Nepodarilo sa uložiť kategoriu", Data = false };
             }
         }
     }

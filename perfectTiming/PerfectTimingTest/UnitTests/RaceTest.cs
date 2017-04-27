@@ -10,18 +10,20 @@ namespace PerfectTimingTest.UnitTests
     [TestClass]
     public class RaceTest
     {
+        perfecttimingEntities _context;
+
         [TestMethod]
         public void AddRaceTest()
         {
-            RaceController ctrl = new RaceController();
-            Race c = new Race { name = "NewRace", location = "XY", start_date = DateTime.Now, status = (int)Enums.RaceStatus.NotStarted }; ;
+            RaceController ctrl = new RaceController(ref _context);
+            Race c = new Race { name = "NewRace", location = "XY", start_date = DateTime.Now, status = (int)Enums.RaceStatus.NotStarted }; 
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c).Status);
         }
 
         [TestMethod]
         public void AddRaceTestVstupDate()
         {
-           RaceController ctrl = new RaceController();
+           RaceController ctrl = new RaceController(ref _context);
 
            DateTime time = DateTime.Now;
            time.AddMinutes(-1);
@@ -33,7 +35,7 @@ namespace PerfectTimingTest.UnitTests
 
         public void AddRaceTestVstupName()
         {
-            RaceController ctrl = new RaceController();
+            RaceController ctrl = new RaceController(ref _context);
 
             Race c = new Race {
                             name = "",
@@ -55,7 +57,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod] 
         public void UpdateRace()
         {
-            RaceController ctrl = new RaceController();
+            RaceController ctrl = new RaceController(ref _context);
             Race old = new Race
             {
                 name = "OldSuperRace",
@@ -85,7 +87,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void RemoveRaceSimple()
         {
-            RaceController ctrl = new RaceController();
+            RaceController ctrl = new RaceController(ref _context);
             Race c = new Race { name = "RemoveTest", location = "RemovedLocation", start_date = DateTime.Now, status = (int)Enums.RaceStatus.NotStarted };
             ctrl.Add(c);
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Remove(c).Status);
@@ -94,7 +96,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void RemoveRangeRaceTest()
         {
-            RaceController ctrl = new RaceController();
+            RaceController ctrl = new RaceController(ref _context);
             int countBefore = ctrl.Races.Count;
 
             for(int i = 0; i < 50; i++)

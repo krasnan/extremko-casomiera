@@ -123,6 +123,20 @@ namespace perfectTiming.Controller
             }
         }
 
+  
+        public RequestResult<bool> Save()
+        {
+            try
+            {
+                _context.SaveChanges();
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Success, Message = "Závod uložený", Data = true };
+            }
+            catch (Exception)
+            {
 
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Error, Message = "Nepodarilo sa uložiť závod", Data = false };
+            }
+        }
     }
+    
 }

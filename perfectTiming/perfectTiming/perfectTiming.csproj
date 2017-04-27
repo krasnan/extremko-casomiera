@@ -94,12 +94,6 @@
     <Compile Include="Controller\IRaceController.cs" />
     <Compile Include="Controller\RaceController.cs" />
     <Compile Include="Controller\TimingController.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\RequestResult.cs" />
     <Compile Include="Model\Category.cs">

@@ -16,10 +16,10 @@ namespace perfectTiming.Controller
         private List<Timing> _timings;           //zoznam merani
         private perfecttimingEntities _context; // context databazy
 
-        public TimingController()
+        public TimingController(ref perfecttimingEntities context)
         {
 
-            _context = new perfecttimingEntities();
+            _context = context;
             _timings = _context.Timings.ToList();
 
         }
@@ -97,6 +97,20 @@ namespace perfectTiming.Controller
             catch (Exception ex)
             { 
                 return new RequestResult<Timing> { Status = Enums.RequestStatus.Error, Message = "Čas nebol upravený", Detail = ex.Message };
+            }
+        }
+
+        public RequestResult<bool> Save()
+        {
+            try
+            {
+                _context.SaveChanges();
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Success, Message = "registrácia uložená", Data = true };
+            }
+            catch (Exception)
+            {
+
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Error, Message = "Nepodarilo sa uložiť registráciu", Data = false };
             }
         }
     }

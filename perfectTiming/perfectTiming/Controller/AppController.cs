@@ -9,7 +9,7 @@ using perfectTiming.Helpers;
 
 namespace perfectTiming.Controller
 {
-   public class AppController
+    public class AppController
     {
         private perfecttimingEntities _context;
         public RaceController RaceController;
@@ -17,18 +17,33 @@ namespace perfectTiming.Controller
         public CategoryController CategoryController;
         public RegistrationController RegistrationController;
         public TimingController TimingController;
-    
+
         public AppController()
         {
             _context = new perfecttimingEntities();
 
             RaceController = new RaceController(ref _context);
-            CompetitorController = new CompetitorController();
-            CategoryController = new CategoryController();
-            RegistrationController = new RegistrationController();
-            TimingController = new TimingController();
+            CompetitorController = new CompetitorController(ref _context);
+            CategoryController = new CategoryController(ref _context);
+            RegistrationController = new RegistrationController(ref _context);
+            TimingController = new TimingController(ref _context);
 
         }
-   
+
+        public RequestResult<bool> SaveAll()
+        {
+
+
+            RaceController.Save();
+            CompetitorController.Save();
+            CategoryController.Save();
+            RegistrationController.Save();
+            TimingController.Save();
+
+
+            return new RequestResult<bool> { Status = Enums.RequestStatus.Success, Message = "Všetky zmeny uložené", Data = true };
+        }
+
     }
+
 }

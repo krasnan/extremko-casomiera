@@ -20,6 +20,8 @@ namespace perfectTiming.Controller
         bool IsValidName(Competitor item);
         bool IsValidBirthDate(Competitor item);
         bool IsValidPhone(Competitor item);
+
+        RequestResult<bool> Save();
         RequestResult<List<Competitor>> RemoveRangeCompetitors(List<Competitor> range);
     }
 }

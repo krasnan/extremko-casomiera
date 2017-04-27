@@ -16,6 +16,7 @@ namespace perfectTiming.Controller
         RequestResult<Timing> Add(Timing item);
         RequestResult<Timing> Update(Timing item);
         RequestResult<Timing> Remove(Timing item);
+        RequestResult<bool> Save();
 
     }
 }
