@@ -16,7 +16,7 @@ namespace perfectTiming.Controller
         //public System.DateTime start_date { get; set; }
         //public int status { get; set; }
 
-        List<Race> Races { get; set; }
+        List<Race> Races { get; }
 
         RequestResult<Race> Add(Race item);
         RequestResult<Race> Update(Race item);

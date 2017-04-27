@@ -8,7 +8,7 @@ using perfectTiming.Helpers;
 
 namespace perfectTiming.Controller
 {
-    class RegistrationController : IRegistrationController
+    public class RegistrationController : IRegistrationController
     {
         private List<Registration> _registrations;
         public List<Registration> Registrations { get { return _registrations; } set { _registrations = value; } }
