@@ -463,6 +463,46 @@ namespace perfectTiming.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ic_chevron_left_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_chevron_left_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_chevron_left_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_chevron_left_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_chevron_left_black_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_chevron_left_black_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_chevron_left_black_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_chevron_left_black_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_date_range_black_18dp {
             get {
                 object obj = ResourceManager.GetObject("ic_date_range_black_18dp", resourceCulture);

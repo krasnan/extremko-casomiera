@@ -102,6 +102,7 @@
     <Compile Include="Model\Competitor.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DbContext.cs" />
     <Compile Include="Model\DbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,17 +135,23 @@
     <Compile Include="View\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\RacesView.cs">
+    <Compile Include="View\RacesEditorView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\RacesView.Designer.cs">
-      <DependentUpon>RacesView.cs</DependentUpon>
+    <Compile Include="View\RacesEditorView.Designer.cs">
+      <DependentUpon>RacesEditorView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ucDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\ucDashboard.Designer.cs">
       <DependentUpon>ucDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucRace.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucRace.Designer.cs">
+      <DependentUpon>ucRace.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ucStart.cs">
       <SubType>UserControl</SubType>
@@ -165,11 +172,14 @@
     <EmbeddedResource Include="View\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\RacesView.resx">
-      <DependentUpon>RacesView.cs</DependentUpon>
+    <EmbeddedResource Include="View\RacesEditorView.resx">
+      <DependentUpon>RacesEditorView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucDashboard.resx">
       <DependentUpon>ucDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucRace.resx">
+      <DependentUpon>ucRace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucStart.resx">
       <DependentUpon>ucStart.cs</DependentUpon>
@@ -182,7 +192,12 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\perfectTiming.Model.Category.datasource" />
+    <None Include="Properties\DataSources\perfectTiming.Model.Competitor.datasource" />
+    <None Include="Properties\DataSources\perfectTiming.Model.perfecttimingEntities.datasource" />
     <None Include="Properties\DataSources\perfectTiming.Model.Race.datasource" />
+    <None Include="Properties\DataSources\perfectTiming.Model.Registration.datasource" />
+    <None Include="Properties\DataSources\perfectTiming.Model.Timing.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -214,6 +229,10 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
       <LastGenOutput>DbModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\ic_chevron_left_black_48dp.png" />
+    <None Include="Resources\ic_chevron_left_black_36dp.png" />
+    <None Include="Resources\ic_chevron_left_black_24dp.png" />
+    <None Include="Resources\ic_chevron_left_black_18dp.png" />
     <None Include="Resources\ic_undo_black_18dp.png" />
     <None Include="Resources\ic_undo_black_48dp.png" />
     <None Include="Resources\ic_check_circle_white_48dp1.png" />

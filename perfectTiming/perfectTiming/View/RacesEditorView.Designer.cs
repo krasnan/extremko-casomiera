@@ -1,6 +1,6 @@
 ﻿namespace perfectTiming.View
 {
-    partial class RacesView
+    partial class RacesEditorView
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // RacesView
+            // RacesEditorView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(610, 422);
-            this.Name = "RacesView";
+            this.Name = "RacesEditorView";
             this.Text = "RacesView";
+            this.Load += new System.EventHandler(this.RacesEditorView_Load);
             this.ResumeLayout(false);
 
         }
