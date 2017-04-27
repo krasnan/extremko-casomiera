@@ -19,9 +19,9 @@ namespace perfectTiming.Controller
         /// <summary>
         /// Controller na spravu ucastnikov
         /// </summary>
-        public CompetitorController()
+        public CompetitorController(ref perfecttimingEntities context)
         {
-            _context = new perfecttimingEntities(); 
+            _context = context; 
             _competitors = _context.Competitors.ToList();
         }
 
@@ -157,6 +157,20 @@ namespace perfectTiming.Controller
         {
             return Regex.Match(item.phone, @"^(\+421)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$").Success
                 || Regex.Match(item.phone, @"^([0-9]{10})$").Success;
+        }
+
+        public RequestResult<bool> Save()
+        {
+            try
+            {
+                _context.SaveChanges();
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Success, Message = "Súťažiaci uložený", Data = true };
+            }
+            catch (Exception)
+            {
+
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Error, Message = "Súťažiaceho sa nepodarilo uložiť", Data = false };
+            }
         }
     }
 }

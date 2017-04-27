@@ -11,10 +11,14 @@ namespace PerfectTimingTest.UnitTests
     [TestClass]
     public class CategoryTest
     {
+        perfecttimingEntities _context;
+
         [TestMethod]
         public void CategoryAdd()
         {
-            CategoryController ctrl = new CategoryController();
+
+            _context = new perfecttimingEntities();
+            CategoryController ctrl = new CategoryController(ref _context);
             Category c = new Category
             {
                 name = "Women",
@@ -27,7 +31,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void CategoryAddEmpty()
         {
-            CategoryController ctrl = new CategoryController();
+            CategoryController ctrl = new CategoryController(ref _context);
             Category c = new Category
             {
                 name = "",
@@ -38,7 +42,7 @@ namespace PerfectTimingTest.UnitTests
 
         public void CategoryAddSameName()
         {
-            CategoryController ctrl = new CategoryController();
+            CategoryController ctrl = new CategoryController(ref _context);
             Category c = new Category
             {
                 name = "EQname",
@@ -60,7 +64,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void CategoryUpdate()
         {
-            CategoryController ctrl = new CategoryController();
+            CategoryController ctrl = new CategoryController(ref _context);
             Category old = new Category
             {
                 name = "OldName",
@@ -85,7 +89,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void CategoryUpdateSameName()
         {
-            CategoryController ctrl = new CategoryController();
+            CategoryController ctrl = new CategoryController(ref _context);
 
             Category c1 = new Category { name = "SameName", description = "void" };
             Category c2 = new Category { name = "SimilarName", description = "void" };
@@ -102,7 +106,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void CategoryRemoveSimple()
         {
-            CategoryController ctrl = new CategoryController();
+            CategoryController ctrl = new CategoryController(ref _context);
             Category c = new Category { name = "Example", description = "void" };
 
             ctrl.Add(c);

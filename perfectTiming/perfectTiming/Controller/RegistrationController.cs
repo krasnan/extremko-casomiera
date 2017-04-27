@@ -17,9 +17,9 @@ namespace perfectTiming.Controller
         private perfecttimingEntities _context; // context databazy
 
 
-        public RegistrationController()
+        public RegistrationController(ref perfecttimingEntities context)
         {
-            _context = new perfecttimingEntities();
+            _context = context;
             _registrations = _context.Registrations.ToList();
 
         }
@@ -155,6 +155,21 @@ namespace perfectTiming.Controller
                 return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Error, Message = "Súťažiacich sa nepodarilo načítať", Detail = ex.Message };
             }
             
+        }
+
+
+        public RequestResult<bool> Save()
+        {
+            try
+            {
+                _context.SaveChanges();
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Success, Message = "registrácia uložená", Data = true };
+            }
+            catch (Exception)
+            {
+
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Error, Message = "Nepodarilo sa uložiť registráciu", Data = false };
+            }
         }
     }
 }

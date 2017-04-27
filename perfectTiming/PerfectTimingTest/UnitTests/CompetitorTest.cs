@@ -10,11 +10,14 @@ namespace PerfectTimingTest.UnitTests
     [TestClass]
     public class CompetitorTest
     {
+
+        perfecttimingEntities _context;
         [TestCategory("Add")]
         [TestMethod]
         public void AddCompetitor()
         {
-            CompetitorController ctrl = new CompetitorController();
+            _context = new perfecttimingEntities();
+            CompetitorController ctrl = new CompetitorController(ref _context);
 
 
             Competitor c = new Competitor {
@@ -30,7 +33,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void AddCompetitorVstupEmail()
         {
-            CompetitorController ctrl = new CompetitorController();
+            CompetitorController ctrl = new CompetitorController(ref _context);
 
             Competitor c = new Competitor
             {
@@ -80,7 +83,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void AddCompetitorVstupCislo()
         {
-            CompetitorController ctrl = new CompetitorController();
+            CompetitorController ctrl = new CompetitorController(ref _context);
 
             Competitor c = new Competitor
             {
@@ -110,7 +113,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void UpdateCompetitorTest()
         {
-            CompetitorController ctrl = new CompetitorController();
+            CompetitorController ctrl = new CompetitorController(ref _context);
             Competitor c = new Competitor { email = "test@test.sk", name = "Tester", phone = "+421944123456", birth_date = DateTime.Now };
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.AddCompetitor(c).Status);
             c.name = "Tester Zmeneny";
@@ -120,7 +123,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void RemoveCompetitorTest()
         {
-            CompetitorController ctrl = new CompetitorController();
+            CompetitorController ctrl = new CompetitorController(ref _context);
             Competitor c = new Competitor { email = "test@test.sk", name = "Tester Na Vymazanie", phone = "+421944123456", birth_date = DateTime.Now };
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.AddCompetitor(c).Status);
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.RemoveCompetitor(c).Status);
@@ -129,7 +132,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void RemoveRangeCompetitorTest()
         {
-            CompetitorController ctrl = new CompetitorController();
+            CompetitorController ctrl = new CompetitorController(ref _context);
             List<Competitor> range = ctrl.Competitors.FindAll(item => item.email == "test@test.sk");
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.RemoveRangeCompetitors(range).Status);
         }
