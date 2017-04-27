@@ -13,11 +13,16 @@ using System.Reflection;
 
 namespace perfectTiming.View
 {
-    public partial class RacesView : MetroFramework.Forms.MetroForm
+    public partial class RacesEditorView : MetroFramework.Forms.MetroForm
     {
-        public RacesView()
+        public RacesEditorView()
         {
             InitializeComponent();
+        }
+
+        private void RacesEditorView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

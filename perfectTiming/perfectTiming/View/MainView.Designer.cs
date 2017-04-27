@@ -73,7 +73,7 @@
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.Color.Transparent;
-            this.btnBack.BackgroundImage = global::perfectTiming.Properties.Resources.ic_undo_black_18dp;
+            this.btnBack.BackgroundImage = global::perfectTiming.Properties.Resources.ic_chevron_left_black_18dp;
             this.btnBack.ImageSize = 33;
             this.btnBack.Location = new System.Drawing.Point(18, 20);
             this.btnBack.Name = "btnBack";

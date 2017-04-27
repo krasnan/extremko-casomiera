@@ -73,18 +73,16 @@ namespace perfectTiming.View
 
         private void tRaces_Click(object sender, EventArgs e)
         {
-            RacesView rw = new RacesView();
-            rw.Show();
-           
-            //ActualSettings.LastUserControll.Push(Name);
-            //ucHelp uc = new ucHelp();
-            //uc.Dock = DockStyle.Fill;
-            //ActualSettings.ActualUserControll = uc.Name;
-            //MainView.Instance.MetroContainer.Controls.RemoveByKey(uc.Name);
-            //MainView.Instance.MetroContainer.Controls.Add(uc);
-            //MainView.Instance.MetroContainer.Controls[uc.Name].BringToFront();
-            //MainView.Instance.MetroDateTime.Visible = true;
-            //MainView.Instance.MetroBack.Visible = true;
+
+            MainView.Instance.LastUserControll.Push(Name);
+            ucRace uc = new ucRace();
+            uc.Dock = DockStyle.Fill;
+            MainView.Instance.ActualUserControll = uc.Name;
+            MainView.Instance.MetroContainer.Controls.RemoveByKey(uc.Name);
+            MainView.Instance.MetroContainer.Controls.Add(uc);
+            MainView.Instance.MetroContainer.Controls[uc.Name].BringToFront();
+            MainView.Instance.MetroDateTime.Visible = true;
+            MainView.Instance.MetroBack.Visible = true;
         }
 
         private void tQuit_Click(object sender, EventArgs e)
