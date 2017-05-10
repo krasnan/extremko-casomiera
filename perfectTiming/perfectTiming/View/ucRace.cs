@@ -21,8 +21,9 @@ namespace perfectTiming.View
 
 
             InitializeComponent();
-            app = new AppController();
+            app = AppController.Instance;
             bsRaces.DataSource = app.RaceController.Races;
+            dataGridView_SelectionChanged(null, null);
         }
         private void ucRace_Load(object sender, EventArgs e)
         {
@@ -33,7 +34,7 @@ namespace perfectTiming.View
             Race item = (Race)dataGridView.CurrentRow.DataBoundItem;
             if (item != null)
             {
-                using (RacesEditorView frm = new RacesEditorView(item))
+                using (frmRacesEditorView frm = new frmRacesEditorView(item))
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
@@ -53,7 +54,7 @@ namespace perfectTiming.View
             Race item = new Race();
             item.status = (int)Enums.RaceStatus.NotStarted;
 
-            using (RacesEditorView frm = new RacesEditorView(item))
+            using (frmRacesEditorView frm = new frmRacesEditorView(item))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
@@ -61,7 +62,7 @@ namespace perfectTiming.View
                     if (result.Status == Enums.RequestStatus.Success)
                     {
                         MetroFramework.MetroMessageBox.Show(this, "Udalosť úspešne vložená", "Udalosť vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        bsRaces.DataSource = app.RaceController.Races.ToList();
+                        bsRaces.DataSource = app.RaceController.Races;
                     }
                     else
                         MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní udalosti", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -74,20 +75,22 @@ namespace perfectTiming.View
         {
             if (dataGridView.SelectedRows.Count == 0)
                 return;
-            if (MetroFramework.MetroMessageBox.Show(this, "Naozaj chcete vymazať označené artikle?", "Vyazať označené položky?", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.No)
+            if (MetroFramework.MetroMessageBox.Show(this, "Naozaj chcete vymazať označené udalosti?", "Vyazať označené položky?", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.No)
                 return;
 
             
 
             foreach (DataGridViewRow r in dataGridView.SelectedRows)
             {
-                app.RaceController.Remove((Race)r.DataBoundItem);
+                Race item = (Race)r.DataBoundItem;
+                app.RaceController.Remove(item);
                     //long actId = (long)r.Cells[0].Value;
                     //var item = new _Model.Item { Id = actId };
                     //db.Items.Attach(item);
                     //db.Items.Remove(item);
             }
-            bsRaces.DataSource = app.RaceController.Races.ToList();
+
+            bsRaces.DataSource = app.RaceController.Races;
             //db.SaveChanges();
             //bsItems.DataSource = db.Items.ToList();
 

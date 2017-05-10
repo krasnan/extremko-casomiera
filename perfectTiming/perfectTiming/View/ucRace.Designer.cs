@@ -52,14 +52,15 @@
             this.btnAdd.BackColor = System.Drawing.Color.LimeGreen;
             this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnAdd.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnAdd.Highlight = true;
             this.btnAdd.Location = new System.Drawing.Point(218, 343);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(209, 35);
+            this.btnAdd.Style = MetroFramework.MetroColorStyle.Green;
             this.btnAdd.TabIndex = 31;
             this.btnAdd.Text = "&Pridať";
-            this.btnAdd.UseCustomBackColor = true;
-            this.btnAdd.UseCustomForeColor = true;
             this.btnAdd.UseSelectable = true;
+            this.btnAdd.UseStyleColors = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // btnDelete
@@ -68,14 +69,15 @@
             this.btnDelete.BackColor = System.Drawing.Color.Tomato;
             this.btnDelete.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnDelete.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnDelete.Highlight = true;
             this.btnDelete.Location = new System.Drawing.Point(433, 343);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(209, 35);
+            this.btnDelete.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnDelete.TabIndex = 30;
             this.btnDelete.Text = "&Vymazať";
-            this.btnDelete.UseCustomBackColor = true;
-            this.btnDelete.UseCustomForeColor = true;
             this.btnDelete.UseSelectable = true;
+            this.btnDelete.UseStyleColors = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDeleteItem_Click);
             // 
             // btnEdit
@@ -84,14 +86,15 @@
             this.btnEdit.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnEdit.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnEdit.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnEdit.Highlight = true;
             this.btnEdit.Location = new System.Drawing.Point(3, 343);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(209, 35);
+            this.btnEdit.Style = MetroFramework.MetroColorStyle.Blue;
             this.btnEdit.TabIndex = 29;
             this.btnEdit.Text = "&Editovať";
-            this.btnEdit.UseCustomBackColor = true;
-            this.btnEdit.UseCustomForeColor = true;
             this.btnEdit.UseSelectable = true;
+            this.btnEdit.UseStyleColors = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEditItem_Click);
             // 
             // dataGridView
@@ -193,7 +196,7 @@
             this.statusDataGridViewTextBoxColumn.HeaderText = "Stav";
             this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
             this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusDataGridViewTextBoxColumn.Width = 62;
+            this.statusDataGridViewTextBoxColumn.Width = 63;
             // 
             // bsRaces
             // 

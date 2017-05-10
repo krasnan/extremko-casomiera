@@ -15,8 +15,10 @@ namespace perfectTiming.View
 {
     public partial class MainView : MetroFramework.Forms.MetroForm
     {
-        public static Stack<string> _lastUserControll = new Stack<string>();
-        public static string _actualUserControll;
+        private static Stack<string> _lastUserControll = new Stack<string>();
+        private static string _actualUserControll;
+
+
 
         public MainView()
         {
@@ -26,7 +28,7 @@ namespace perfectTiming.View
             //    var cnt = items.Count;
 
             //}
-
+            this.Text = "     PerfectTiming";
             InitializeComponent();
 
 
@@ -67,8 +69,6 @@ namespace perfectTiming.View
             get { return _lastUserControll; }
             set { _lastUserControll = value; }
         }
-        AppController appCntrl = new AppController();
-        public AppController AppCntrl { get { return appCntrl; } }
 
         //public string CurrentVersion
         //{
@@ -93,9 +93,9 @@ namespace perfectTiming.View
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
-            if (ActualUserControll == "ucProgress")
+            if (ActualUserControll == "ucTimer")
             {
-                if (MetroFramework.MetroMessageBox.Show(this, "Chcete ukončiť prácu s artiklom?", "Upozornenie.", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.No)
+                if (MetroFramework.MetroMessageBox.Show(this, "Chcete ukončiť prácu s časovačom?", "Upozornenie.", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.No)
                 {
                     return;
                 }

@@ -21,8 +21,6 @@ namespace perfectTiming.Controller
         RequestResult<Race> Add(Race item);
         RequestResult<Race> Update(Race item);
         RequestResult<Race> Remove(Race item);
-        RequestResult<bool> Save();
-
         RequestResult<List<Race>> RemoveRange(List<Race> range);
 
 

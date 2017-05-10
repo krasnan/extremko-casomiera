@@ -11,9 +11,8 @@ namespace perfectTiming.Controller
 {
     public class CompetitorController : ICompetitorController
     {
-        public List<Competitor> Competitors { get { return _competitors; } set { _competitors = value; } }
+        public List<Competitor> Competitors { get { return _context.Competitors.ToList(); } }
 
-        private List<Competitor> _competitors; //zoznam objektov
         private perfecttimingEntities _context; // context databazy
 
         /// <summary>
@@ -22,13 +21,11 @@ namespace perfectTiming.Controller
         public CompetitorController(ref perfecttimingEntities context)
         {
             _context = context; 
-            _competitors = _context.Competitors.ToList();
         }
 
         public CompetitorController(List<Competitor> range)
         {
             _context = new perfecttimingEntities();
-            _competitors = range;
         }
 
         /// <summary>
@@ -36,15 +33,12 @@ namespace perfectTiming.Controller
         /// </summary>
         /// <param name="item">Objekty ktory ma byt pridany</param>
         /// <returns></returns>
-        public RequestResult<Competitor> AddCompetitor(Competitor item)
+        public RequestResult<Competitor> Add(Competitor item)
         {
             try
             {
                 _context.Competitors.Add(item);
                 _context.SaveChanges();
-
-                _competitors.Add(item);
-
 
                 return new RequestResult<Competitor>{ Status = Enums.RequestStatus.Success, Message = "Účastník úspešne uložený.", Data = item };
             }
@@ -59,7 +53,7 @@ namespace perfectTiming.Controller
         /// </summary>
         /// <param name="item">Aktualizovany objekt</param>
         /// <returns></returns>
-        public RequestResult<Competitor> UpdateCompetitor(Competitor item)
+        public RequestResult<Competitor> Update(Competitor item)
         {
             try
             {
@@ -86,15 +80,12 @@ namespace perfectTiming.Controller
         /// </summary>
         /// <param name="item">Objekt ktory ma byt vymazany</param>
         /// <returns></returns>
-        public RequestResult<Competitor> RemoveCompetitor(Competitor item)
+        public RequestResult<Competitor> Remove(Competitor item)
         {
             try {
                 _context.Competitors.Attach(item);
                 _context.Competitors.Remove(item);
                 _context.SaveChanges();
-
-                _competitors.Remove(item);
-
                 return new RequestResult<Competitor> { Status = Enums.RequestStatus.Success, Message = "Účastník úspešne vymazaný.", Data = item };
             }
             catch (Exception ex)
@@ -114,10 +105,6 @@ namespace perfectTiming.Controller
             {
                 _context.Competitors.RemoveRange(range);
                 _context.SaveChanges();
-                foreach(Competitor item in range)
-                {
-                    _competitors.Remove(item);
-                }
                 return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Success, Message = "Záznami úspešne odstránené.", Data = range};
             }
             catch (Exception ex)
@@ -157,20 +144,6 @@ namespace perfectTiming.Controller
         {
             return Regex.Match(item.phone, @"^(\+421)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$").Success
                 || Regex.Match(item.phone, @"^([0-9]{10})$").Success;
-        }
-
-        public RequestResult<bool> Save()
-        {
-            try
-            {
-                _context.SaveChanges();
-                return new RequestResult<bool> { Status = Enums.RequestStatus.Success, Message = "Súťažiaci uložený", Data = true };
-            }
-            catch (Exception)
-            {
-
-                return new RequestResult<bool> { Status = Enums.RequestStatus.Error, Message = "Súťažiaceho sa nepodarilo uložiť", Data = false };
-            }
         }
     }
 }

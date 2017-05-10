@@ -11,17 +11,16 @@ namespace perfectTiming.Controller
 {
     interface ICompetitorController
     {
-        List<Competitor> Competitors { get; set; }
+        List<Competitor> Competitors { get;}
 
-        RequestResult<Competitor> AddCompetitor(Competitor item);
-        RequestResult<Competitor> UpdateCompetitor(Competitor item);
-        RequestResult<Competitor> RemoveCompetitor(Competitor item);
+        RequestResult<Competitor> Add(Competitor item);
+        RequestResult<Competitor> Update(Competitor item);
+        RequestResult<Competitor> Remove(Competitor item);
         bool IsValidEmial(Competitor item);
         bool IsValidName(Competitor item);
         bool IsValidBirthDate(Competitor item);
         bool IsValidPhone(Competitor item);
 
-        RequestResult<bool> Save();
         RequestResult<List<Competitor>> RemoveRangeCompetitors(List<Competitor> range);
     }
 }
