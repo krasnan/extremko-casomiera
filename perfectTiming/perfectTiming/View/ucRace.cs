@@ -15,14 +15,14 @@ namespace perfectTiming.View
 {
     public partial class ucRace : MetroFramework.Controls.MetroUserControl
     {
-        private RaceController ctrl;
+        private AppController app;
         public ucRace()
         {
 
 
             InitializeComponent();
-            ctrl = new RaceController();
-            bsRaces.DataSource = ctrl.Races;
+            app = new AppController();
+            bsRaces.DataSource = app.RaceController.Races;
         }
         private void ucRace_Load(object sender, EventArgs e)
         {
@@ -37,7 +37,7 @@ namespace perfectTiming.View
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        RequestResult<Race> result = ctrl.Update(item);
+                        RequestResult<Race> result = app.RaceController.Update(item);
                         if (result.Status == Enums.RequestStatus.Success)
                             MetroFramework.MetroMessageBox.Show(this, "Udalosť úspešne upravená", "Udalosť upravená", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -51,15 +51,18 @@ namespace perfectTiming.View
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             Race item = new Race();
+            item.status = (int)Enums.RaceStatus.NotStarted;
 
             using (RacesEditorView frm = new RacesEditorView(item))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    RequestResult<Race> result = ctrl.Update(item);
+                    RequestResult<Race> result = app.RaceController.Update(item);
                     if (result.Status == Enums.RequestStatus.Success)
+                    {
                         MetroFramework.MetroMessageBox.Show(this, "Udalosť úspešne vložená", "Udalosť vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        bsRaces.DataSource = app.RaceController.Races.ToList();
+                    }
                     else
                         MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní udalosti", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -78,16 +81,16 @@ namespace perfectTiming.View
 
             foreach (DataGridViewRow r in dataGridView.SelectedRows)
             {
-                ctrl.Remove((Race)r.DataBoundItem);
-                bsRaces.DataSource = ctrl.Races;
+                app.RaceController.Remove((Race)r.DataBoundItem);
                     //long actId = (long)r.Cells[0].Value;
                     //var item = new _Model.Item { Id = actId };
                     //db.Items.Attach(item);
                     //db.Items.Remove(item);
             }
-                //db.SaveChanges();
-                //bsItems.DataSource = db.Items.ToList();
-            
+            bsRaces.DataSource = app.RaceController.Races.ToList();
+            //db.SaveChanges();
+            //bsItems.DataSource = db.Items.ToList();
+
         }
 
         private void dataGridView_SelectionChanged(object sender, EventArgs e)

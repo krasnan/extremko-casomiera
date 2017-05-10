@@ -67,6 +67,8 @@ namespace perfectTiming.View
             get { return _lastUserControll; }
             set { _lastUserControll = value; }
         }
+        AppController appCntrl = new AppController();
+        public AppController AppCntrl { get { return appCntrl; } }
 
         //public string CurrentVersion
         //{

@@ -141,6 +141,18 @@
     <Compile Include="View\RacesEditorView.Designer.cs">
       <DependentUpon>RacesEditorView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ucCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucCategory.Designer.cs">
+      <DependentUpon>ucCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucCompetitor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucCompetitor.Designer.cs">
+      <DependentUpon>ucCompetitor.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ucDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +164,12 @@
     </Compile>
     <Compile Include="View\ucRace.Designer.cs">
       <DependentUpon>ucRace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucRegistration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucRegistration.Designer.cs">
+      <DependentUpon>ucRegistration.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ucStart.cs">
       <SubType>UserControl</SubType>

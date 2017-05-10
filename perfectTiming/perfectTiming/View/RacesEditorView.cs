@@ -17,8 +17,9 @@ namespace perfectTiming.View
     {
         public RacesEditorView(Race item)
         {
-            bsRace.DataSource = item;
+            
             InitializeComponent();
+            bsRace.DataSource = item;
         }
 
 

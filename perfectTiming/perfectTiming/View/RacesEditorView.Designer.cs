@@ -29,26 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.bsRace = new System.Windows.Forms.BindingSource(this.components);
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.lNazovArtiklu = new MetroFramework.Controls.MetroLabel();
             this.btnCancel = new MetroFramework.Controls.MetroButton();
             this.lblIdPolozky = new MetroFramework.Controls.MetroLabel();
             this.lblErrorHolder = new MetroFramework.Controls.MetroLabel();
             this.btnSave = new MetroFramework.Controls.MetroButton();
             this.iNazovArtiklu = new MetroFramework.Controls.MetroTextBox();
-            this.lNazovArtiklu = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.bsRace)).BeginInit();
+            this.bsRace = new System.Windows.Forms.BindingSource(this.components);
             this.metroPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRace)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bsRace
-            // 
-            this.bsRace.DataSource = typeof(perfectTiming.Model.Race);
             // 
             // metroPanel1
             // 
@@ -77,6 +73,89 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(3, 60);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(101, 19);
+            this.metroLabel3.TabIndex = 95;
+            this.metroLabel3.Text = "Poloha udalosti:";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(3, 169);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(100, 19);
+            this.metroLabel2.TabIndex = 94;
+            this.metroLabel2.Text = "Dátum udalosti:";
+            // 
+            // metroDateTime1
+            // 
+            this.metroDateTime1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRace, "start_date", true));
+            this.metroDateTime1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bsRace, "start_date", true));
+            this.metroDateTime1.Location = new System.Drawing.Point(3, 191);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.metroDateTime1.Name = "metroDateTime1";
+            this.metroDateTime1.Size = new System.Drawing.Size(289, 29);
+            this.metroDateTime1.TabIndex = 92;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(3, 60);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(13, 19);
+            this.metroLabel1.TabIndex = 91;
+            this.metroLabel1.Text = " ";
+            // 
+            // metroTextBox1
+            // 
+            this.metroTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.metroTextBox1.CustomButton.Image = null;
+            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(523, 2);
+            this.metroTextBox1.CustomButton.Name = "";
+            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(79, 79);
+            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox1.CustomButton.TabIndex = 1;
+            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox1.CustomButton.UseSelectable = true;
+            this.metroTextBox1.CustomButton.Visible = false;
+            this.metroTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRace, "location", true));
+            this.metroTextBox1.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.metroTextBox1.Lines = new string[0];
+            this.metroTextBox1.Location = new System.Drawing.Point(3, 82);
+            this.metroTextBox1.MaxLength = 32767;
+            this.metroTextBox1.Multiline = true;
+            this.metroTextBox1.Name = "metroTextBox1";
+            this.metroTextBox1.PasswordChar = '\0';
+            this.metroTextBox1.PromptText = "Zadajte adresu udalosti";
+            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox1.SelectedText = "";
+            this.metroTextBox1.SelectionLength = 0;
+            this.metroTextBox1.SelectionStart = 0;
+            this.metroTextBox1.ShortcutsEnabled = true;
+            this.metroTextBox1.Size = new System.Drawing.Size(605, 84);
+            this.metroTextBox1.TabIndex = 90;
+            this.metroTextBox1.UseSelectable = true;
+            this.metroTextBox1.WaterMark = "Zadajte adresu udalosti";
+            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lNazovArtiklu
+            // 
+            this.lNazovArtiklu.AutoSize = true;
+            this.lNazovArtiklu.Location = new System.Drawing.Point(3, 0);
+            this.lNazovArtiklu.Name = "lNazovArtiklu";
+            this.lNazovArtiklu.Size = new System.Drawing.Size(98, 19);
+            this.lNazovArtiklu.TabIndex = 89;
+            this.lNazovArtiklu.Text = "Názov udalosti:";
             // 
             // btnCancel
             // 
@@ -125,6 +204,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSave.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnSave.ForeColor = System.Drawing.SystemColors.Window;
             this.btnSave.Location = new System.Drawing.Point(3, 311);
@@ -173,88 +253,9 @@
             this.iNazovArtiklu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.iNazovArtiklu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // lNazovArtiklu
+            // bsRace
             // 
-            this.lNazovArtiklu.AutoSize = true;
-            this.lNazovArtiklu.Location = new System.Drawing.Point(3, 0);
-            this.lNazovArtiklu.Name = "lNazovArtiklu";
-            this.lNazovArtiklu.Size = new System.Drawing.Size(98, 19);
-            this.lNazovArtiklu.TabIndex = 89;
-            this.lNazovArtiklu.Text = "Názov udalosti:";
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(3, 60);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(13, 19);
-            this.metroLabel1.TabIndex = 91;
-            this.metroLabel1.Text = " ";
-            // 
-            // metroTextBox1
-            // 
-            this.metroTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(523, 2);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(79, 79);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.bsRace, "location", true));
-            this.metroTextBox1.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(3, 82);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Multiline = true;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.PromptText = "Zadajte adresu udalosti";
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(605, 84);
-            this.metroTextBox1.TabIndex = 90;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMark = "Zadajte adresu udalosti";
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroDateTime1
-            // 
-            this.metroDateTime1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRace, "start_date", true));
-            this.metroDateTime1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bsRace, "start_date", true));
-            this.metroDateTime1.Location = new System.Drawing.Point(3, 191);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(289, 29);
-            this.metroDateTime1.TabIndex = 92;
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(3, 169);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(100, 19);
-            this.metroLabel2.TabIndex = 94;
-            this.metroLabel2.Text = "Dátum udalosti:";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(3, 60);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(101, 19);
-            this.metroLabel3.TabIndex = 95;
-            this.metroLabel3.Text = "Poloha udalosti:";
+            this.bsRace.DataSource = typeof(perfectTiming.Model.Race);
             // 
             // RacesEditorView
             // 
@@ -264,9 +265,9 @@
             this.Controls.Add(this.metroPanel1);
             this.Name = "RacesEditorView";
             this.Text = "Editor Udalosti";
-            ((System.ComponentModel.ISupportInitialize)(this.bsRace)).EndInit();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRace)).EndInit();
             this.ResumeLayout(false);
 
         }
