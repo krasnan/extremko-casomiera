@@ -159,6 +159,12 @@
     <Compile Include="View\ucStart.Designer.cs">
       <DependentUpon>ucStart.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ucTiming.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucTiming.Designer.cs">
+      <DependentUpon>ucTiming.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucStart.resx">
       <DependentUpon>ucStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucTiming.resx">
+      <DependentUpon>ucTiming.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\DbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
