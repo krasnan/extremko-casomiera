@@ -34,18 +34,8 @@ namespace perfectTiming.View
 
         private void tStart_Click(object sender, EventArgs e)
         {
-
-
+            SetUserControll(new ucStart());
             MainView.Instance.LastUserControll.Push(Name);
-            ucStart uc = new ucStart();
-            uc.Dock = DockStyle.Fill;
-            MainView.Instance.ActualUserControll = uc.Name;
-            MainView.Instance.MetroContainer.Controls.RemoveByKey(uc.Name);
-            MainView.Instance.MetroContainer.Controls.Add(uc);
-            MainView.Instance.MetroContainer.Controls[uc.Name].BringToFront();
-            MainView.Instance.MetroBack.Visible = true;
-            MainView.Instance.MetroDateTime.Visible = true;
-
         }
 
         private void tSettings_Click(object sender, EventArgs e)
@@ -73,16 +63,7 @@ namespace perfectTiming.View
 
         private void tRaces_Click(object sender, EventArgs e)
         {
-
-            MainView.Instance.LastUserControll.Push(Name);
-            ucRace uc = new ucRace();
-            uc.Dock = DockStyle.Fill;
-            MainView.Instance.ActualUserControll = uc.Name;
-            MainView.Instance.MetroContainer.Controls.RemoveByKey(uc.Name);
-            MainView.Instance.MetroContainer.Controls.Add(uc);
-            MainView.Instance.MetroContainer.Controls[uc.Name].BringToFront();
-            MainView.Instance.MetroDateTime.Visible = true;
-            MainView.Instance.MetroBack.Visible = true;
+            SetUserControll(new ucRace());
         }
 
         private void tQuit_Click(object sender, EventArgs e)
@@ -97,17 +78,28 @@ namespace perfectTiming.View
 
         private void tCompetitors_Click(object sender, EventArgs e)
         {
-
+            SetUserControll(new ucCompetitor());
         }
 
         private void tCategories_Click(object sender, EventArgs e)
         {
+            SetUserControll(new ucCategory());
 
         }
 
         private void tRegistrations_Click(object sender, EventArgs e)
         {
 
+        }
+        private void SetUserControll(UserControl uc) {
+            MainView.Instance.LastUserControll.Push(Name);
+            uc.Dock = DockStyle.Fill;
+            MainView.Instance.ActualUserControll = uc.Name;
+            MainView.Instance.MetroContainer.Controls.RemoveByKey(uc.Name);
+            MainView.Instance.MetroContainer.Controls.Add(uc);
+            MainView.Instance.MetroContainer.Controls[uc.Name].BringToFront();
+            MainView.Instance.MetroDateTime.Visible = true;
+            MainView.Instance.MetroBack.Visible = true;
         }
     }
 }

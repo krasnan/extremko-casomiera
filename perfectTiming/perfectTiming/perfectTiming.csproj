@@ -102,7 +102,6 @@
     <Compile Include="Model\Competitor.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DbContext.cs" />
     <Compile Include="Model\DbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,17 +128,41 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\frmCategoryEditorView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCategoryEditorView.Designer.cs">
+      <DependentUpon>frmCategoryEditorView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCompetitorEditorView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCompetitorEditorView.Designer.cs">
+      <DependentUpon>frmCompetitorEditorView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\RacesEditorView.cs">
+    <Compile Include="View\frmRacesEditorView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\RacesEditorView.Designer.cs">
-      <DependentUpon>RacesEditorView.cs</DependentUpon>
+    <Compile Include="View\frmRacesEditorView.Designer.cs">
+      <DependentUpon>frmRacesEditorView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucCategory.Designer.cs">
+      <DependentUpon>ucCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucCompetitor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucCompetitor.Designer.cs">
+      <DependentUpon>ucCompetitor.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ucDashboard.cs">
       <SubType>UserControl</SubType>
@@ -152,6 +175,12 @@
     </Compile>
     <Compile Include="View\ucRace.Designer.cs">
       <DependentUpon>ucRace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ucRegistration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucRegistration.Designer.cs">
+      <DependentUpon>ucRegistration.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ucStart.cs">
       <SubType>UserControl</SubType>
@@ -175,11 +204,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\frmCategoryEditorView.resx">
+      <DependentUpon>frmCategoryEditorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCompetitorEditorView.resx">
+      <DependentUpon>frmCompetitorEditorView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\RacesEditorView.resx">
-      <DependentUpon>RacesEditorView.cs</DependentUpon>
+    <EmbeddedResource Include="View\frmRacesEditorView.resx">
+      <DependentUpon>frmRacesEditorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucCategory.resx">
+      <DependentUpon>ucCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucCompetitor.resx">
+      <DependentUpon>ucCompetitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucDashboard.resx">
       <DependentUpon>ucDashboard.cs</DependentUpon>

@@ -10,7 +10,6 @@ namespace perfectTiming.Controller
 {
    public class RaceController : IRaceController
     {
-        private List<Race> _races;              // Zoznam pretekov
         private perfecttimingEntities _context; // context databazy
 
 
@@ -21,9 +20,7 @@ namespace perfectTiming.Controller
         /// </summary>
         public RaceController(ref perfecttimingEntities  context)
         {
-
             _context = context;
-            _races = _context.Races.ToList();
         }
 
         /// <summary>
@@ -37,8 +34,6 @@ namespace perfectTiming.Controller
             {
                 _context.Races.Add(item);
                 _context.SaveChanges();
-                _races.Add(item);
-
                 return new RequestResult<Race> { Status = Enums.RequestStatus.Success, Message = "Záznam úspešne uložený", Data = item };
             }
             catch (Exception ex)
@@ -53,16 +48,12 @@ namespace perfectTiming.Controller
         /// <returns></returns>
         public RequestResult<Race> Update(Race item)
         {
-
             try
             {
                 _context.Races.Attach(item);
                 var entry = _context.Entry(item);
                 entry.State = System.Data.Entity.EntityState.Modified;
-
                 _context.SaveChanges();
-
-
                 return new RequestResult<Race> { Status = Enums.RequestStatus.Success, Message = "Záznam úspešne uložený", Data = item };
             }
             catch (Exception ex)
@@ -84,16 +75,11 @@ namespace perfectTiming.Controller
                 _context.Races.Attach(item);
                 _context.Races.Remove(item);
                 _context.SaveChanges();
-
-
                 return new RequestResult<Race> { Status = Enums.RequestStatus.Success, Message = "Záznam úspešne vymazaný.", Data = item };
-
-
             }
             catch (Exception ex)
             {
                 return new RequestResult<Race> { Status = Enums.RequestStatus.Error, Message = "Záznam sa nepodarilo vymazať.", Detail = ex.Message };
-           
             }
         }
 
@@ -111,30 +97,11 @@ namespace perfectTiming.Controller
             {
                 _context.Races.RemoveRange(range);
                 _context.SaveChanges();
-                foreach (Race item in range)
-                {
-                    _races.Remove(item);
-                }
                 return new RequestResult<List<Race>> { Status = Enums.RequestStatus.Success, Message = "Záznami úspešne odstránené.", Data = range };
             }
             catch (Exception ex)
             {
                 return new RequestResult<List<Race>> { Status = Enums.RequestStatus.Error, Message = "Záznamy sa nepodarilo odstrániť.", Detail = ex.Message };
-            }
-        }
-
-  
-        public RequestResult<bool> Save()
-        {
-            try
-            {
-                _context.SaveChanges();
-                return new RequestResult<bool> { Status = Enums.RequestStatus.Success, Message = "Závod uložený", Data = true };
-            }
-            catch (Exception)
-            {
-
-                return new RequestResult<bool> { Status = Enums.RequestStatus.Error, Message = "Nepodarilo sa uložiť závod", Data = false };
             }
         }
     }
