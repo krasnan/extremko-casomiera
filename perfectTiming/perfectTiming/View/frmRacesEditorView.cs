@@ -19,7 +19,7 @@ namespace perfectTiming.View
         {
             
             InitializeComponent();
-            bsRace.DataSource = item;
+            bsItem.DataSource = item;
         }
 
 

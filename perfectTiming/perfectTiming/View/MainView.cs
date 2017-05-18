@@ -102,12 +102,12 @@ namespace perfectTiming.View
                 mPanel.Controls[ActualUserControll].Dispose();
                 mPanel.Controls.Remove(mPanel.Controls[ActualUserControll]);
             }
-            string lastUcName = LastUserControll.Pop();
+            string lastUcName = Instance.LastUserControll.Pop();
             ActualUserControll = lastUcName;
             mPanel.Controls[lastUcName].BringToFront();
 
-            btnBack.Visible = LastUserControll.Count != 0;
-            lblDateTime.Visible = LastUserControll.Count != 0;
+            btnBack.Visible = Instance.LastUserControll.Count != 0;
+            lblDateTime.Visible = Instance.LastUserControll.Count != 0;
         }
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -120,6 +120,17 @@ namespace perfectTiming.View
             {
                 e.Cancel = true;
             }
+        }
+        public void SetUserControll(UserControl uc, string name)
+        {
+            Instance.LastUserControll.Push(name);
+            uc.Dock = DockStyle.Fill;
+            Instance.ActualUserControll = uc.Name;
+            Instance.MetroContainer.Controls.RemoveByKey(uc.Name);
+            Instance.MetroContainer.Controls.Add(uc);
+            Instance.MetroContainer.Controls[uc.Name].BringToFront();
+            Instance.MetroDateTime.Visible = true;
+            Instance.MetroBack.Visible = true;
         }
     }
 }

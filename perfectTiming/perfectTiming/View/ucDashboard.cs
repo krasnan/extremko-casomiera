@@ -34,7 +34,7 @@ namespace perfectTiming.View
 
         private void tStart_Click(object sender, EventArgs e)
         {
-            SetUserControll(new ucStart());
+            MainView.Instance.SetUserControll(new ucStart(), Name);
             MainView.Instance.LastUserControll.Push(Name);
         }
 
@@ -63,7 +63,7 @@ namespace perfectTiming.View
 
         private void tRaces_Click(object sender, EventArgs e)
         {
-            SetUserControll(new ucRace());
+            MainView.Instance.SetUserControll(new ucRace(), Name);
         }
 
         private void tQuit_Click(object sender, EventArgs e)
@@ -78,28 +78,18 @@ namespace perfectTiming.View
 
         private void tCompetitors_Click(object sender, EventArgs e)
         {
-            SetUserControll(new ucCompetitor());
+            MainView.Instance.SetUserControll(new ucCompetitor(), Name);
         }
 
         private void tCategories_Click(object sender, EventArgs e)
         {
-            SetUserControll(new ucCategory());
+            MainView.Instance.SetUserControll(new ucCategory(), Name);
 
         }
 
         private void tRegistrations_Click(object sender, EventArgs e)
         {
 
-        }
-        private void SetUserControll(UserControl uc) {
-            MainView.Instance.LastUserControll.Push(Name);
-            uc.Dock = DockStyle.Fill;
-            MainView.Instance.ActualUserControll = uc.Name;
-            MainView.Instance.MetroContainer.Controls.RemoveByKey(uc.Name);
-            MainView.Instance.MetroContainer.Controls.Add(uc);
-            MainView.Instance.MetroContainer.Controls[uc.Name].BringToFront();
-            MainView.Instance.MetroDateTime.Visible = true;
-            MainView.Instance.MetroBack.Visible = true;
         }
     }
 }

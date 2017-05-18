@@ -188,11 +188,11 @@
     <Compile Include="View\ucStart.Designer.cs">
       <DependentUpon>ucStart.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ucTiming.cs">
+    <Compile Include="View\ucTimer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\ucTiming.Designer.cs">
-      <DependentUpon>ucTiming.cs</DependentUpon>
+    <Compile Include="View\ucTimer.Designer.cs">
+      <DependentUpon>ucTimer.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -231,8 +231,8 @@
     <EmbeddedResource Include="View\ucStart.resx">
       <DependentUpon>ucStart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ucTiming.resx">
-      <DependentUpon>ucTiming.cs</DependentUpon>
+    <EmbeddedResource Include="View\ucTimer.resx">
+      <DependentUpon>ucTimer.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\DbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -279,6 +279,30 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
       <LastGenOutput>DbModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\ic_library_add_white_48dp.png" />
+    <None Include="Resources\ic_library_add_white_36dp.png" />
+    <None Include="Resources\ic_library_add_white_24dp.png" />
+    <None Include="Resources\ic_library_add_white_18dp.png" />
+    <None Include="Resources\ic_library_add_black_48dp.png" />
+    <None Include="Resources\ic_library_add_black_36dp.png" />
+    <None Include="Resources\ic_library_add_black_24dp.png" />
+    <None Include="Resources\ic_library_add_black_18dp.png" />
+    <None Include="Resources\ic_play_circle_outline_white_48dp.png" />
+    <None Include="Resources\ic_play_circle_outline_white_36dp.png" />
+    <None Include="Resources\ic_play_circle_outline_white_24dp.png" />
+    <None Include="Resources\ic_play_circle_outline_white_18dp.png" />
+    <None Include="Resources\ic_play_circle_outline_black_48dp.png" />
+    <None Include="Resources\ic_play_circle_outline_black_36dp.png" />
+    <None Include="Resources\ic_play_circle_outline_black_24dp.png" />
+    <None Include="Resources\ic_play_circle_outline_black_18dp.png" />
+    <None Include="Resources\ic_pause_circle_outline_white_48dp.png" />
+    <None Include="Resources\ic_pause_circle_outline_white_36dp.png" />
+    <None Include="Resources\ic_pause_circle_outline_white_24dp.png" />
+    <None Include="Resources\ic_pause_circle_outline_white_18dp.png" />
+    <None Include="Resources\ic_pause_circle_outline_black_48dp.png" />
+    <None Include="Resources\ic_pause_circle_outline_black_36dp.png" />
+    <None Include="Resources\ic_pause_circle_outline_black_24dp.png" />
+    <None Include="Resources\ic_pause_circle_outline_black_18dp.png" />
     <None Include="Resources\ic_chevron_left_black_48dp.png" />
     <None Include="Resources\ic_chevron_left_black_36dp.png" />
     <None Include="Resources\ic_chevron_left_black_24dp.png" />

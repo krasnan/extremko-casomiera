@@ -52,7 +52,7 @@ namespace perfectTiming.View
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    RequestResult<Category> result = app.CategoryController.Update(item);
+                    RequestResult<Category> result = app.CategoryController.Add(item);
                     if (result.Status == Enums.RequestStatus.Success)
                     {
                         MetroFramework.MetroMessageBox.Show(this, "Kategória úspešne vložená", "Kategória vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);

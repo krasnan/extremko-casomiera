@@ -663,6 +663,166 @@ namespace perfectTiming.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ic_library_add_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_library_add_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_library_add_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_library_add_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_library_add_black_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_library_add_black_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_library_add_black_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_library_add_black_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_library_add_white_18dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_library_add_white_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_library_add_white_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_library_add_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_library_add_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_library_add_white_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_library_add_white_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_library_add_white_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_pause_circle_outline_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_pause_circle_outline_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_pause_circle_outline_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_pause_circle_outline_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_pause_circle_outline_black_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_pause_circle_outline_black_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_pause_circle_outline_black_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_pause_circle_outline_black_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_pause_circle_outline_white_18dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_pause_circle_outline_white_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_pause_circle_outline_white_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_pause_circle_outline_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_pause_circle_outline_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_pause_circle_outline_white_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_pause_circle_outline_white_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_pause_circle_outline_white_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_perm_identity_black_18dp {
             get {
                 object obj = ResourceManager.GetObject("ic_perm_identity_black_18dp", resourceCulture);
@@ -736,6 +896,86 @@ namespace perfectTiming.Properties {
         internal static System.Drawing.Bitmap ic_perm_identity_white_48dp {
             get {
                 object obj = ResourceManager.GetObject("ic_perm_identity_white_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_play_circle_outline_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_play_circle_outline_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_play_circle_outline_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_play_circle_outline_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_play_circle_outline_black_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_play_circle_outline_black_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_play_circle_outline_black_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_play_circle_outline_black_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_play_circle_outline_white_18dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_play_circle_outline_white_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_play_circle_outline_white_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_play_circle_outline_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_play_circle_outline_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_play_circle_outline_white_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_play_circle_outline_white_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_play_circle_outline_white_48dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

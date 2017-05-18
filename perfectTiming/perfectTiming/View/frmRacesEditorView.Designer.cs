@@ -41,9 +41,9 @@
             this.lblErrorHolder = new MetroFramework.Controls.MetroLabel();
             this.btnSave = new MetroFramework.Controls.MetroButton();
             this.iNazovArtiklu = new MetroFramework.Controls.MetroTextBox();
-            this.bsRace = new System.Windows.Forms.BindingSource(this.components);
+            this.bsItem = new System.Windows.Forms.BindingSource(this.components);
             this.metroPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsRace)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItem)).BeginInit();
             this.SuspendLayout();
             // 
             // metroPanel1
@@ -94,8 +94,8 @@
             // 
             // metroDateTime1
             // 
-            this.metroDateTime1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRace, "start_date", true));
-            this.metroDateTime1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bsRace, "start_date", true));
+            this.metroDateTime1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsItem, "start_date", true));
+            this.metroDateTime1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bsItem, "start_date", true));
             this.metroDateTime1.Location = new System.Drawing.Point(3, 191);
             this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
@@ -127,7 +127,7 @@
             this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTextBox1.CustomButton.UseSelectable = true;
             this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRace, "location", true));
+            this.metroTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsItem, "location", true));
             this.metroTextBox1.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.metroTextBox1.Lines = new string[0];
             this.metroTextBox1.Location = new System.Drawing.Point(3, 82);
@@ -234,7 +234,7 @@
             this.iNazovArtiklu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.iNazovArtiklu.CustomButton.UseSelectable = true;
             this.iNazovArtiklu.CustomButton.Visible = false;
-            this.iNazovArtiklu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRace, "name", true));
+            this.iNazovArtiklu.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsItem, "name", true));
             this.iNazovArtiklu.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.iNazovArtiklu.Lines = new string[0];
             this.iNazovArtiklu.Location = new System.Drawing.Point(3, 22);
@@ -256,7 +256,7 @@
             // 
             // bsRace
             // 
-            this.bsRace.DataSource = typeof(perfectTiming.Model.Race);
+            this.bsItem.DataSource = typeof(perfectTiming.Model.Race);
             // 
             // frmRacesEditorView
             // 
@@ -268,14 +268,14 @@
             this.Text = "Editor Udalosti";
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsRace)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItem)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.BindingSource bsRace;
+        private System.Windows.Forms.BindingSource bsItem;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroButton btnCancel;
         private MetroFramework.Controls.MetroLabel lblIdPolozky;

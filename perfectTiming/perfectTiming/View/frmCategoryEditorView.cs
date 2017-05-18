@@ -16,6 +16,7 @@ namespace perfectTiming.View
         public frmCategoryEditorView(Category item)
         {
             InitializeComponent();
+            bsItem.DataSource = item;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -16,6 +16,7 @@ namespace perfectTiming.View
         public frmCompetitorEditorView(Competitor item)
         {
             InitializeComponent();
+            bsItem.DataSource = item;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
