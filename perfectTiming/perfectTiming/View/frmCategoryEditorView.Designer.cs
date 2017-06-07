@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.iDescription = new MetroFramework.Controls.MetroTextBox();
+            this.bsItem = new System.Windows.Forms.BindingSource(this.components);
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lNazovArtiklu = new MetroFramework.Controls.MetroLabel();
@@ -38,8 +40,6 @@
             this.lblErrorHolder = new MetroFramework.Controls.MetroLabel();
             this.btnSave = new MetroFramework.Controls.MetroButton();
             this.iName = new MetroFramework.Controls.MetroTextBox();
-            this.iDescription = new MetroFramework.Controls.MetroTextBox();
-            this.bsItem = new System.Windows.Forms.BindingSource(this.components);
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).BeginInit();
             this.SuspendLayout();
@@ -69,6 +69,47 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // iDescription
+            // 
+            this.iDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.iDescription.CustomButton.Image = null;
+            this.iDescription.CustomButton.Location = new System.Drawing.Point(376, 2);
+            this.iDescription.CustomButton.Name = "";
+            this.iDescription.CustomButton.Size = new System.Drawing.Size(79, 79);
+            this.iDescription.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.iDescription.CustomButton.TabIndex = 1;
+            this.iDescription.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.iDescription.CustomButton.UseSelectable = true;
+            this.iDescription.CustomButton.Visible = false;
+            this.iDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsItem, "description", true));
+            this.iDescription.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.iDescription.Lines = new string[0];
+            this.iDescription.Location = new System.Drawing.Point(3, 82);
+            this.iDescription.MaxLength = 32767;
+            this.iDescription.Multiline = true;
+            this.iDescription.Name = "iDescription";
+            this.iDescription.PasswordChar = '\0';
+            this.iDescription.PromptText = "Zadajte popis kategórie";
+            this.iDescription.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.iDescription.SelectedText = "";
+            this.iDescription.SelectionLength = 0;
+            this.iDescription.SelectionStart = 0;
+            this.iDescription.ShortcutsEnabled = true;
+            this.iDescription.Size = new System.Drawing.Size(458, 84);
+            this.iDescription.TabIndex = 96;
+            this.iDescription.UseSelectable = true;
+            this.iDescription.WaterMark = "Zadajte popis kategórie";
+            this.iDescription.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.iDescription.WaterMarkFont = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // bsItem
+            // 
+            this.bsItem.DataSource = typeof(perfectTiming.Model.Category);
             // 
             // metroLabel3
             // 
@@ -143,7 +184,6 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSave.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnSave.ForeColor = System.Drawing.SystemColors.Window;
             this.btnSave.Highlight = true;
@@ -192,47 +232,6 @@
             this.iName.WaterMark = "Zadajte názov kategórie";
             this.iName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.iName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // iDescription
-            // 
-            this.iDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.iDescription.CustomButton.Image = null;
-            this.iDescription.CustomButton.Location = new System.Drawing.Point(376, 2);
-            this.iDescription.CustomButton.Name = "";
-            this.iDescription.CustomButton.Size = new System.Drawing.Size(79, 79);
-            this.iDescription.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.iDescription.CustomButton.TabIndex = 1;
-            this.iDescription.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.iDescription.CustomButton.UseSelectable = true;
-            this.iDescription.CustomButton.Visible = false;
-            this.iDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsItem, "description", true));
-            this.iDescription.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.iDescription.Lines = new string[0];
-            this.iDescription.Location = new System.Drawing.Point(3, 82);
-            this.iDescription.MaxLength = 32767;
-            this.iDescription.Multiline = true;
-            this.iDescription.Name = "iDescription";
-            this.iDescription.PasswordChar = '\0';
-            this.iDescription.PromptText = "Zadajte popis kategórie";
-            this.iDescription.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.iDescription.SelectedText = "";
-            this.iDescription.SelectionLength = 0;
-            this.iDescription.SelectionStart = 0;
-            this.iDescription.ShortcutsEnabled = true;
-            this.iDescription.Size = new System.Drawing.Size(458, 84);
-            this.iDescription.TabIndex = 96;
-            this.iDescription.UseSelectable = true;
-            this.iDescription.WaterMark = "Zadajte popis kategórie";
-            this.iDescription.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.iDescription.WaterMarkFont = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // bsItem
-            // 
-            this.bsItem.DataSource = typeof(perfectTiming.Model.Category);
             // 
             // frmCategoryEditorView
             // 

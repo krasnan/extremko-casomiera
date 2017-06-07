@@ -39,7 +39,6 @@ namespace perfectTiming.Controller
             {
                 _context.Competitors.Add(item);
                 _context.SaveChanges();
-
                 return new RequestResult<Competitor>{ Status = Enums.RequestStatus.Success, Message = "Účastník úspešne uložený.", Data = item };
             }
             catch (Exception ex)
@@ -61,12 +60,6 @@ namespace perfectTiming.Controller
                 var entry = _context.Entry(item);
                 entry.State = System.Data.Entity.EntityState.Modified;
                 _context.SaveChanges();
-
-
-                //int index = _competitors.FindIndex(o => o.id == c.id);
-                //if(index != -1)
-                //    _competitors[index] = c;
-
                 return new RequestResult<Competitor> { Status = Enums.RequestStatus.Success, Message = "Účastník úspešne uložený.", Data = item };
             }
             catch (Exception ex)
@@ -128,8 +121,10 @@ namespace perfectTiming.Controller
 
         public bool IsValidName(Competitor item)
         {
-            if (item.name.All(char.IsLetter))
-                return true;
+            if (item.name.Length < 3)
+                return false;
+            //if (item.name.All(char.IsLetter))
+            //    return true;
             return false;
         }
 
@@ -144,6 +139,19 @@ namespace perfectTiming.Controller
         {
             return Regex.Match(item.phone, @"^(\+421)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$").Success
                 || Regex.Match(item.phone, @"^([0-9]{10})$").Success;
+        }
+        public RequestResult<bool> Save()
+        {
+            try
+            {
+                _context.SaveChanges();
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Success, Message = "Kategória uložená", Data = true };
+            }
+            catch (Exception)
+            {
+
+                return new RequestResult<bool> { Status = Enums.RequestStatus.Error, Message = "Nepodarilo sa uložiť kategoriu", Data = false };
+            }
         }
     }
 }

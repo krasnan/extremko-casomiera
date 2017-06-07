@@ -10,12 +10,13 @@ namespace perfectTiming.Controller
 {
     interface ICategoryController
     {
-        List<Category> Categories { get; set; }
+        List<Category> Categories { get; }
 
         RequestResult<Category> Add(Category  item);
         RequestResult<Category> Update(Category item);
         RequestResult<Category> Remove(Category item);
         RequestResult<bool> Save();
+        bool IsValidName(Category item);
 
     }
 }

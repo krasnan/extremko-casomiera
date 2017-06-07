@@ -12,9 +12,8 @@ namespace perfectTiming.Controller
     public class CategoryController : ICategoryController
     {
 
-        public List<Category> Categories { get { return _categories; } set { _categories = value; } }
+        public List<Category> Categories { get { return _context.Categories.ToList(); } }
 
-        private List<Category> _categories; //zoznam objektov
         private perfecttimingEntities _context; // context databazy
 
         /// <summary>
@@ -23,13 +22,11 @@ namespace perfectTiming.Controller
         public CategoryController(ref perfecttimingEntities context)
         {
             _context = context;
-            _categories = _context.Categories.ToList();
         }
 
         public CategoryController(List<Category> range)
         {
             _context = new perfecttimingEntities();
-            _categories = range;
         }
 
 
@@ -40,23 +37,16 @@ namespace perfectTiming.Controller
         /// <returns></returns>
         public RequestResult<Category> Add(Category item)
         {
-
             try
             {
-                if (item.name == "" || (_categories.FindIndex(o => o.name == item.name) != -1))
-                    return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategóriu sa nepodarilo pridať" };
-                
                 _context.Categories.Add(item);
-                _categories.Add(item);
-
+                _context.SaveChanges();
                 return new RequestResult<Category> { Status = Enums.RequestStatus.Success, Message = "Kategória bola pridaná", Data = item };
 
             }
             catch (Exception ex)
             {
-
                 return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategóriu sa nepodarilo pridať", Detail = ex.Message };
-
             }
 
         }
@@ -72,8 +62,7 @@ namespace perfectTiming.Controller
             {
                 _context.Categories.Attach(item);
                 _context.Categories.Remove(item);
-                _categories.Remove(item);
-
+                _context.SaveChanges();
                 return new RequestResult<Category> { Status = Enums.RequestStatus.Success, Message = "Kategória vymazaná", Data = item };
             }
             catch (Exception ex)
@@ -91,35 +80,14 @@ namespace perfectTiming.Controller
         {
             try
             {
-                if(item.name == "")
-                    throw new Exception();
-
-                int index = _categories.FindIndex(o => o.id == item.id);
-                if (index != -1) {
-
-                    if (_categories[index].name != item.name)
-                    {
-                        if (_categories.FindIndex(o => o.name == item.name) != -1)
-                            return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategória nebola upravená" };
-
-                    }
-
-                    _context.Categories.Attach(item);
-                    var entry = _context.Entry(item);
-                    entry.State = System.Data.Entity.EntityState.Modified;
-                    _categories[index] = item;
-
-                } else {
-
-                    throw new Exception();
-                }
-
-
+                _context.Categories.Attach(item);
+                var entry = _context.Entry(item);
+                entry.State = System.Data.Entity.EntityState.Modified;
+                _context.SaveChanges();
                 return new RequestResult<Category> { Status = Enums.RequestStatus.Success, Message = "Kategória upravená", Data = item };
             }
             catch (Exception ex)
             {
-
                 return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategória nebola upravená", Detail = ex.Message };
             }
         }
@@ -136,6 +104,11 @@ namespace perfectTiming.Controller
 
                 return new RequestResult<bool> { Status = Enums.RequestStatus.Error, Message = "Nepodarilo sa uložiť kategoriu", Data = false };
             }
+        }
+
+        public bool IsValidName(Category item)
+        {
+            return item.name != null && item.name != "";
         }
     }
 }
