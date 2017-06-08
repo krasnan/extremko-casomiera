@@ -89,6 +89,7 @@ namespace perfectTiming.View
 
         private void tRegistrations_Click(object sender, EventArgs e)
         {
+            MainView.Instance.SetUserControll(new ucRegistration(), Name);
 
         }
     }

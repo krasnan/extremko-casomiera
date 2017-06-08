@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5009fe5671014de7a6228eccffdaa42b" Name="Diagram1">
-        <EntityTypeShape EntityType="perfecttimingModel.Category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="perfecttimingModel.Competitor" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="perfecttimingModel.Race" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+      <Diagram DiagramId="06f700b8bdfd4b6a8c11af3974ce18be" Name="Diagram1">
+        <EntityTypeShape EntityType="perfecttimingModel.Category" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="perfecttimingModel.Competitor" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="perfecttimingModel.Race" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="perfecttimingModel.Registration" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="perfecttimingModel.Timing" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="perfecttimingModel.Timing" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="perfecttimingModel.Registration_ibfk_1" ManuallyRouted="false" />
         <AssociationConnector Association="perfecttimingModel.Registration_ibfk_3" ManuallyRouted="false" />
-        <AssociationConnector Association="perfecttimingModel.Registration_ibfk_2" ManuallyRouted="false" />
         <AssociationConnector Association="perfecttimingModel.Timing_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="perfecttimingModel.Category_ibfk_1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -33,14 +33,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView = new MetroFramework.Controls.MetroGrid();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsItems = new System.Windows.Forms.BindingSource(this.components);
             this.btnAdd = new MetroFramework.Controls.MetroButton();
             this.btnDelete = new MetroFramework.Controls.MetroButton();
             this.btnEdit = new MetroFramework.Controls.MetroButton();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsItems = new System.Windows.Forms.BindingSource(this.components);
+            this.cmbRaces = new MetroFramework.Controls.MetroComboBox();
+            this.bsRaces = new System.Windows.Forms.BindingSource(this.components);
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRaces)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -82,7 +87,7 @@
             this.dataGridView.EnableHeadersVisualStyles = false;
             this.dataGridView.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView.Location = new System.Drawing.Point(3, 76);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -97,9 +102,29 @@
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.RowTemplate.Height = 40;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(699, 371);
+            this.dataGridView.Size = new System.Drawing.Size(576, 140);
             this.dataGridView.TabIndex = 36;
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Názov kategórie";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 146;
+            // 
+            // description
+            // 
+            this.description.DataPropertyName = "description";
+            this.description.HeaderText = "Popis kategórie";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            this.description.Width = 139;
+            // 
+            // bsItems
+            // 
+            this.bsItems.DataSource = typeof(perfectTiming.Model.Category);
             // 
             // btnAdd
             // 
@@ -108,7 +133,7 @@
             this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnAdd.ForeColor = System.Drawing.SystemColors.Window;
             this.btnAdd.Highlight = true;
-            this.btnAdd.Location = new System.Drawing.Point(218, 380);
+            this.btnAdd.Location = new System.Drawing.Point(218, 222);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(209, 35);
             this.btnAdd.Style = MetroFramework.MetroColorStyle.Green;
@@ -125,7 +150,7 @@
             this.btnDelete.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnDelete.ForeColor = System.Drawing.SystemColors.Window;
             this.btnDelete.Highlight = true;
-            this.btnDelete.Location = new System.Drawing.Point(433, 380);
+            this.btnDelete.Location = new System.Drawing.Point(433, 222);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(209, 35);
             this.btnDelete.Style = MetroFramework.MetroColorStyle.Orange;
@@ -142,7 +167,7 @@
             this.btnEdit.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnEdit.ForeColor = System.Drawing.SystemColors.Window;
             this.btnEdit.Highlight = true;
-            this.btnEdit.Location = new System.Drawing.Point(3, 380);
+            this.btnEdit.Location = new System.Drawing.Point(3, 222);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(209, 35);
             this.btnEdit.Style = MetroFramework.MetroColorStyle.Blue;
@@ -152,39 +177,62 @@
             this.btnEdit.UseStyleColors = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // description
+            // cmbRaces
             // 
-            this.description.DataPropertyName = "description";
-            this.description.HeaderText = "Popis kategórie";
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
-            this.description.Width = 140;
+            this.cmbRaces.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbRaces.DataSource = this.bsRaces;
+            this.cmbRaces.DisplayMember = "name";
+            this.cmbRaces.FormattingEnabled = true;
+            this.cmbRaces.ItemHeight = 23;
+            this.cmbRaces.Location = new System.Drawing.Point(3, 22);
+            this.cmbRaces.Name = "cmbRaces";
+            this.cmbRaces.Size = new System.Drawing.Size(576, 29);
+            this.cmbRaces.TabIndex = 40;
+            this.cmbRaces.UseSelectable = true;
+            this.cmbRaces.ValueMember = "id";
+            this.cmbRaces.SelectedValueChanged += new System.EventHandler(this.cmbRaces_SelectedValueChanged);
             // 
-            // nameDataGridViewTextBoxColumn
+            // bsRaces
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Názov kategórie";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 146;
+            this.bsRaces.DataSource = typeof(perfectTiming.Model.Race);
             // 
-            // bsItems
+            // metroLabel1
             // 
-            this.bsItems.DataSource = typeof(perfectTiming.Model.Category);
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(3, 0);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(49, 19);
+            this.metroLabel1.TabIndex = 41;
+            this.metroLabel1.Text = "Pretek:";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(3, 54);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(116, 19);
+            this.metroLabel2.TabIndex = 42;
+            this.metroLabel2.Text = "Zoznam Kategórií:";
             // 
             // ucCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.cmbRaces);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Name = "ucCategory";
-            this.Size = new System.Drawing.Size(705, 418);
+            this.Size = new System.Drawing.Size(582, 260);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRaces)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -197,5 +245,9 @@
         private MetroFramework.Controls.MetroButton btnEdit;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private MetroFramework.Controls.MetroComboBox cmbRaces;
+        private System.Windows.Forms.BindingSource bsRaces;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
     }
 }

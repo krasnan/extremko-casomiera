@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using perfectTiming.Model;
 using perfectTiming.Helpers;
+using System.Data.Entity;
 
 namespace perfectTiming.Controller
 {
@@ -13,6 +14,7 @@ namespace perfectTiming.Controller
     {
 
         public List<Category> Categories { get { return _context.Categories.ToList(); } }
+        public DbSet<Category> CategoriesDb { get { return _context.Categories; } }
 
         private perfecttimingEntities _context; // context databazy
 

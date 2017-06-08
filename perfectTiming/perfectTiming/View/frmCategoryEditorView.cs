@@ -19,6 +19,8 @@ namespace perfectTiming.View
         {
             InitializeComponent();
             bsItem.DataSource = item;
+            bsRaces.DataSource = AppController.Instance.RaceController.Races;
+            cmbRaces.SelectedItem = item.Race;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

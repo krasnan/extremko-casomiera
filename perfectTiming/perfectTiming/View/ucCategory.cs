@@ -16,12 +16,21 @@ namespace perfectTiming.View
     public partial class ucCategory : MetroFramework.Controls.MetroUserControl
     {
         private AppController app;
+        private List<Category> categories;
+        private List<Race> races;
+
         public ucCategory()
         {
             this.AccessibleName = " - Zoznam Kategórií";
             InitializeComponent();
             app = AppController.Instance;
-            bsItems.DataSource = app.CategoryController.Categories;
+
+            categories = app.CategoryController.Categories;
+            races = app.RaceController.Races;
+
+            bsItems.DataSource = categories;
+            bsRaces.DataSource = races;
+
             dataGridView_SelectionChanged(null, null);
         }
 
@@ -48,6 +57,10 @@ namespace perfectTiming.View
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Category item = new Category();
+
+            if (cmbRaces.SelectedItem != null)
+                item.Race = (Race)cmbRaces.SelectedItem;
+
             using (frmCategoryEditorView frm = new frmCategoryEditorView(item))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
@@ -84,6 +97,15 @@ namespace perfectTiming.View
         {
             btnDelete.Enabled = (dataGridView.SelectedRows.Count > 0);
             btnEdit.Enabled = (dataGridView.SelectedRows.Count == 1);
+        }
+
+        private void cmbRaces_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbRaces.SelectedItem != null)
+            {
+                bsItems.DataSource = categories.Where(c => c.Race.id == ((Race)cmbRaces.SelectedItem).id);
+                dataGridView.ClearSelection();
+            }
         }
     }
 }

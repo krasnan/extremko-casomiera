@@ -21,10 +21,12 @@ namespace perfectTiming.Model
         }
     
         public int id { get; set; }
+        public int race_id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Registration> Registrations { get; set; }
+        public virtual Race Race { get; set; }
     }
 }

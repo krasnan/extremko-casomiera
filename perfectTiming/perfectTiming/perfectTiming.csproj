@@ -140,6 +140,12 @@
     <Compile Include="View\frmCompetitorEditorView.Designer.cs">
       <DependentUpon>frmCompetitorEditorView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmRegistrationEditorView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmRegistrationEditorView.Designer.cs">
+      <DependentUpon>frmRegistrationEditorView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     <EmbeddedResource Include="View\frmCompetitorEditorView.resx">
       <DependentUpon>frmCompetitorEditorView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmRegistrationEditorView.resx">
+      <DependentUpon>frmRegistrationEditorView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
@@ -227,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucRace.resx">
       <DependentUpon>ucRace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucRegistration.resx">
+      <DependentUpon>ucRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ucStart.resx">
       <DependentUpon>ucStart.cs</DependentUpon>
@@ -264,10 +276,6 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
   <ItemGroup>
     <Content Include="Model\DbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -279,6 +287,11 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
       <LastGenOutput>DbModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\ic_library_add_white_48dp.png" />
     <None Include="Resources\ic_library_add_white_36dp.png" />
     <None Include="Resources\ic_library_add_white_24dp.png" />
