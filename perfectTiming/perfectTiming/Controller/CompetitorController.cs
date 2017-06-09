@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using perfectTiming.Model;
 using perfectTiming.Helpers;
 using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace perfectTiming.Controller
 {
@@ -106,40 +107,89 @@ namespace perfectTiming.Controller
             }
         }
 
-        public bool IsValidEmial(Competitor item)
+
+        public RequestResult<bool> IsValidName(Competitor item)
         {
+            if (item.name == null)
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Nezadali ste meno účastníka.\n"
+                };
+            if (item.name.Length < 3 || item.name.Length > 255)
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Meno účastníka musí obsahovať 3 až 255 znakov.\n"
+                };
+            return new RequestResult<bool> { Status = Enums.RequestStatus.Success };
+
+        }
+
+        public RequestResult<bool> IsValidEmial(Competitor item)
+        {
+            if (item.email == null)
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Nezadali ste email.\n"
+                };
+            if (item.email.Length < 3 || item.email.Length > 255)
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Emailová adresa musí obsahovať 3 až 255 znakov.\n"
+                };
             try
             {
-                var addr = new System.Net.Mail.MailAddress(item.email);
-                return addr.Address == item.email;
+                MailAddress m = new MailAddress(item.email);
             }
-            catch
+            catch (FormatException)
             {
-                return false;
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Emailová adresa má neplatný formát.\n"
+                };
             }
+            return new RequestResult<bool> { Status = Enums.RequestStatus.Success };
         }
 
-        public bool IsValidName(Competitor item)
+        public RequestResult<bool> IsValidBirthDate(Competitor item)
         {
-            if (item.name.Length < 3)
-                return false;
-            //if (item.name.All(char.IsLetter))
-            //    return true;
-            return false;
+            if (item.birth_date == null)
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Nezadali ste dátum narodenia.\n"
+                };
+            if (item.birth_date > DateTime.Now)
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Nesprávny dátum narodenia.\n"
+                };
+            return new RequestResult<bool> { Status = Enums.RequestStatus.Success };
         }
 
-        public bool IsValidBirthDate(Competitor item)
+        public RequestResult<bool> IsValidPhone(Competitor item)
         {
-            if (item.birth_date <= DateTime.Now)
-                return true;
-            return false;
+            if(item.phone == null)
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Telefónne číslo musí byť zadané.\n"
+                };
+            if (!Regex.Match(item.phone, @"^(\+421)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$").Success
+                && !Regex.Match(item.phone, @"^([0-9]{10})$").Success)
+                    return new RequestResult<bool>
+                    {
+                        Status = Enums.RequestStatus.Error,
+                        Message = "Telefónne číslo nemá správny formát.\n"
+                    };
+            return new RequestResult<bool> { Status = Enums.RequestStatus.Success };
         }
-
-        public bool IsValidPhone(Competitor item)
-        {
-            return Regex.Match(item.phone, @"^(\+421)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$").Success
-                || Regex.Match(item.phone, @"^([0-9]{10})$").Success;
-        }
+        
         public RequestResult<bool> Save()
         {
             try
@@ -149,7 +199,6 @@ namespace perfectTiming.Controller
             }
             catch (Exception)
             {
-
                 return new RequestResult<bool> { Status = Enums.RequestStatus.Error, Message = "Nepodarilo sa uložiť kategoriu", Data = false };
             }
         }

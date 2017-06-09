@@ -28,9 +28,8 @@ namespace perfectTiming.View
             lblErrorHolder.Text = "";
             Category cat = (Category)bsItem.Current;
 
-            if (!app.CategoryController.IsValidName(cat))
-                lblErrorHolder.Text += "Názov kategórie je neplatný";
-            
+            lblErrorHolder.Text += app.CategoryController.IsValidName(cat).Message;
+
             if (lblErrorHolder.Text == "")
                 this.DialogResult = DialogResult.OK;
         }

@@ -26,17 +26,10 @@ namespace perfectTiming.View
             Competitor comp = (Competitor)bsItem.Current;
             lblErrorHolder.Text = "";
 
-            if (!app.CompetitorController.IsValidName(comp))
-                lblErrorHolder.Text += "Neplatné meno (môže obsahovať iba znaky abecedy).\n";
-            
-            if (!app.CompetitorController.IsValidBirthDate(comp))
-                lblErrorHolder.Text += "Neplatný dátum narodenia.\n";
-            
-            if (!app.CompetitorController.IsValidEmial(comp))
-                lblErrorHolder.Text += "Neplatný formát emailovej adresy.\n";
-            
-            if (!app.CompetitorController.IsValidPhone(comp))
-                lblErrorHolder.Text += "Neplatný formát telefónneho čísla. (+421.........)\n";
+            lblErrorHolder.Text += app.CompetitorController.IsValidName(comp).Message;
+            lblErrorHolder.Text += app.CompetitorController.IsValidBirthDate(comp).Message;
+            lblErrorHolder.Text += app.CompetitorController.IsValidEmial(comp).Message;
+            lblErrorHolder.Text += app.CompetitorController.IsValidPhone(comp).Message;
 
             if (lblErrorHolder.Text == "")
                 this.DialogResult = DialogResult.OK;

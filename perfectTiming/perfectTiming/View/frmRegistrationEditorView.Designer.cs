@@ -31,25 +31,29 @@
             this.components = new System.ComponentModel.Container();
             this.btnCancel = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.lblErrorHolder = new MetroFramework.Controls.MetroLabel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.cmbCompetitors = new MetroFramework.Controls.MetroComboBox();
+            this.bsItem = new System.Windows.Forms.BindingSource(this.components);
+            this.bsCompetitors = new System.Windows.Forms.BindingSource(this.components);
+            this.cmbCategories = new MetroFramework.Controls.MetroComboBox();
+            this.bsCategories = new System.Windows.Forms.BindingSource(this.components);
             this.cmbRaces = new MetroFramework.Controls.MetroComboBox();
             this.bsRaces = new System.Windows.Forms.BindingSource(this.components);
-            this.bsCategories = new System.Windows.Forms.BindingSource(this.components);
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lNazovArtiklu = new MetroFramework.Controls.MetroLabel();
             this.lblIdPolozky = new MetroFramework.Controls.MetroLabel();
-            this.lblErrorHolder = new MetroFramework.Controls.MetroLabel();
             this.btnSave = new MetroFramework.Controls.MetroButton();
             this.iName = new MetroFramework.Controls.MetroTextBox();
-            this.cmbCategories = new MetroFramework.Controls.MetroComboBox();
-            this.cmbCompetitors = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.bsCompetitors = new System.Windows.Forms.BindingSource(this.components);
             this.metroPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsRaces)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsCategories)).BeginInit();
+            this.metroPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCompetitors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCategories)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRaces)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -64,7 +68,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(136, 35);
             this.btnCancel.Style = MetroFramework.MetroColorStyle.Orange;
-            this.btnCancel.TabIndex = 88;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "&Zrušiť";
             this.btnCancel.UseSelectable = true;
             this.btnCancel.UseStyleColors = true;
@@ -72,6 +76,7 @@
             // metroPanel1
             // 
             this.metroPanel1.AutoScroll = true;
+            this.metroPanel1.Controls.Add(this.metroPanel2);
             this.metroPanel1.Controls.Add(this.metroButton1);
             this.metroPanel1.Controls.Add(this.metroLabel2);
             this.metroPanel1.Controls.Add(this.cmbCompetitors);
@@ -82,7 +87,6 @@
             this.metroPanel1.Controls.Add(this.lNazovArtiklu);
             this.metroPanel1.Controls.Add(this.btnCancel);
             this.metroPanel1.Controls.Add(this.lblIdPolozky);
-            this.metroPanel1.Controls.Add(this.lblErrorHolder);
             this.metroPanel1.Controls.Add(this.btnSave);
             this.metroPanel1.Controls.Add(this.iName);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -99,6 +103,111 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // metroPanel2
+            // 
+            this.metroPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroPanel2.AutoScroll = true;
+            this.metroPanel2.Controls.Add(this.lblErrorHolder);
+            this.metroPanel2.HorizontalScrollbar = true;
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(3, 225);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(366, 63);
+            this.metroPanel2.TabIndex = 102;
+            this.metroPanel2.VerticalScrollbar = true;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // lblErrorHolder
+            // 
+            this.lblErrorHolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblErrorHolder.AutoSize = true;
+            this.lblErrorHolder.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblErrorHolder.Location = new System.Drawing.Point(3, 0);
+            this.lblErrorHolder.MinimumSize = new System.Drawing.Size(50, 5);
+            this.lblErrorHolder.Name = "lblErrorHolder";
+            this.lblErrorHolder.Size = new System.Drawing.Size(0, 0);
+            this.lblErrorHolder.Style = MetroFramework.MetroColorStyle.Orange;
+            this.lblErrorHolder.TabIndex = 8;
+            this.lblErrorHolder.UseStyleColors = true;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroButton1.BackColor = System.Drawing.Color.LimeGreen;
+            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.metroButton1.ForeColor = System.Drawing.SystemColors.Window;
+            this.metroButton1.Highlight = true;
+            this.metroButton1.Location = new System.Drawing.Point(233, 184);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(136, 35);
+            this.metroButton1.TabIndex = 5;
+            this.metroButton1.Text = "&Generuj";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.UseStyleColors = true;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(3, 162);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(94, 19);
+            this.metroLabel2.TabIndex = 100;
+            this.metroLabel2.Text = "Štartovné číslo";
+            // 
+            // cmbCompetitors
+            // 
+            this.cmbCompetitors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCompetitors.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bsItem, "Competitor", true));
+            this.cmbCompetitors.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsItem, "competitor_id", true));
+            this.cmbCompetitors.DataSource = this.bsCompetitors;
+            this.cmbCompetitors.DisplayMember = "name";
+            this.cmbCompetitors.FormattingEnabled = true;
+            this.cmbCompetitors.ItemHeight = 23;
+            this.cmbCompetitors.Location = new System.Drawing.Point(3, 130);
+            this.cmbCompetitors.Name = "cmbCompetitors";
+            this.cmbCompetitors.Size = new System.Drawing.Size(366, 29);
+            this.cmbCompetitors.TabIndex = 3;
+            this.cmbCompetitors.UseSelectable = true;
+            this.cmbCompetitors.ValueMember = "id";
+            // 
+            // bsItem
+            // 
+            this.bsItem.DataSource = typeof(perfectTiming.Model.Registration);
+            // 
+            // bsCompetitors
+            // 
+            this.bsCompetitors.DataSource = typeof(perfectTiming.Model.Competitor);
+            // 
+            // cmbCategories
+            // 
+            this.cmbCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCategories.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bsItem, "Category", true));
+            this.cmbCategories.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsItem, "category_id", true));
+            this.cmbCategories.DataSource = this.bsCategories;
+            this.cmbCategories.DisplayMember = "name";
+            this.cmbCategories.FormattingEnabled = true;
+            this.cmbCategories.ItemHeight = 23;
+            this.cmbCategories.Location = new System.Drawing.Point(3, 76);
+            this.cmbCategories.Name = "cmbCategories";
+            this.cmbCategories.Size = new System.Drawing.Size(366, 29);
+            this.cmbCategories.TabIndex = 2;
+            this.cmbCategories.UseSelectable = true;
+            this.cmbCategories.ValueMember = "id";
+            this.cmbCategories.SelectionChangeCommitted += new System.EventHandler(this.cmbCategories_SelectedValueChanged);
+            // 
+            // bsCategories
+            // 
+            this.bsCategories.DataSource = typeof(perfectTiming.Model.Category);
+            // 
             // cmbRaces
             // 
             this.cmbRaces.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -110,18 +219,14 @@
             this.cmbRaces.Location = new System.Drawing.Point(3, 22);
             this.cmbRaces.Name = "cmbRaces";
             this.cmbRaces.Size = new System.Drawing.Size(366, 29);
-            this.cmbRaces.TabIndex = 97;
+            this.cmbRaces.TabIndex = 1;
             this.cmbRaces.UseSelectable = true;
             this.cmbRaces.ValueMember = "id";
-            this.cmbRaces.SelectedValueChanged += new System.EventHandler(this.cmbRaces_SelectedValueChanged);
+            this.cmbRaces.SelectionChangeCommitted += new System.EventHandler(this.cmbRaces_SelectedValueChanged);
             // 
             // bsRaces
             // 
             this.bsRaces.DataSource = typeof(perfectTiming.Model.Race);
-            // 
-            // bsCategories
-            // 
-            this.bsCategories.DataSource = typeof(perfectTiming.Model.Category);
             // 
             // metroLabel3
             // 
@@ -162,19 +267,6 @@
             this.lblIdPolozky.UseStyleColors = true;
             this.lblIdPolozky.Visible = false;
             // 
-            // lblErrorHolder
-            // 
-            this.lblErrorHolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblErrorHolder.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.lblErrorHolder.Location = new System.Drawing.Point(3, 222);
-            this.lblErrorHolder.MinimumSize = new System.Drawing.Size(50, 5);
-            this.lblErrorHolder.Name = "lblErrorHolder";
-            this.lblErrorHolder.Size = new System.Drawing.Size(366, 63);
-            this.lblErrorHolder.Style = MetroFramework.MetroColorStyle.Orange;
-            this.lblErrorHolder.TabIndex = 58;
-            this.lblErrorHolder.UseStyleColors = true;
-            // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -186,7 +278,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(136, 35);
             this.btnSave.Style = MetroFramework.MetroColorStyle.Green;
-            this.btnSave.TabIndex = 80;
+            this.btnSave.TabIndex = 6;
             this.btnSave.Text = "&Uložiť";
             this.btnSave.UseSelectable = true;
             this.btnSave.UseStyleColors = true;
@@ -207,7 +299,7 @@
             this.iName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.iName.CustomButton.UseSelectable = true;
             this.iName.CustomButton.Visible = false;
-            this.iName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsCategories, "name", true));
+            this.iName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsItem, "start_number", true));
             this.iName.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.iName.Lines = new string[0];
             this.iName.Location = new System.Drawing.Point(3, 184);
@@ -221,70 +313,11 @@
             this.iName.SelectionStart = 0;
             this.iName.ShortcutsEnabled = true;
             this.iName.Size = new System.Drawing.Size(224, 35);
-            this.iName.TabIndex = 41;
+            this.iName.TabIndex = 4;
             this.iName.UseSelectable = true;
             this.iName.WaterMark = "...";
             this.iName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.iName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // cmbCategories
-            // 
-            this.cmbCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbCategories.DataSource = this.bsCategories;
-            this.cmbCategories.DisplayMember = "name";
-            this.cmbCategories.FormattingEnabled = true;
-            this.cmbCategories.ItemHeight = 23;
-            this.cmbCategories.Location = new System.Drawing.Point(3, 76);
-            this.cmbCategories.Name = "cmbCategories";
-            this.cmbCategories.Size = new System.Drawing.Size(366, 29);
-            this.cmbCategories.TabIndex = 98;
-            this.cmbCategories.UseSelectable = true;
-            this.cmbCategories.ValueMember = "id";
-            this.cmbCategories.SelectedIndexChanged += new System.EventHandler(this.cmbCategories_SelectedIndexChanged);
-            // 
-            // cmbCompetitors
-            // 
-            this.cmbCompetitors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbCompetitors.DataSource = this.bsCompetitors;
-            this.cmbCompetitors.DisplayMember = "name";
-            this.cmbCompetitors.FormattingEnabled = true;
-            this.cmbCompetitors.ItemHeight = 23;
-            this.cmbCompetitors.Location = new System.Drawing.Point(3, 130);
-            this.cmbCompetitors.Name = "cmbCompetitors";
-            this.cmbCompetitors.Size = new System.Drawing.Size(366, 29);
-            this.cmbCompetitors.TabIndex = 99;
-            this.cmbCompetitors.UseSelectable = true;
-            this.cmbCompetitors.ValueMember = "id";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(3, 162);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(94, 19);
-            this.metroLabel2.TabIndex = 100;
-            this.metroLabel2.Text = "Štartovné číslo";
-            // 
-            // metroButton1
-            // 
-            this.metroButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroButton1.BackColor = System.Drawing.Color.LimeGreen;
-            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton1.ForeColor = System.Drawing.SystemColors.Window;
-            this.metroButton1.Highlight = true;
-            this.metroButton1.Location = new System.Drawing.Point(233, 184);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(136, 35);
-            this.metroButton1.TabIndex = 101;
-            this.metroButton1.Text = "&Generuj";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.UseStyleColors = true;
-            // 
-            // bsCompetitors
-            // 
-            this.bsCompetitors.DataSource = typeof(perfectTiming.Model.Competitor);
             // 
             // frmRegistrationEditorView
             // 
@@ -296,9 +329,12 @@
             this.Text = "Editor Registrácie";
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsRaces)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsCategories)).EndInit();
+            this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCompetitors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCategories)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRaces)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -314,7 +350,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel lNazovArtiklu;
         private MetroFramework.Controls.MetroLabel lblIdPolozky;
-        private MetroFramework.Controls.MetroLabel lblErrorHolder;
         private MetroFramework.Controls.MetroButton btnSave;
         private MetroFramework.Controls.MetroComboBox cmbCompetitors;
         private MetroFramework.Controls.MetroComboBox cmbCategories;
@@ -322,5 +357,8 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private System.Windows.Forms.BindingSource bsCompetitors;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
+        private MetroFramework.Controls.MetroLabel lblErrorHolder;
+        private System.Windows.Forms.BindingSource bsItem;
     }
 }

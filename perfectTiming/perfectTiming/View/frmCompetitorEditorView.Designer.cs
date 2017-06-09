@@ -33,7 +33,6 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.iEmail = new MetroFramework.Controls.MetroTextBox();
-            this.bsItem = new System.Windows.Forms.BindingSource(this.components);
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
@@ -44,7 +43,10 @@
             this.lblIdPolozky = new MetroFramework.Controls.MetroLabel();
             this.btnSave = new MetroFramework.Controls.MetroButton();
             this.iName = new MetroFramework.Controls.MetroTextBox();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.bsItem = new System.Windows.Forms.BindingSource(this.components);
             this.metroPanel1.SuspendLayout();
+            this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,18 +54,20 @@
             // 
             this.lblErrorHolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblErrorHolder.AutoSize = true;
             this.lblErrorHolder.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.lblErrorHolder.Location = new System.Drawing.Point(3, 223);
+            this.lblErrorHolder.Location = new System.Drawing.Point(3, 0);
             this.lblErrorHolder.MinimumSize = new System.Drawing.Size(50, 5);
             this.lblErrorHolder.Name = "lblErrorHolder";
-            this.lblErrorHolder.Size = new System.Drawing.Size(430, 63);
+            this.lblErrorHolder.Size = new System.Drawing.Size(0, 0);
             this.lblErrorHolder.Style = MetroFramework.MetroColorStyle.Orange;
-            this.lblErrorHolder.TabIndex = 58;
+            this.lblErrorHolder.TabIndex = 7;
             this.lblErrorHolder.UseStyleColors = true;
             // 
             // metroPanel1
             // 
             this.metroPanel1.AutoScroll = true;
+            this.metroPanel1.Controls.Add(this.metroPanel2);
             this.metroPanel1.Controls.Add(this.metroLabel4);
             this.metroPanel1.Controls.Add(this.iEmail);
             this.metroPanel1.Controls.Add(this.metroLabel3);
@@ -74,7 +78,6 @@
             this.metroPanel1.Controls.Add(this.lNazovArtiklu);
             this.metroPanel1.Controls.Add(this.btnCancel);
             this.metroPanel1.Controls.Add(this.lblIdPolozky);
-            this.metroPanel1.Controls.Add(this.lblErrorHolder);
             this.metroPanel1.Controls.Add(this.btnSave);
             this.metroPanel1.Controls.Add(this.iName);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -84,7 +87,7 @@
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(20, 60);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(436, 372);
+            this.metroPanel1.Size = new System.Drawing.Size(440, 312);
             this.metroPanel1.TabIndex = 2;
             this.metroPanel1.VerticalScrollbar = true;
             this.metroPanel1.VerticalScrollbarBarColor = true;
@@ -108,9 +111,9 @@
             // 
             // 
             this.iEmail.CustomButton.Image = null;
-            this.iEmail.CustomButton.Location = new System.Drawing.Point(302, 1);
+            this.iEmail.CustomButton.Location = new System.Drawing.Point(406, 1);
             this.iEmail.CustomButton.Name = "";
-            this.iEmail.CustomButton.Size = new System.Drawing.Size(20, 22);
+            this.iEmail.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.iEmail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.iEmail.CustomButton.TabIndex = 1;
             this.iEmail.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -129,16 +132,12 @@
             this.iEmail.SelectionLength = 0;
             this.iEmail.SelectionStart = 0;
             this.iEmail.ShortcutsEnabled = true;
-            this.iEmail.Size = new System.Drawing.Size(430, 29);
-            this.iEmail.TabIndex = 96;
+            this.iEmail.Size = new System.Drawing.Size(434, 29);
+            this.iEmail.TabIndex = 3;
             this.iEmail.UseSelectable = true;
             this.iEmail.WaterMark = "example@domain.com";
             this.iEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.iEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // bsItem
-            // 
-            this.bsItem.DataSource = typeof(perfectTiming.Model.Competitor);
             // 
             // metroLabel3
             // 
@@ -167,8 +166,8 @@
             this.metroDateTime1.Location = new System.Drawing.Point(3, 191);
             this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(430, 30);
-            this.metroDateTime1.TabIndex = 92;
+            this.metroDateTime1.Size = new System.Drawing.Size(434, 29);
+            this.metroDateTime1.TabIndex = 4;
             // 
             // metroLabel1
             // 
@@ -187,9 +186,9 @@
             // 
             // 
             this.iPhone.CustomButton.Image = null;
-            this.iPhone.CustomButton.Location = new System.Drawing.Point(302, 1);
+            this.iPhone.CustomButton.Location = new System.Drawing.Point(406, 1);
             this.iPhone.CustomButton.Name = "";
-            this.iPhone.CustomButton.Size = new System.Drawing.Size(20, 22);
+            this.iPhone.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.iPhone.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.iPhone.CustomButton.TabIndex = 1;
             this.iPhone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -208,8 +207,8 @@
             this.iPhone.SelectionLength = 0;
             this.iPhone.SelectionStart = 0;
             this.iPhone.ShortcutsEnabled = true;
-            this.iPhone.Size = new System.Drawing.Size(430, 29);
-            this.iPhone.TabIndex = 90;
+            this.iPhone.Size = new System.Drawing.Size(434, 29);
+            this.iPhone.TabIndex = 2;
             this.iPhone.UseSelectable = true;
             this.iPhone.WaterMark = "+421....";
             this.iPhone.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -232,11 +231,11 @@
             this.btnCancel.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnCancel.ForeColor = System.Drawing.SystemColors.Window;
             this.btnCancel.Highlight = true;
-            this.btnCancel.Location = new System.Drawing.Point(145, 334);
+            this.btnCancel.Location = new System.Drawing.Point(145, 274);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(136, 35);
             this.btnCancel.Style = MetroFramework.MetroColorStyle.Orange;
-            this.btnCancel.TabIndex = 88;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "&Zrušiť";
             this.btnCancel.UseSelectable = true;
             this.btnCancel.UseStyleColors = true;
@@ -260,11 +259,11 @@
             this.btnSave.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnSave.ForeColor = System.Drawing.SystemColors.Window;
             this.btnSave.Highlight = true;
-            this.btnSave.Location = new System.Drawing.Point(3, 334);
+            this.btnSave.Location = new System.Drawing.Point(3, 274);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(136, 35);
             this.btnSave.Style = MetroFramework.MetroColorStyle.Green;
-            this.btnSave.TabIndex = 80;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "&Uložiť";
             this.btnSave.UseSelectable = true;
             this.btnSave.UseStyleColors = true;
@@ -278,9 +277,9 @@
             // 
             // 
             this.iName.CustomButton.Image = null;
-            this.iName.CustomButton.Location = new System.Drawing.Point(297, 1);
+            this.iName.CustomButton.Location = new System.Drawing.Point(400, 1);
             this.iName.CustomButton.Name = "";
-            this.iName.CustomButton.Size = new System.Drawing.Size(25, 27);
+            this.iName.CustomButton.Size = new System.Drawing.Size(33, 33);
             this.iName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.iName.CustomButton.TabIndex = 1;
             this.iName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -299,23 +298,49 @@
             this.iName.SelectionLength = 0;
             this.iName.SelectionStart = 0;
             this.iName.ShortcutsEnabled = true;
-            this.iName.Size = new System.Drawing.Size(430, 35);
-            this.iName.TabIndex = 41;
+            this.iName.Size = new System.Drawing.Size(434, 35);
+            this.iName.TabIndex = 1;
             this.iName.UseSelectable = true;
             this.iName.WaterMark = "Zadajte meno a priezvisko";
             this.iName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.iName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // metroPanel2
+            // 
+            this.metroPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroPanel2.AutoScroll = true;
+            this.metroPanel2.Controls.Add(this.lblErrorHolder);
+            this.metroPanel2.HorizontalScrollbar = true;
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(3, 226);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(434, 42);
+            this.metroPanel2.TabIndex = 98;
+            this.metroPanel2.VerticalScrollbar = true;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // bsItem
+            // 
+            this.bsItem.DataSource = typeof(perfectTiming.Model.Competitor);
+            // 
             // frmCompetitorEditorView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 452);
+            this.ClientSize = new System.Drawing.Size(480, 392);
             this.Controls.Add(this.metroPanel1);
             this.Name = "frmCompetitorEditorView";
             this.Text = "Editor účastníka";
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
+            this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).EndInit();
             this.ResumeLayout(false);
 
@@ -338,5 +363,6 @@
         private MetroFramework.Controls.MetroTextBox iName;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroTextBox iEmail;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
     }
 }

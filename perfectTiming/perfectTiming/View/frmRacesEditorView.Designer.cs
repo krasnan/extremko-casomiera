@@ -38,17 +38,20 @@
             this.lNazovArtiklu = new MetroFramework.Controls.MetroLabel();
             this.btnCancel = new MetroFramework.Controls.MetroButton();
             this.lblIdPolozky = new MetroFramework.Controls.MetroLabel();
-            this.lblErrorHolder = new MetroFramework.Controls.MetroLabel();
             this.btnSave = new MetroFramework.Controls.MetroButton();
             this.iNazovArtiklu = new MetroFramework.Controls.MetroTextBox();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.lblErrorHolder = new MetroFramework.Controls.MetroLabel();
             this.bsItem = new System.Windows.Forms.BindingSource(this.components);
             this.metroPanel1.SuspendLayout();
+            this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).BeginInit();
             this.SuspendLayout();
             // 
             // metroPanel1
             // 
             this.metroPanel1.AutoScroll = true;
+            this.metroPanel1.Controls.Add(this.metroPanel2);
             this.metroPanel1.Controls.Add(this.metroLabel3);
             this.metroPanel1.Controls.Add(this.metroLabel2);
             this.metroPanel1.Controls.Add(this.metroDateTime1);
@@ -57,7 +60,6 @@
             this.metroPanel1.Controls.Add(this.lNazovArtiklu);
             this.metroPanel1.Controls.Add(this.btnCancel);
             this.metroPanel1.Controls.Add(this.lblIdPolozky);
-            this.metroPanel1.Controls.Add(this.lblErrorHolder);
             this.metroPanel1.Controls.Add(this.btnSave);
             this.metroPanel1.Controls.Add(this.iNazovArtiklu);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -67,7 +69,7 @@
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(20, 60);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(611, 349);
+            this.metroPanel1.Size = new System.Drawing.Size(623, 329);
             this.metroPanel1.TabIndex = 1;
             this.metroPanel1.VerticalScrollbar = true;
             this.metroPanel1.VerticalScrollbarBarColor = true;
@@ -100,7 +102,7 @@
             this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(289, 29);
-            this.metroDateTime1.TabIndex = 92;
+            this.metroDateTime1.TabIndex = 3;
             // 
             // metroLabel1
             // 
@@ -119,7 +121,7 @@
             // 
             // 
             this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(523, 2);
+            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(535, 2);
             this.metroTextBox1.CustomButton.Name = "";
             this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(79, 79);
             this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -141,8 +143,8 @@
             this.metroTextBox1.SelectionLength = 0;
             this.metroTextBox1.SelectionStart = 0;
             this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(605, 84);
-            this.metroTextBox1.TabIndex = 90;
+            this.metroTextBox1.Size = new System.Drawing.Size(617, 84);
+            this.metroTextBox1.TabIndex = 2;
             this.metroTextBox1.UseSelectable = true;
             this.metroTextBox1.WaterMark = "Zadajte adresu udalosti";
             this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -165,11 +167,11 @@
             this.btnCancel.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnCancel.ForeColor = System.Drawing.SystemColors.Window;
             this.btnCancel.Highlight = true;
-            this.btnCancel.Location = new System.Drawing.Point(145, 311);
+            this.btnCancel.Location = new System.Drawing.Point(145, 291);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(136, 35);
             this.btnCancel.Style = MetroFramework.MetroColorStyle.Orange;
-            this.btnCancel.TabIndex = 88;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Zrušiť";
             this.btnCancel.UseSelectable = true;
             this.btnCancel.UseStyleColors = true;
@@ -187,32 +189,18 @@
             this.lblIdPolozky.UseStyleColors = true;
             this.lblIdPolozky.Visible = false;
             // 
-            // lblErrorHolder
-            // 
-            this.lblErrorHolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblErrorHolder.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.lblErrorHolder.Location = new System.Drawing.Point(3, 223);
-            this.lblErrorHolder.MinimumSize = new System.Drawing.Size(50, 5);
-            this.lblErrorHolder.Name = "lblErrorHolder";
-            this.lblErrorHolder.Size = new System.Drawing.Size(605, 63);
-            this.lblErrorHolder.Style = MetroFramework.MetroColorStyle.Orange;
-            this.lblErrorHolder.TabIndex = 58;
-            this.lblErrorHolder.UseStyleColors = true;
-            // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSave.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnSave.ForeColor = System.Drawing.SystemColors.Window;
             this.btnSave.Highlight = true;
-            this.btnSave.Location = new System.Drawing.Point(3, 311);
+            this.btnSave.Location = new System.Drawing.Point(3, 291);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(136, 35);
             this.btnSave.Style = MetroFramework.MetroColorStyle.Green;
-            this.btnSave.TabIndex = 80;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "&Uložiť";
             this.btnSave.UseSelectable = true;
             this.btnSave.UseStyleColors = true;
@@ -226,7 +214,7 @@
             // 
             // 
             this.iNazovArtiklu.CustomButton.Image = null;
-            this.iNazovArtiklu.CustomButton.Location = new System.Drawing.Point(571, 1);
+            this.iNazovArtiklu.CustomButton.Location = new System.Drawing.Point(583, 1);
             this.iNazovArtiklu.CustomButton.Name = "";
             this.iNazovArtiklu.CustomButton.Size = new System.Drawing.Size(33, 33);
             this.iNazovArtiklu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -247,14 +235,46 @@
             this.iNazovArtiklu.SelectionLength = 0;
             this.iNazovArtiklu.SelectionStart = 0;
             this.iNazovArtiklu.ShortcutsEnabled = true;
-            this.iNazovArtiklu.Size = new System.Drawing.Size(605, 35);
-            this.iNazovArtiklu.TabIndex = 41;
+            this.iNazovArtiklu.Size = new System.Drawing.Size(617, 35);
+            this.iNazovArtiklu.TabIndex = 1;
             this.iNazovArtiklu.UseSelectable = true;
             this.iNazovArtiklu.WaterMark = "Zadajte názov artiklu";
             this.iNazovArtiklu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.iNazovArtiklu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // bsRace
+            // metroPanel2
+            // 
+            this.metroPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroPanel2.AutoScroll = true;
+            this.metroPanel2.Controls.Add(this.lblErrorHolder);
+            this.metroPanel2.HorizontalScrollbar = true;
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = true;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(3, 226);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(617, 59);
+            this.metroPanel2.TabIndex = 99;
+            this.metroPanel2.VerticalScrollbar = true;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = true;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // lblErrorHolder
+            // 
+            this.lblErrorHolder.AutoSize = true;
+            this.lblErrorHolder.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblErrorHolder.Location = new System.Drawing.Point(0, 0);
+            this.lblErrorHolder.MinimumSize = new System.Drawing.Size(50, 5);
+            this.lblErrorHolder.Name = "lblErrorHolder";
+            this.lblErrorHolder.Size = new System.Drawing.Size(0, 0);
+            this.lblErrorHolder.Style = MetroFramework.MetroColorStyle.Orange;
+            this.lblErrorHolder.TabIndex = 6;
+            this.lblErrorHolder.UseStyleColors = true;
+            // 
+            // bsItem
             // 
             this.bsItem.DataSource = typeof(perfectTiming.Model.Race);
             // 
@@ -262,12 +282,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 429);
+            this.ClientSize = new System.Drawing.Size(663, 409);
             this.Controls.Add(this.metroPanel1);
             this.Name = "frmRacesEditorView";
             this.Text = "Editor Udalosti";
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
+            this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).EndInit();
             this.ResumeLayout(false);
 
@@ -279,7 +301,6 @@
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroButton btnCancel;
         private MetroFramework.Controls.MetroLabel lblIdPolozky;
-        private MetroFramework.Controls.MetroLabel lblErrorHolder;
         private MetroFramework.Controls.MetroButton btnSave;
         private MetroFramework.Controls.MetroTextBox iNazovArtiklu;
         private MetroFramework.Controls.MetroLabel metroLabel3;
@@ -288,5 +309,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private MetroFramework.Controls.MetroLabel lNazovArtiklu;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
+        private MetroFramework.Controls.MetroLabel lblErrorHolder;
     }
 }

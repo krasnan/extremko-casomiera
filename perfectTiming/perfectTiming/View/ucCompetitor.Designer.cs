@@ -33,14 +33,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView = new MetroFramework.Controls.MetroGrid();
-            this.bsItems = new System.Windows.Forms.BindingSource(this.components);
-            this.btnAdd = new MetroFramework.Controls.MetroButton();
-            this.btnDelete = new MetroFramework.Controls.MetroButton();
-            this.btnEdit = new MetroFramework.Controls.MetroButton();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.birthdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsItems = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAdd = new MetroFramework.Controls.MetroButton();
+            this.btnDelete = new MetroFramework.Controls.MetroButton();
+            this.btnEdit = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
             this.SuspendLayout();
@@ -104,61 +104,6 @@
             this.dataGridView.Size = new System.Drawing.Size(803, 368);
             this.dataGridView.TabIndex = 32;
             // 
-            // bsItems
-            // 
-            this.bsItems.DataSource = typeof(perfectTiming.Model.Competitor);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdd.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.btnAdd.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnAdd.Highlight = true;
-            this.btnAdd.Location = new System.Drawing.Point(218, 377);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(209, 35);
-            this.btnAdd.Style = MetroFramework.MetroColorStyle.Green;
-            this.btnAdd.TabIndex = 35;
-            this.btnAdd.Text = "&Pridať";
-            this.btnAdd.UseSelectable = true;
-            this.btnAdd.UseStyleColors = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDelete.BackColor = System.Drawing.Color.Tomato;
-            this.btnDelete.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.btnDelete.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnDelete.Highlight = true;
-            this.btnDelete.Location = new System.Drawing.Point(433, 377);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(209, 35);
-            this.btnDelete.Style = MetroFramework.MetroColorStyle.Orange;
-            this.btnDelete.TabIndex = 34;
-            this.btnDelete.Text = "&Vymazať";
-            this.btnDelete.UseSelectable = true;
-            this.btnDelete.UseStyleColors = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEdit.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnEdit.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.btnEdit.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnEdit.Highlight = true;
-            this.btnEdit.Location = new System.Drawing.Point(3, 377);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(209, 35);
-            this.btnEdit.Style = MetroFramework.MetroColorStyle.Blue;
-            this.btnEdit.TabIndex = 33;
-            this.btnEdit.Text = "&Editovať";
-            this.btnEdit.UseSelectable = true;
-            this.btnEdit.UseStyleColors = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
@@ -190,6 +135,61 @@
             this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
             this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
             this.phoneDataGridViewTextBoxColumn.Width = 136;
+            // 
+            // bsItems
+            // 
+            this.bsItems.DataSource = typeof(perfectTiming.Model.Competitor);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAdd.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnAdd.Highlight = true;
+            this.btnAdd.Location = new System.Drawing.Point(218, 377);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(209, 35);
+            this.btnAdd.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnAdd.TabIndex = 34;
+            this.btnAdd.Text = "&Pridať";
+            this.btnAdd.UseSelectable = true;
+            this.btnAdd.UseStyleColors = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelete.BackColor = System.Drawing.Color.Tomato;
+            this.btnDelete.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnDelete.Highlight = true;
+            this.btnDelete.Location = new System.Drawing.Point(433, 377);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(209, 35);
+            this.btnDelete.Style = MetroFramework.MetroColorStyle.Orange;
+            this.btnDelete.TabIndex = 35;
+            this.btnDelete.Text = "&Vymazať";
+            this.btnDelete.UseSelectable = true;
+            this.btnDelete.UseStyleColors = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEdit.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnEdit.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnEdit.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnEdit.Highlight = true;
+            this.btnEdit.Location = new System.Drawing.Point(3, 377);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(209, 35);
+            this.btnEdit.Style = MetroFramework.MetroColorStyle.Blue;
+            this.btnEdit.TabIndex = 33;
+            this.btnEdit.Text = "&Editovať";
+            this.btnEdit.UseSelectable = true;
+            this.btnEdit.UseStyleColors = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // ucCompetitor
             // 

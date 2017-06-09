@@ -102,8 +102,8 @@
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.RowTemplate.Height = 40;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(576, 140);
-            this.dataGridView.TabIndex = 36;
+            this.dataGridView.Size = new System.Drawing.Size(646, 154);
+            this.dataGridView.TabIndex = 42;
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
             // 
             // nameDataGridViewTextBoxColumn
@@ -120,7 +120,7 @@
             this.description.HeaderText = "Popis kategórie";
             this.description.Name = "description";
             this.description.ReadOnly = true;
-            this.description.Width = 139;
+            this.description.Width = 140;
             // 
             // bsItems
             // 
@@ -133,11 +133,11 @@
             this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnAdd.ForeColor = System.Drawing.SystemColors.Window;
             this.btnAdd.Highlight = true;
-            this.btnAdd.Location = new System.Drawing.Point(218, 222);
+            this.btnAdd.Location = new System.Drawing.Point(218, 236);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(209, 35);
             this.btnAdd.Style = MetroFramework.MetroColorStyle.Green;
-            this.btnAdd.TabIndex = 39;
+            this.btnAdd.TabIndex = 46;
             this.btnAdd.Text = "&Pridať";
             this.btnAdd.UseSelectable = true;
             this.btnAdd.UseStyleColors = true;
@@ -150,11 +150,11 @@
             this.btnDelete.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnDelete.ForeColor = System.Drawing.SystemColors.Window;
             this.btnDelete.Highlight = true;
-            this.btnDelete.Location = new System.Drawing.Point(433, 222);
+            this.btnDelete.Location = new System.Drawing.Point(433, 236);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(209, 35);
             this.btnDelete.Style = MetroFramework.MetroColorStyle.Orange;
-            this.btnDelete.TabIndex = 38;
+            this.btnDelete.TabIndex = 47;
             this.btnDelete.Text = "&Vymazať";
             this.btnDelete.UseSelectable = true;
             this.btnDelete.UseStyleColors = true;
@@ -167,11 +167,11 @@
             this.btnEdit.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnEdit.ForeColor = System.Drawing.SystemColors.Window;
             this.btnEdit.Highlight = true;
-            this.btnEdit.Location = new System.Drawing.Point(3, 222);
+            this.btnEdit.Location = new System.Drawing.Point(3, 236);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(209, 35);
             this.btnEdit.Style = MetroFramework.MetroColorStyle.Blue;
-            this.btnEdit.TabIndex = 37;
+            this.btnEdit.TabIndex = 45;
             this.btnEdit.Text = "&Editovať";
             this.btnEdit.UseSelectable = true;
             this.btnEdit.UseStyleColors = true;
@@ -179,15 +179,13 @@
             // 
             // cmbRaces
             // 
-            this.cmbRaces.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbRaces.DataSource = this.bsRaces;
             this.cmbRaces.DisplayMember = "name";
             this.cmbRaces.FormattingEnabled = true;
             this.cmbRaces.ItemHeight = 23;
             this.cmbRaces.Location = new System.Drawing.Point(3, 22);
             this.cmbRaces.Name = "cmbRaces";
-            this.cmbRaces.Size = new System.Drawing.Size(576, 29);
+            this.cmbRaces.Size = new System.Drawing.Size(424, 29);
             this.cmbRaces.TabIndex = 40;
             this.cmbRaces.UseSelectable = true;
             this.cmbRaces.ValueMember = "id";
@@ -227,7 +225,7 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Name = "ucCategory";
-            this.Size = new System.Drawing.Size(582, 260);
+            this.Size = new System.Drawing.Size(652, 274);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsRaces)).EndInit();

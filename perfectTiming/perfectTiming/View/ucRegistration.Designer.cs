@@ -110,7 +110,7 @@
             this.dataGridView.RowTemplate.Height = 40;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(727, 301);
-            this.dataGridView.TabIndex = 43;
+            this.dataGridView.TabIndex = 55;
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
             // 
             // startnumberDataGridViewTextBoxColumn
@@ -182,7 +182,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(209, 35);
             this.btnAdd.Style = MetroFramework.MetroColorStyle.Green;
-            this.btnAdd.TabIndex = 46;
+            this.btnAdd.TabIndex = 61;
             this.btnAdd.Text = "&Pridať";
             this.btnAdd.UseSelectable = true;
             this.btnAdd.UseStyleColors = true;
@@ -199,7 +199,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(209, 35);
             this.btnDelete.Style = MetroFramework.MetroColorStyle.Orange;
-            this.btnDelete.TabIndex = 45;
+            this.btnDelete.TabIndex = 62;
             this.btnDelete.Text = "&Vymazať";
             this.btnDelete.UseSelectable = true;
             this.btnDelete.UseStyleColors = true;
@@ -216,7 +216,7 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(209, 35);
             this.btnEdit.Style = MetroFramework.MetroColorStyle.Blue;
-            this.btnEdit.TabIndex = 44;
+            this.btnEdit.TabIndex = 60;
             this.btnEdit.Text = "&Editovať";
             this.btnEdit.UseSelectable = true;
             this.btnEdit.UseStyleColors = true;

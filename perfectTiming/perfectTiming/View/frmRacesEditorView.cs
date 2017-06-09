@@ -15,6 +15,7 @@ namespace perfectTiming.View
 {
     public partial class frmRacesEditorView : MetroFramework.Forms.MetroForm
     {
+        private AppController app = AppController.Instance;
         public frmRacesEditorView(Race item)
         {
             
@@ -30,7 +31,15 @@ namespace perfectTiming.View
         
         private void btnSave_Click(object sender, EventArgs e)
         {
+            lblErrorHolder.Text = "";
+            Race r = (Race)bsItem.Current;
+            
+            lblErrorHolder.Text += app.RaceController.IsValidName(r).Message;
+            lblErrorHolder.Text += app.RaceController.IsValidLocation(r).Message;
+            lblErrorHolder.Text += app.RaceController.IsValidStartDate(r).Message;
 
+            if (lblErrorHolder.Text == "")
+                this.DialogResult = DialogResult.OK;
         }
 
     }

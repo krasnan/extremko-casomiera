@@ -14,7 +14,6 @@ namespace perfectTiming.Controller
     {
 
         public List<Category> Categories { get { return _context.Categories.ToList(); } }
-        public DbSet<Category> CategoriesDb { get { return _context.Categories; } }
 
         private perfecttimingEntities _context; // context databazy
 
@@ -44,13 +43,11 @@ namespace perfectTiming.Controller
                 _context.Categories.Add(item);
                 _context.SaveChanges();
                 return new RequestResult<Category> { Status = Enums.RequestStatus.Success, Message = "Kategória bola pridaná", Data = item };
-
             }
             catch (Exception ex)
             {
                 return new RequestResult<Category> { Status = Enums.RequestStatus.Error, Message = "Kategóriu sa nepodarilo pridať", Detail = ex.Message };
             }
-
         }
 
         /// <summary>
@@ -108,9 +105,21 @@ namespace perfectTiming.Controller
             }
         }
 
-        public bool IsValidName(Category item)
+        public RequestResult<bool> IsValidName(Category item)
         {
-            return item.name != null && item.name != "";
+            if (item.name == null)
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Nezadali ste názov udalosti.\n"
+                };
+            if (item.name.Length < 1 || item.name.Length > 255)
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Názov udalosti musí obsahovať 3 až 255 znakov.\n"
+                };
+            return new RequestResult<bool> { Status = Enums.RequestStatus.Success };
         }
     }
 }

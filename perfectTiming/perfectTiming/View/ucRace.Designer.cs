@@ -57,7 +57,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(209, 35);
             this.btnAdd.Style = MetroFramework.MetroColorStyle.Green;
-            this.btnAdd.TabIndex = 31;
+            this.btnAdd.TabIndex = 30;
             this.btnAdd.Text = "&Pridať";
             this.btnAdd.UseSelectable = true;
             this.btnAdd.UseStyleColors = true;
@@ -74,7 +74,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(209, 35);
             this.btnDelete.Style = MetroFramework.MetroColorStyle.Orange;
-            this.btnDelete.TabIndex = 30;
+            this.btnDelete.TabIndex = 31;
             this.btnDelete.Text = "&Vymazať";
             this.btnDelete.UseSelectable = true;
             this.btnDelete.UseStyleColors = true;

@@ -104,6 +104,51 @@ namespace perfectTiming.Controller
                 return new RequestResult<List<Race>> { Status = Enums.RequestStatus.Error, Message = "Záznamy sa nepodarilo odstrániť.", Detail = ex.Message };
             }
         }
+
+        public RequestResult<bool> IsValidName(Race item)
+        {
+            if (item.name == null)
+                return new RequestResult<bool> {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Nezadali ste názov udalosti.\n"
+                };
+            if (item.name.Length < 3 || item.name.Length > 255)
+                return new RequestResult<bool> {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Názov udalosti musí obsahovať 3 až 255 znakov.\n"
+                };
+            return new RequestResult<bool> { Status = Enums.RequestStatus.Success };
+        }
+
+        public RequestResult<bool> IsValidLocation(Race item)
+        {
+            if (item.location == null)
+                return new RequestResult<bool>{
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Nezadali ste miesto udalosti.\n"
+                };
+            if(item.location.Length < 3 || item.location.Length > 65535)
+                return new RequestResult<bool>{
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Miesto udalosti musí obsahovať 3 až 65535 znakov.\n"
+                };
+            return new RequestResult<bool>{ Status = Enums.RequestStatus.Success };
+        }
+        public RequestResult<bool> IsValidStartDate(Race item)
+        {
+            if (item.start_date == null)
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Nezadali ste dátum začiatku udalosti.\n"
+                };
+            if (item.start_date < DateTime.Now.AddDays(-1))
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Dátum začiatku udalosti môže byť maximálne 24 hodín späť od aktuálneho času.\n"
+                };
+            return new RequestResult<bool> { Status = Enums.RequestStatus.Success };
+        }
     }
-    
 }

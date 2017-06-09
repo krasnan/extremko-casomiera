@@ -51,7 +51,7 @@ namespace perfectTiming.View
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    RequestResult<Competitor> result = app.CompetitorController.Update(item);
+                    RequestResult<Competitor> result = app.CompetitorController.Add(item);
                     if (result.Status == Enums.RequestStatus.Success)
                     {
                         MetroFramework.MetroMessageBox.Show(this, "Účastník úspešne vložený", "Účastník vložený", MessageBoxButtons.OK, MessageBoxIcon.Information);

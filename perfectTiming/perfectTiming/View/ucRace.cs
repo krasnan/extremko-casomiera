@@ -58,7 +58,7 @@ namespace perfectTiming.View
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    RequestResult<Race> result = app.RaceController.Update(item);
+                    RequestResult<Race> result = app.RaceController.Add(item);
                     if (result.Status == Enums.RequestStatus.Success)
                     {
                         MetroFramework.MetroMessageBox.Show(this, "Udalosť úspešne vložená", "Udalosť vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);

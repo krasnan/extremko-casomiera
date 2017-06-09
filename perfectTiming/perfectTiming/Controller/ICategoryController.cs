@@ -16,7 +16,7 @@ namespace perfectTiming.Controller
         RequestResult<Category> Update(Category item);
         RequestResult<Category> Remove(Category item);
         RequestResult<bool> Save();
-        bool IsValidName(Category item);
+        RequestResult<bool> IsValidName(Category item);
 
     }
 }

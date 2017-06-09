@@ -11,7 +11,7 @@ namespace perfectTiming.Controller
 {
     interface IRegistrationController
     {
-        List<Registration> Registrations { get; set; }
+        List<Registration> Registrations { get; }
 
 
         RequestResult<Registration> Add(Registration item);

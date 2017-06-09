@@ -17,6 +17,7 @@ namespace perfectTiming.View
     {
         private AppController app;
         private List<Category> categories;
+        private List<Category> categoriesFilter;
         private List<Race> races;
 
         public ucCategory()
@@ -26,6 +27,7 @@ namespace perfectTiming.View
             app = AppController.Instance;
 
             categories = app.CategoryController.Categories;
+            categoriesFilter = categories;
             races = app.RaceController.Races;
 
             bsItems.DataSource = categories;
@@ -45,8 +47,10 @@ namespace perfectTiming.View
                     {
                         RequestResult<Category> result = app.CategoryController.Update(item);
                         if (result.Status == Enums.RequestStatus.Success)
+                        {
                             MetroFramework.MetroMessageBox.Show(this, "Kategória úspešne upravená", "Kategória upravená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                            cmbRaces_SelectedValueChanged(null, null);
+                        }
                         else
                             MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -69,7 +73,8 @@ namespace perfectTiming.View
                     if (result.Status == Enums.RequestStatus.Success)
                     {
                         MetroFramework.MetroMessageBox.Show(this, "Kategória úspešne vložená", "Kategória vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        bsItems.DataSource = app.CategoryController.Categories;
+                        categories = app.CategoryController.Categories;
+                        cmbRaces_SelectedValueChanged(null, null);
                     }
                     else
                         MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -91,7 +96,8 @@ namespace perfectTiming.View
                 app.CategoryController.Remove(item);
             }
 
-            bsItems.DataSource = app.CategoryController.Categories;
+            categories = app.CategoryController.Categories;
+            cmbRaces_SelectedValueChanged(null, null);
         }
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
@@ -103,7 +109,7 @@ namespace perfectTiming.View
         {
             if (cmbRaces.SelectedItem != null)
             {
-                bsItems.DataSource = categories.Where(c => c.Race.id == ((Race)cmbRaces.SelectedItem).id);
+                bsItems.DataSource = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id).ToList();
                 dataGridView.ClearSelection();
             }
         }

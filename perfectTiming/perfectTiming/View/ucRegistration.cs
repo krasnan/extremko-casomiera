@@ -37,7 +37,7 @@ namespace perfectTiming.View
         {
             if (categories != null && cmbRaces.SelectedItem != null)
             {
-                var result = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id);
+                var result = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id).ToList();
                 bsCategory.DataSource = (result.Count() > 0) ? result : null;
             }
         }
