@@ -33,10 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView = new MetroFramework.Controls.MetroGrid();
-            this.startnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.competitorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsItems = new System.Windows.Forms.BindingSource(this.components);
             this.bsCategory = new System.Windows.Forms.BindingSource(this.components);
             this.cmbRaces = new MetroFramework.Controls.MetroComboBox();
@@ -47,6 +43,9 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.cmbCategories = new MetroFramework.Controls.MetroComboBox();
+            this.startnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Competitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCategory)).BeginInit();
@@ -79,9 +78,8 @@
             this.dataGridView.ColumnHeadersHeight = 40;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.startnumberDataGridViewTextBoxColumn,
-            this.categoryDataGridViewTextBoxColumn,
-            this.competitorDataGridViewTextBoxColumn,
-            this.CategoryName});
+            this.Competitor,
+            this.dataGridViewTextBoxColumn1});
             this.dataGridView.DataSource = this.bsItems;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -111,39 +109,8 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(727, 301);
             this.dataGridView.TabIndex = 55;
+            this.dataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
-            // 
-            // startnumberDataGridViewTextBoxColumn
-            // 
-            this.startnumberDataGridViewTextBoxColumn.DataPropertyName = "start_number";
-            this.startnumberDataGridViewTextBoxColumn.HeaderText = "start_number";
-            this.startnumberDataGridViewTextBoxColumn.Name = "startnumberDataGridViewTextBoxColumn";
-            this.startnumberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.startnumberDataGridViewTextBoxColumn.Width = 126;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categoryDataGridViewTextBoxColumn.Width = 96;
-            // 
-            // competitorDataGridViewTextBoxColumn
-            // 
-            this.competitorDataGridViewTextBoxColumn.DataPropertyName = "Competitor";
-            this.competitorDataGridViewTextBoxColumn.HeaderText = "Competitor";
-            this.competitorDataGridViewTextBoxColumn.Name = "competitorDataGridViewTextBoxColumn";
-            this.competitorDataGridViewTextBoxColumn.ReadOnly = true;
-            this.competitorDataGridViewTextBoxColumn.Width = 112;
-            // 
-            // CategoryName
-            // 
-            this.CategoryName.DataPropertyName = "Category.name";
-            this.CategoryName.HeaderText = "Category Name";
-            this.CategoryName.Name = "CategoryName";
-            this.CategoryName.ReadOnly = true;
-            this.CategoryName.Width = 142;
             // 
             // bsItems
             // 
@@ -254,6 +221,30 @@
             this.cmbCategories.ValueMember = "id";
             this.cmbCategories.SelectedValueChanged += new System.EventHandler(this.cmbCategories_SelectedValueChanged);
             // 
+            // startnumberDataGridViewTextBoxColumn
+            // 
+            this.startnumberDataGridViewTextBoxColumn.DataPropertyName = "start_number";
+            this.startnumberDataGridViewTextBoxColumn.HeaderText = "Štartovné číslo";
+            this.startnumberDataGridViewTextBoxColumn.Name = "startnumberDataGridViewTextBoxColumn";
+            this.startnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.startnumberDataGridViewTextBoxColumn.Width = 134;
+            // 
+            // Competitor
+            // 
+            this.Competitor.DataPropertyName = "Competitor.name";
+            this.Competitor.HeaderText = "Meno účastníka";
+            this.Competitor.Name = "Competitor";
+            this.Competitor.ReadOnly = true;
+            this.Competitor.Width = 142;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Competitor.email";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Email účastníka";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 140;
+            // 
             // ucRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,8 +283,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroComboBox cmbCategories;
         private System.Windows.Forms.DataGridViewTextBoxColumn startnumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn competitorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Competitor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }

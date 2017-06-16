@@ -1,4 +1,5 @@
-﻿using perfectTiming.Controller;
+﻿using MetroFramework.Controls;
+using perfectTiming.Controller;
 using perfectTiming.Model;
 using System;
 using System.Collections.Generic;
@@ -19,49 +20,73 @@ namespace perfectTiming.View
         private List<Race> races;
         private List<Competitor> competitors;
         private List<Registration> registrations;
+        Competitor actualCompetitor;
 
         public frmRegistrationEditorView(Registration item)
         {
             InitializeComponent();
             app = AppController.Instance;
 
+            this.actualCompetitor = item.Competitor;
             categories = app.CategoryController.Categories;
             races = app.RaceController.Races;
             competitors = app.CompetitorController.Competitors;
             registrations = app.RegistrationController.Registrations;
-            
+
             bsItem.DataSource = item;
             bsRaces.DataSource = races;
             bsCategories.DataSource = categories;
             bsCompetitors.DataSource = competitors;
 
             cmbRaces.SelectedItem = item.Category.Race;
-            cmbCategories.SelectedItem = item.Category;
-            cmbCompetitors.SelectedItem = item.Competitor;
-            
-            
-            InitializeComponent();
+        }
+
+        private void frmRegistrationEditorView_Load(object sender, EventArgs e)
+        {
+            cmbRaces_SelectedValueChanged(null, null);
         }
 
         private void cmbRaces_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cmbRaces.SelectedItem != null)
+            {
                 bsCategories.DataSource = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id).ToList();
+                bsCategories.ResetBindings(false);
+                cmbCategories_SelectedValueChanged(null, null);
+            }
         }
 
         private void cmbCategories_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cmbCategories.SelectedItem != null)
-                bsCompetitors.DataSource = competitors.Where(c => isRegistered((Category)cmbCategories.SelectedItem, c));
+            if (cmbCategories.SelectedItem != null) {
+                List<Competitor> comp = competitors.Where(c => isNotRegistered((Category)cmbCategories.SelectedItem, c)).ToList();
+                if (actualCompetitor != null && !comp.Contains(actualCompetitor))
+                    comp.Add(actualCompetitor);
+                bsCompetitors.DataSource = comp;
+                if (actualCompetitor != null)
+                    cmbCompetitors.SelectedItem = actualCompetitor;
+                bsCompetitors.ResetBindings(false);
+            }
         }
-        private bool isRegistered(Category category, Competitor competitor) {
+        private bool isNotRegistered(Category category, Competitor competitor) {
             Registration reg = registrations.FirstOrDefault(r => r.category_id == category.id && r.competitor_id == competitor.id);
-            if (true)
-                return true;
-
-            //Registration r = registrations.FirstOrDefault(r => r.Category.race_id == race.id && r.category_id == category.id);
-            return false;
+            if (reg != null)
+                return false;
+            return true;
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        private void btnGenerateStartNumber_Click(object sender, EventArgs e)
+        {
+            if (cmbCategories.SelectedItem != null)
+            {
+                int count = registrations.Where(r => r.category_id == ((Category)cmbCategories.SelectedItem).id).Count();
+                iStartNumber.Text = (count + 1).ToString();
+            }
+        }
     }
 }

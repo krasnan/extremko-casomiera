@@ -33,7 +33,7 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.lblErrorHolder = new MetroFramework.Controls.MetroLabel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.btnGenerateStartNumber = new MetroFramework.Controls.MetroButton();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.cmbCompetitors = new MetroFramework.Controls.MetroComboBox();
             this.bsItem = new System.Windows.Forms.BindingSource(this.components);
@@ -47,7 +47,7 @@
             this.lNazovArtiklu = new MetroFramework.Controls.MetroLabel();
             this.lblIdPolozky = new MetroFramework.Controls.MetroLabel();
             this.btnSave = new MetroFramework.Controls.MetroButton();
-            this.iName = new MetroFramework.Controls.MetroTextBox();
+            this.iStartNumber = new MetroFramework.Controls.MetroTextBox();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).BeginInit();
@@ -77,7 +77,7 @@
             // 
             this.metroPanel1.AutoScroll = true;
             this.metroPanel1.Controls.Add(this.metroPanel2);
-            this.metroPanel1.Controls.Add(this.metroButton1);
+            this.metroPanel1.Controls.Add(this.btnGenerateStartNumber);
             this.metroPanel1.Controls.Add(this.metroLabel2);
             this.metroPanel1.Controls.Add(this.cmbCompetitors);
             this.metroPanel1.Controls.Add(this.cmbCategories);
@@ -88,7 +88,7 @@
             this.metroPanel1.Controls.Add(this.btnCancel);
             this.metroPanel1.Controls.Add(this.lblIdPolozky);
             this.metroPanel1.Controls.Add(this.btnSave);
-            this.metroPanel1.Controls.Add(this.iName);
+            this.metroPanel1.Controls.Add(this.iStartNumber);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel1.HorizontalScrollbar = true;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
@@ -137,20 +137,21 @@
             this.lblErrorHolder.TabIndex = 8;
             this.lblErrorHolder.UseStyleColors = true;
             // 
-            // metroButton1
+            // btnGenerateStartNumber
             // 
-            this.metroButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroButton1.BackColor = System.Drawing.Color.LimeGreen;
-            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton1.ForeColor = System.Drawing.SystemColors.Window;
-            this.metroButton1.Highlight = true;
-            this.metroButton1.Location = new System.Drawing.Point(233, 184);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(136, 35);
-            this.metroButton1.TabIndex = 5;
-            this.metroButton1.Text = "&Generuj";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.UseStyleColors = true;
+            this.btnGenerateStartNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerateStartNumber.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnGenerateStartNumber.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnGenerateStartNumber.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnGenerateStartNumber.Highlight = true;
+            this.btnGenerateStartNumber.Location = new System.Drawing.Point(233, 184);
+            this.btnGenerateStartNumber.Name = "btnGenerateStartNumber";
+            this.btnGenerateStartNumber.Size = new System.Drawing.Size(136, 35);
+            this.btnGenerateStartNumber.TabIndex = 5;
+            this.btnGenerateStartNumber.Text = "&Generuj";
+            this.btnGenerateStartNumber.UseSelectable = true;
+            this.btnGenerateStartNumber.UseStyleColors = true;
+            this.btnGenerateStartNumber.Click += new System.EventHandler(this.btnGenerateStartNumber_Click);
             // 
             // metroLabel2
             // 
@@ -282,42 +283,43 @@
             this.btnSave.Text = "&Uložiť";
             this.btnSave.UseSelectable = true;
             this.btnSave.UseStyleColors = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // iName
+            // iStartNumber
             // 
-            this.iName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.iStartNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.iName.CustomButton.Image = null;
-            this.iName.CustomButton.Location = new System.Drawing.Point(190, 1);
-            this.iName.CustomButton.Name = "";
-            this.iName.CustomButton.Size = new System.Drawing.Size(33, 33);
-            this.iName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.iName.CustomButton.TabIndex = 1;
-            this.iName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.iName.CustomButton.UseSelectable = true;
-            this.iName.CustomButton.Visible = false;
-            this.iName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsItem, "start_number", true));
-            this.iName.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.iName.Lines = new string[0];
-            this.iName.Location = new System.Drawing.Point(3, 184);
-            this.iName.MaxLength = 32767;
-            this.iName.Name = "iName";
-            this.iName.PasswordChar = '\0';
-            this.iName.PromptText = "...";
-            this.iName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.iName.SelectedText = "";
-            this.iName.SelectionLength = 0;
-            this.iName.SelectionStart = 0;
-            this.iName.ShortcutsEnabled = true;
-            this.iName.Size = new System.Drawing.Size(224, 35);
-            this.iName.TabIndex = 4;
-            this.iName.UseSelectable = true;
-            this.iName.WaterMark = "...";
-            this.iName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.iName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.iStartNumber.CustomButton.Image = null;
+            this.iStartNumber.CustomButton.Location = new System.Drawing.Point(190, 1);
+            this.iStartNumber.CustomButton.Name = "";
+            this.iStartNumber.CustomButton.Size = new System.Drawing.Size(33, 33);
+            this.iStartNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.iStartNumber.CustomButton.TabIndex = 1;
+            this.iStartNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.iStartNumber.CustomButton.UseSelectable = true;
+            this.iStartNumber.CustomButton.Visible = false;
+            this.iStartNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsItem, "start_number", true));
+            this.iStartNumber.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.iStartNumber.Lines = new string[0];
+            this.iStartNumber.Location = new System.Drawing.Point(3, 184);
+            this.iStartNumber.MaxLength = 32767;
+            this.iStartNumber.Name = "iStartNumber";
+            this.iStartNumber.PasswordChar = '\0';
+            this.iStartNumber.PromptText = "...";
+            this.iStartNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.iStartNumber.SelectedText = "";
+            this.iStartNumber.SelectionLength = 0;
+            this.iStartNumber.SelectionStart = 0;
+            this.iStartNumber.ShortcutsEnabled = true;
+            this.iStartNumber.Size = new System.Drawing.Size(224, 35);
+            this.iStartNumber.TabIndex = 4;
+            this.iStartNumber.UseSelectable = true;
+            this.iStartNumber.WaterMark = "...";
+            this.iStartNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.iStartNumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // frmRegistrationEditorView
             // 
@@ -327,6 +329,7 @@
             this.Controls.Add(this.metroPanel1);
             this.Name = "frmRegistrationEditorView";
             this.Text = "Editor Registrácie";
+            this.Load += new System.EventHandler(this.frmRegistrationEditorView_Load);
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             this.metroPanel2.ResumeLayout(false);
@@ -353,8 +356,8 @@
         private MetroFramework.Controls.MetroButton btnSave;
         private MetroFramework.Controls.MetroComboBox cmbCompetitors;
         private MetroFramework.Controls.MetroComboBox cmbCategories;
-        private MetroFramework.Controls.MetroTextBox iName;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroTextBox iStartNumber;
+        private MetroFramework.Controls.MetroButton btnGenerateStartNumber;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private System.Windows.Forms.BindingSource bsCompetitors;
         private MetroFramework.Controls.MetroPanel metroPanel2;

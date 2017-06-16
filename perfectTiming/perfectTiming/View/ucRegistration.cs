@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using perfectTiming.Model;
 using perfectTiming.Controller;
 using perfectTiming.Helpers;
+using System.Reflection;
 
 namespace perfectTiming.View
 {
@@ -64,8 +65,8 @@ namespace perfectTiming.View
             if(cmbCategories.SelectedItem != null)
                 item.Category = (Category)cmbCategories.SelectedItem;
 
-            if (cmbRaces.SelectedItem != null)
-                item.Category.Race = (Race)cmbRaces.SelectedItem;
+            //if (cmbRaces.SelectedItem != null)
+            //    item.Category.Race = (Race)cmbRaces.SelectedItem;
 
             using (frmRegistrationEditorView frm = new frmRegistrationEditorView(item))
             {
@@ -120,5 +121,25 @@ namespace perfectTiming.View
             //bsItems.DataSource = app.CategoryController.Categories;
         }
 
+        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView grid = (DataGridView)sender;
+            DataGridViewRow row = grid.Rows[e.RowIndex];
+            DataGridViewColumn col = grid.Columns[e.ColumnIndex];
+            if (row.DataBoundItem != null && col.DataPropertyName.Contains("."))
+            {
+                string[] props = col.DataPropertyName.Split('.');
+                PropertyInfo propInfo = row.DataBoundItem.GetType().GetProperty(props[0]);
+                if (propInfo == null)
+                    return;
+                object val = propInfo.GetValue(row.DataBoundItem, null);
+                for (int i = 1; i < props.Length; i++)
+                {
+                    propInfo = val.GetType().GetProperty(props[i]);
+                    val = propInfo.GetValue(val, null);
+                }
+                e.Value = val;
+            }
+        }
     }
 }

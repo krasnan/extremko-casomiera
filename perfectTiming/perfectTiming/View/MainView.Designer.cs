@@ -93,7 +93,6 @@
             this.MinimumSize = new System.Drawing.Size(800, 500);
             this.Name = "MainView";
             this.Text = "     PerfectTiming";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);
             this.Load += new System.EventHandler(this.MainView_Load);
             this.ResumeLayout(false);
