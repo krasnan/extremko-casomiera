@@ -66,77 +66,78 @@ namespace perfectTiming.Controller
             }
         }
 
-        public RequestResult<List<Competitor>> GetCompetitors(Race item)
+        public RequestResult<List<Competitor>> GetCompetitors(Race race)
         {
-            return null;
-            //List<Competitor> result = new List<Competitor>();
 
-            //try
-            //{
-            //    foreach (Registration reg in _registrations)
-            //    {
-            //        if (reg.id == item.id)
-            //        {
-            //            result.Add(reg.Competitor);
-            //        }
+            try
+            {
+                List<Competitor> result = _context.Registrations.Where(reg => reg.Category.race_id == race.id).Select(reg => reg.Competitor).ToList();
 
-            //    }
-            //    return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Success, Message = "Registrácie jazdcov pre závod načítané", Data = result };
+                return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Success, Message = "Registrácie jazdcov pre závod načítané", Data = result };
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Error, Message = "Kategóriu sa nepodarilo pridať", Detail = ex.Message };
-            //}
+            }
+            catch (Exception ex)
+            {
+                return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Error, Message = "Kategóriu sa nepodarilo pridať", Detail = ex.Message };
+            }
 
         }
 
         public RequestResult<List<Category>> GetCategories(Race item)
         {
+
+         
             return null;
-            //List<Category> result = new List<Category>();
 
-            //try
-            //{
-            //    foreach (Registration reg in _registrations)
-            //    {
-            //        if (reg.id == item.id && !result.Contains(reg.Category))
-            //                result.Add(reg.Category);
-                    
-            //    }
-
-            //    return new RequestResult<List<Category>> { Status = Enums.RequestStatus.Success, Message = "Zoznam kategorií načítaný", Data = result };
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    return new RequestResult<List<Category>> { Status = Enums.RequestStatus.Error, Message = "Kategórie sa nepodarilo načítať", Detail = ex.Message };
-            //}
         }
 
         public RequestResult<List<Competitor>> GetCategoryCompetitors(Category item)
         {
             return null;
-            //List<Competitor> result = new List<Competitor>();
-            //try
-            //{
 
-            //    foreach (Registration reg in _registrations)
-            //    {
-            //        if (reg.id == item.id)
-            //        {
-            //            result.Add(reg.Competitor);
-            //        }
-            //    }
-            //    return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Success, Message = "Zoznam kategorií načítaný", Data = result };
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    return new RequestResult<List<Competitor>> { Status = Enums.RequestStatus.Error, Message = "Súťažiacich sa nepodarilo načítať", Detail = ex.Message };
-            //}
-            
         }
+
+        public RequestResult<Registration> GetRegistration(Race race,int start_number)
+        {
+
+            Registration reg;
+            try
+            {
+                reg = _context.Registrations.Where(re => re.Category.race_id == race.id).FirstOrDefault(re => re.start_number == start_number);
+
+                return new RequestResult<Registration> { Status = Enums.RequestStatus.Success, Message = "Registrácia získaná", Data = reg };
+            }
+            catch (Exception)
+            {
+                return new RequestResult<Registration> { Status = Enums.RequestStatus.Error, Message = "Jazdec s daným štartovným číslom neexistuje",};
+            }
+
+
+        }
+
+
+        public RequestResult<List<Registration>> GetRegistrations(Race race)
+        {
+
+            try
+            {
+                List<Registration> result = _context.Registrations.Where(reg => reg.Category.race_id == race.id).ToList();
+
+                return new RequestResult<List<Registration>> { Status = Enums.RequestStatus.Success, Message = "Registrácie jazdcov pre závod načítané", Data = result };
+
+            }
+            catch (Exception ex)
+            {
+                return new RequestResult<List<Registration>> { Status = Enums.RequestStatus.Error, Message = "Registracie sa nepodarilo načítať", Detail = ex.Message };
+            }
+
+
+
+
+        }
+
+
+
 
 
         public RequestResult<bool> Save()

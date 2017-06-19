@@ -11,6 +11,7 @@ using System.Diagnostics;
 using MetroFramework;
 using perfectTiming.Model;
 using perfectTiming.Controller;
+using perfectTiming.Helpers;
 
 namespace perfectTiming.View
 {
@@ -23,9 +24,17 @@ namespace perfectTiming.View
         double lastCorrectTime;
         string lastCas;
 
+        private List<Registration> registrations;
+        Race race;
 
         public ucTimer(Race race)
         {
+
+            this.race = race;
+            app = AppController.Instance;
+            registrations = app.RegistrationController.GetRegistrations(race).Data;
+
+
             InitializeComponent();
             stopwatch = new Stopwatch();
             btnStart.Enabled = true;
@@ -33,70 +42,6 @@ namespace perfectTiming.View
             btnStop.Enabled = false;
             txtNumber.Enabled = false;
         }
-
-        //private void metroButton1_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void metroButton3_Click(object sender, EventArgs e)
-        //{
-        //    // Pauza Button
-        //    stopwatch.Stop();
-        //    timer1.Stop();
-        //    metroTile1.Enabled = true;
-        //    metroTile2.Enabled = true;
-        //    metroTile3.Enabled = false;
-
-        //    metroTile1.Text = "Pokracuj";
-        //}
-
-        //// Start Button
-        //private void metroTile1_Click(object sender, EventArgs e)
-        //{
-
-
-
-        //    // Vycistenie policka pre zadavanie cisel
-        //    metroTextBox1.Text = "";
-        //    metroTextBox1.Focus();
-        //    stopwatch.Start();
-
-        //    // Prepnutie tlacidiel
-        //    metroTile1.Enabled = false;
-        //    metroTile2.Enabled = true;
-        //    metroTile3.Enabled = true;
-
-
-        //    // Zmenit statusu preteku
-        //    // TODO: Upravit v liste pretekov
-
-        //}
-
-        //// Koniec button
-        //private void metroTile2_Click(object sender, EventArgs e)
-        //{
-        //    DialogResult result = MetroMessageBox.Show(this,"Chcete naozaj ukočiť časovanie preteku ??", "Pozor !!!!", MessageBoxButtons.YesNo);
-        //    if (!(result == DialogResult.Yes))
-        //    {
-        //        return;
-        //    }
-
-        //    stopwatch.Stop();
-        //    timer1.Stop();
-        //    stopwatch = new Stopwatch();
-        //    lblTimer.Text= "00:00:00.000";
-
-        //    metroTile2.Enabled = false;
-        //    metroTile3.Enabled = false;
-
-
-
-        //    // Update stavu zavodu na ukonceny
-        //    // TODO: zmenti stav preteku
-
-
-        //}
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -110,6 +55,26 @@ namespace perfectTiming.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
+            Timing item;
+            int cislo_jazdca = Int32.Parse(txtNumber.Text);
+            RequestResult<Registration> reg = app.RegistrationController.GetRegistration(race, cislo_jazdca);
+           // Registration pom =  ;
+          
+            if (reg.Status == Enums.RequestStatus.Success)
+            {
+                TimeSpan ts = stopwatch.Elapsed;
+
+                item = registrations.FirstOrDefault(re => re.start_number == cislo_jazdca).Timings.FirstOrDefault();
+                item.lap_number++;
+                item.lap_time = ts.TotalMilliseconds - item.lap_time;
+                app.TimingController.Add(item);
+            }
+            else
+            {
+                // Ak napriklad je vlozene cislo ktore nieje na preteku
+                Console.WriteLine("Zle vstupne cislo");
+            }
             txtNumber.Text = "";
             txtNumber.Focus();
         }
@@ -124,6 +89,9 @@ namespace perfectTiming.View
             txtNumber.Enabled = true;
             txtNumber.Text = "";
             txtNumber.Focus();
+
+          // re app.RegistrationController.GetRegistrations(race);
+
 
             stopwatch.Start();
             timer1.Start();
@@ -154,14 +122,47 @@ namespace perfectTiming.View
             timer1_Tick(null, null);
         }
 
-        private void txtNumber_KeyDown(object sender, KeyEventArgs e)
+        private void txtNumber_KeyDown(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+
+            if (e.KeyChar == (char)13) // Enter key pressed
             {
+                Timing item;
+                int cislo_jazdca = Int32.Parse(txtNumber.Text);
+                RequestResult<Registration> reg = app.RegistrationController.GetRegistration(race, cislo_jazdca);
+
+                if (reg.Status == Enums.RequestStatus.Success)
+                {
+                    TimeSpan ts = stopwatch.Elapsed;
+
+                    item = reg.Data.Timings.FirstOrDefault();
+                    item.lap_number++;
+                    item.lap_time = ts.TotalMilliseconds - item.lap_time;
+                    app.TimingController.Add(item);
+                }
+                else
+                {
+                    // Ak napriklad je vlozene cislo ktore nieje na preteku
+                    Console.WriteLine("Zle vstupne cislo");
+                }
                 txtNumber.Text = "";
                 txtNumber.Focus();
                 e.Handled = true;
             }
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+
+
         }
 
         //private void metroTextBox1_KeyPress(object sender, KeyPressEventArgs e)
