@@ -40,6 +40,7 @@ namespace perfectTiming.View
             btnStart.Enabled = true;
             btnPause.Enabled = false;
             btnStop.Enabled = false;
+            btnAdd.Enabled = false;
             txtNumber.Enabled = false;
         }
 
@@ -68,6 +69,7 @@ namespace perfectTiming.View
                 item = registrations.FirstOrDefault(re => re.start_number == cislo_jazdca).Timings.FirstOrDefault();
                 item.lap_number++;
                 item.lap_time = ts.TotalMilliseconds - item.lap_time;
+
                 app.TimingController.Add(item);
             }
             else
@@ -85,7 +87,7 @@ namespace perfectTiming.View
             btnStart.Enabled = false;
             btnPause.Enabled = true;
             btnStop.Enabled = true;
-
+            btnAdd.Enabled = true;
             txtNumber.Enabled = true;
             txtNumber.Text = "";
             txtNumber.Focus();

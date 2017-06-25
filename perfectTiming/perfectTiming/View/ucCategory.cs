@@ -111,6 +111,8 @@ namespace perfectTiming.View
             {
                 bsItems.DataSource = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id).ToList();
                 dataGridView.ClearSelection();
+                dataGridView.Refresh();
+                dataGridView.Focus();
             }
         }
     }

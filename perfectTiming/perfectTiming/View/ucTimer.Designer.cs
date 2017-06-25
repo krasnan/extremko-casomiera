@@ -156,7 +156,7 @@
             this.txtNumber.Name = "txtNumber";
             this.txtNumber.Size = new System.Drawing.Size(308, 148);
             this.txtNumber.TabIndex = 10;
-            this.txtNumber.Text = "88";
+            this.txtNumber.Text = "420";
             this.txtNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumber_KeyDown);
             // 
             // gridActualResults
