@@ -35,6 +35,11 @@ namespace perfectTiming.View
 
             bsItem.DataSource = item;
             bsRaces.DataSource = races;
+
+
+
+          //  List<Registration> reg = registrations.Where(r => r.Category.race_id == races.First().id).ToList()
+
             bsCategories.DataSource = categories;
             bsCompetitors.DataSource = competitors;
 

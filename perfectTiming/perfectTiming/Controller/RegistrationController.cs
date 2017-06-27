@@ -69,6 +69,10 @@ namespace perfectTiming.Controller
         public RequestResult<List<Competitor>> GetCompetitors(Race item)
         {
             return null;
+            List<Competitor> res = _context.Registrations.Where(r => r.Category.race_id == item.id).Select(r => r.Competitor).ToList();
+                
+                //
+
             //List<Competitor> result = new List<Competitor>();
 
             //try
