@@ -1,4 +1,5 @@
 ﻿using perfectTiming.Controller;
+using perfectTiming.Helpers;
 using perfectTiming.Model;
 using System;
 using System.Collections.Generic;
@@ -25,13 +26,19 @@ namespace perfectTiming.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            lblErrorHolder.Text = "";
+           
             Category cat = (Category)bsItem.Current;
 
-            lblErrorHolder.Text += app.CategoryController.IsValidName(cat).Message;
-
-            if (lblErrorHolder.Text == "")
+            RequestResult<Category> result;
+            if (cat.id != 0)
+                result = app.CategoryController.Update(cat);
+            else
+                result = app.CategoryController.Add(cat);
+            if (result.Status == Enums.RequestStatus.Success)
                 this.DialogResult = DialogResult.OK;
+
+            else
+                lblErrorHolder.Text = result.Detail;
         }
     }
 }

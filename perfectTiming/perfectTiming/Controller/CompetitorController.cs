@@ -38,6 +38,15 @@ namespace perfectTiming.Controller
         {
             try
             {
+                string msg = "";
+                msg += IsValidName(item).Message;
+                msg += IsValidBirthDate(item).Message;
+                msg += IsValidEmial(item).Message;
+                msg += IsValidPhone(item).Message;
+
+                if (msg != "")
+                    throw new Exception(msg);
+
                 _context.Competitors.Add(item);
                 _context.SaveChanges();
                 return new RequestResult<Competitor>{ Status = Enums.RequestStatus.Success, Message = "Účastník úspešne uložený.", Data = item };
@@ -57,6 +66,15 @@ namespace perfectTiming.Controller
         {
             try
             {
+                string msg = "";
+                msg += IsValidName(item).Message;
+                msg += IsValidBirthDate(item).Message;
+                msg += IsValidEmial(item).Message;
+                msg += IsValidPhone(item).Message;
+
+                if (msg != "")
+                    throw new Exception(msg);
+
                 _context.Competitors.Attach(item);
                 var entry = _context.Entry(item);
                 entry.State = System.Data.Entity.EntityState.Modified;

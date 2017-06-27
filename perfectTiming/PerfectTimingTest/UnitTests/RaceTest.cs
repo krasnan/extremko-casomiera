@@ -10,12 +10,19 @@ namespace PerfectTimingTest.UnitTests
     [TestClass]
     public class RaceTest
     {
-        perfecttimingEntities _context;
+        private perfecttimingEntities _context;
+        private RaceController ctrl;
+
+        public RaceTest()
+        {
+            this._context = new perfecttimingEntities();
+            this.ctrl = new RaceController(ref _context);
+
+        }
 
         [TestMethod]
         public void AddRaceTest()
         {
-            RaceController ctrl = new RaceController(ref _context);
             Race c = new Race { name = "NewRace", location = "XY", start_date = DateTime.Now, status = (int)Enums.RaceStatus.NotStarted }; 
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c).Status);
         }
@@ -23,7 +30,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod]
         public void AddRaceTestVstupDate()
         {
-           RaceController ctrl = new RaceController(ref _context);
+
 
            DateTime time = DateTime.Now;
            time.AddMinutes(-1);
@@ -35,7 +42,7 @@ namespace PerfectTimingTest.UnitTests
 
         public void AddRaceTestVstupName()
         {
-            RaceController ctrl = new RaceController(ref _context);
+
 
             Race c = new Race {
                             name = "",
@@ -57,7 +64,7 @@ namespace PerfectTimingTest.UnitTests
         [TestMethod] 
         public void UpdateRace()
         {
-            RaceController ctrl = new RaceController(ref _context);
+
             Race old = new Race
             {
                 name = "OldSuperRace",

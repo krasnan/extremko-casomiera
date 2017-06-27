@@ -11,6 +11,14 @@ namespace PerfectTimingTest.UnitTests
     [TestClass]
     public class TimingTest
     {
+        private perfecttimingEntities _context;
+        private TimingController ctrl;
+
+        public TimingTest()
+        {
+            this._context = new perfecttimingEntities();
+            this.ctrl = new TimingController(ref _context);
+        }
 
         [TestMethod]
         public void AddTimingTest()

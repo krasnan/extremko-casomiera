@@ -38,12 +38,10 @@ namespace perfectTiming.View
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        RequestResult<Race> result = app.RaceController.Update(item);
-                        if (result.Status == Enums.RequestStatus.Success)
-                            MetroFramework.MetroMessageBox.Show(this, "Udalosť úspešne upravená", "Udalosť upravená", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        bsRaces.DataSource = app.RaceController.Races;
+                        dataGridView.Refresh();
+                        MetroFramework.MetroMessageBox.Show(this, "", "Operácia úspešná.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        else
-                            MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní udalosti", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -58,15 +56,11 @@ namespace perfectTiming.View
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    RequestResult<Race> result = app.RaceController.Add(item);
-                    if (result.Status == Enums.RequestStatus.Success)
-                    {
-                        bsRaces.DataSource = app.RaceController.Races;
-                        dataGridView.Refresh();
-                        MetroFramework.MetroMessageBox.Show(this, "Udalosť úspešne vložená", "Udalosť vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                        MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní udalosti", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bsRaces.DataSource = app.RaceController.Races;
+                    dataGridView.Refresh();
+
+                    MetroFramework.MetroMessageBox.Show(this, "", "Operácia úspešná.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
             

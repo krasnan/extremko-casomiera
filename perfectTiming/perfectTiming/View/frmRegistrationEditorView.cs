@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Controls;
+using perfectTiming.Helpers;
 using perfectTiming.Controller;
 using perfectTiming.Model;
 using System;
@@ -84,7 +85,18 @@ namespace perfectTiming.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            Registration reg = (Registration)bsItem.Current;
+
+            RequestResult<Registration> result;
+            if (reg.id != 0)
+                result = app.RegistrationController.Update(reg);
+            else
+                result = app.RegistrationController.Add(reg);
+            if (result.Status == Enums.RequestStatus.Success)
+                this.DialogResult = DialogResult.OK;
+
+            else
+                lblErrorHolder.Text = result.Detail;
         }
 
         private void generateStartNumber()

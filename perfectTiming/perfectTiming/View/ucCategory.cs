@@ -45,14 +45,8 @@ namespace perfectTiming.View
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        RequestResult<Category> result = app.CategoryController.Update(item);
-                        if (result.Status == Enums.RequestStatus.Success)
-                        {
-                            MetroFramework.MetroMessageBox.Show(this, "Kategória úspešne upravená", "Kategória upravená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            cmbRaces_SelectedValueChanged(null, null);
-                        }
-                        else
-                            MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmbRaces_SelectedValueChanged(null, null);
+                        MetroFramework.MetroMessageBox.Show(this, "", "Operácia úspešná.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -69,15 +63,9 @@ namespace perfectTiming.View
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    RequestResult<Category> result = app.CategoryController.Add(item);
-                    if (result.Status == Enums.RequestStatus.Success)
-                    {
-                        MetroFramework.MetroMessageBox.Show(this, "Kategória úspešne vložená", "Kategória vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        categories = app.CategoryController.Categories;
-                        cmbRaces_SelectedValueChanged(null, null);
-                    }
-                    else
-                        MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cmbRaces_SelectedValueChanged(null, null);
+                    MetroFramework.MetroMessageBox.Show(this, "", "Operácia úspešná.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
         }
@@ -110,9 +98,10 @@ namespace perfectTiming.View
             if (cmbRaces.SelectedItem != null)
             {
                 bsItems.DataSource = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id).ToList();
+                
                 dataGridView.ClearSelection();
                 dataGridView.Refresh();
-                dataGridView.Focus();
+                
             }
         }
     }
