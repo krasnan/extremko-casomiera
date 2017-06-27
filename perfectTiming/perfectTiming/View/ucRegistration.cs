@@ -40,6 +40,7 @@ namespace perfectTiming.View
             {
                 var result = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id).ToList();
                 bsCategory.DataSource = (result.Count() > 0) ? result : null;
+                dataGridView.Refresh();
             }
         }
 
@@ -49,6 +50,7 @@ namespace perfectTiming.View
             {
                 bsItems.DataSource = registrations.Where(r => r.Category.race_id == ((Race)cmbRaces.SelectedItem).id && r.category_id == ((Category)cmbCategories.SelectedItem).id);
                 dataGridView.ClearSelection();
+                dataGridView.Refresh();
             }
         }
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
@@ -77,6 +79,7 @@ namespace perfectTiming.View
                     {
                         MetroFramework.MetroMessageBox.Show(this, "Registrácia úspešne vložená", "Registrácia vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         bsItems.DataSource = app.CategoryController.Categories;
+                        dataGridView.Refresh();
                     }
                     else
                         MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -96,9 +99,10 @@ namespace perfectTiming.View
                     {
                         RequestResult<Registration> result = app.RegistrationController.Update(item);
                         if (result.Status == Enums.RequestStatus.Success)
+                        {
+                            dataGridView.Refresh();
                             MetroFramework.MetroMessageBox.Show(this, "Registrácia úspešne upravená", "Registrácia upravená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        else
+                        }else
                             MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -117,7 +121,7 @@ namespace perfectTiming.View
                 Registration item = (Registration)r.DataBoundItem;
                 app.RegistrationController.Remove(item);
             }
-
+            dataGridView.Refresh();
             //bsItems.DataSource = app.CategoryController.Categories;
         }
 

@@ -24,13 +24,6 @@ namespace PerfectTimingTest.UnitTests
                     birth_date = DateTime.Now,
                     email = "test@test.com",
                     phone = "test"
-                },
-                Race = new Race
-                {
-                    name = "test",
-                    location = "test",
-                    start_date = DateTime.Now,
-                    status = 0
                 }
             };
             

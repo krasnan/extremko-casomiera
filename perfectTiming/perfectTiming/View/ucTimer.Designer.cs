@@ -152,12 +152,12 @@
             this.txtNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNumber.Font = new System.Drawing.Font("Segoe UI Black", 78F, System.Drawing.FontStyle.Bold);
             this.txtNumber.Location = new System.Drawing.Point(2, 411);
-            this.txtNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumber.Name = "txtNumber";
             this.txtNumber.Size = new System.Drawing.Size(308, 148);
             this.txtNumber.TabIndex = 10;
-            this.txtNumber.Text = "88";
-            this.txtNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumber_KeyDown);
+            this.txtNumber.Text = "420";
+            this.txtNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumber_KeyDown);
             // 
             // gridActualResults
             // 
@@ -196,7 +196,7 @@
             this.gridActualResults.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.gridActualResults.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.gridActualResults.Location = new System.Drawing.Point(2, 89);
-            this.gridActualResults.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridActualResults.Margin = new System.Windows.Forms.Padding(2);
             this.gridActualResults.Name = "gridActualResults";
             this.gridActualResults.ReadOnly = true;
             this.gridActualResults.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;

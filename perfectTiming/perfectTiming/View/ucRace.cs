@@ -61,8 +61,9 @@ namespace perfectTiming.View
                     RequestResult<Race> result = app.RaceController.Add(item);
                     if (result.Status == Enums.RequestStatus.Success)
                     {
-                        MetroFramework.MetroMessageBox.Show(this, "Udalosť úspešne vložená", "Udalosť vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         bsRaces.DataSource = app.RaceController.Races;
+                        dataGridView.Refresh();
+                        MetroFramework.MetroMessageBox.Show(this, "Udalosť úspešne vložená", "Udalosť vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                         MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní udalosti", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -93,6 +94,7 @@ namespace perfectTiming.View
             bsRaces.DataSource = app.RaceController.Races;
             //db.SaveChanges();
             //bsItems.DataSource = db.Items.ToList();
+            dataGridView.Refresh();
 
         }
 
@@ -100,6 +102,7 @@ namespace perfectTiming.View
         {
             btnDelete.Enabled = (dataGridView.SelectedRows.Count > 0);
             btnEdit.Enabled = (dataGridView.SelectedRows.Count == 1);
+            dataGridView.Refresh();
         }
     }
 }

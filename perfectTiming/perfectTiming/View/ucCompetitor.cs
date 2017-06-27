@@ -35,8 +35,12 @@ namespace perfectTiming.View
                     {
                         RequestResult<Competitor> result = app.CompetitorController.Update(item);
                         if (result.Status == Enums.RequestStatus.Success)
-                            MetroFramework.MetroMessageBox.Show(this, "Účastník úspešne upravený", "Účastník upravený", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        {
 
+                            dataGridView.ClearSelection();
+                            dataGridView.Refresh();
+                            MetroFramework.MetroMessageBox.Show(this, "Účastník úspešne upravený", "Účastník upravený", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                         else
                             MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -54,8 +58,11 @@ namespace perfectTiming.View
                     RequestResult<Competitor> result = app.CompetitorController.Add(item);
                     if (result.Status == Enums.RequestStatus.Success)
                     {
-                        MetroFramework.MetroMessageBox.Show(this, "Účastník úspešne vložený", "Účastník vložený", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         bsItems.DataSource = app.CompetitorController.Competitors;
+                        dataGridView.ClearSelection();
+                        dataGridView.Refresh();
+                        MetroFramework.MetroMessageBox.Show(this, "Účastník úspešne vložený", "Účastník vložený", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
                     }
                     else
                         MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -78,11 +85,15 @@ namespace perfectTiming.View
             }
 
             bsItems.DataSource = app.CompetitorController.Competitors;
+            dataGridView.ClearSelection();
+            dataGridView.Refresh();
         }
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
             btnDelete.Enabled = (dataGridView.SelectedRows.Count > 0);
             btnEdit.Enabled = (dataGridView.SelectedRows.Count == 1);
+
+  
         }
     }
 }
