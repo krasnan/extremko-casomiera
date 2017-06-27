@@ -40,6 +40,12 @@ namespace perfectTiming.Controller
         {
             try
             {
+                string msg = "";
+                msg += IsValidName(item).Message;
+
+                if (msg != "")
+                    throw new Exception(msg);
+
                 _context.Categories.Add(item);
                 _context.SaveChanges();
                 return new RequestResult<Category> { Status = Enums.RequestStatus.Success, Message = "Kategória bola pridaná", Data = item };
@@ -79,6 +85,12 @@ namespace perfectTiming.Controller
         {
             try
             {
+                string msg = "";
+                 msg += IsValidName(item).Message;
+
+                if (msg != "")
+                    throw new Exception(msg);
+
                 _context.Categories.Attach(item);
                 var entry = _context.Entry(item);
                 entry.State = System.Data.Entity.EntityState.Modified;
@@ -111,14 +123,31 @@ namespace perfectTiming.Controller
                 return new RequestResult<bool>
                 {
                     Status = Enums.RequestStatus.Error,
-                    Message = "Nezadali ste názov udalosti.\n"
+                    Message = "Nezadali ste názov kategórie.\n"
                 };
             if (item.name.Length < 1 || item.name.Length > 255)
                 return new RequestResult<bool>
                 {
                     Status = Enums.RequestStatus.Error,
-                    Message = "Názov udalosti musí obsahovať 3 až 255 znakov.\n"
+                    Message = "Názov kategórie musí obsahovať 1 až 255 znakov.\n"
                 };
+                if (item.race_id == null )
+                    return new RequestResult<bool>
+                    {
+                        Status = Enums.RequestStatus.Error,
+                        Message = "Nezadali ste udalosť na ktorej bude táto kategória.\n"
+                    };
+
+            Category dup =_context.Categories.Where(cat => cat.race_id == item.race_id).FirstOrDefault(cat => cat.name == item.name);
+                if (dup !=null && dup.name == item.name)
+                return new RequestResult<bool>
+                {
+                    Status = Enums.RequestStatus.Error,
+                    Message = "Názov kategórie v preteku sa nesmie opakovať.\n"
+                };
+
+
+
             return new RequestResult<bool> { Status = Enums.RequestStatus.Success };
         }
     }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using perfectTiming.Controller;
+using perfectTiming.Helpers;
+using perfectTiming.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,10 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using perfectTiming.Controller;
 using System.Deployment.Application;
 using System.Reflection;
-using perfectTiming.Model;
+
 namespace perfectTiming.View
 {
     public partial class frmRacesEditorView : MetroFramework.Forms.MetroForm
@@ -31,15 +33,19 @@ namespace perfectTiming.View
         
         private void btnSave_Click(object sender, EventArgs e)
         {
-            lblErrorHolder.Text = "";
-            Race r = (Race)bsItem.Current;
             
-            lblErrorHolder.Text += app.RaceController.IsValidName(r).Message;
-            lblErrorHolder.Text += app.RaceController.IsValidLocation(r).Message;
-            lblErrorHolder.Text += app.RaceController.IsValidStartDate(r).Message;
+            Race r = (Race)bsItem.Current;
 
-            if (lblErrorHolder.Text == "")
+            RequestResult<Race> result;
+            if (r.id != 0)
+                result = app.RaceController.Update(r);
+            else
+                result = app.RaceController.Add(r);
+            if (result.Status == Enums.RequestStatus.Success)
                 this.DialogResult = DialogResult.OK;
+
+            else
+                lblErrorHolder.Text = result.Detail;
         }
 
     }
