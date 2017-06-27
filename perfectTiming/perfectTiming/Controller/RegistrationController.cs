@@ -68,6 +68,8 @@ namespace perfectTiming.Controller
 
         public RequestResult<List<Competitor>> GetCompetitors(Race race)
         {
+            return null;
+            //List<Competitor> result = new List<Competitor>();
 
             try
             {
@@ -104,7 +106,7 @@ namespace perfectTiming.Controller
             try
             {
                 reg = _context.Registrations.Where(re => re.Category.race_id == race.id).FirstOrDefault(re => re.start_number == start_number);
-
+                    
                 return new RequestResult<Registration> { Status = Enums.RequestStatus.Success, Message = "Registrácia získaná", Data = reg };
             }
             catch (Exception)
@@ -127,13 +129,13 @@ namespace perfectTiming.Controller
 
             }
             catch (Exception ex)
-            {
+        {
                 return new RequestResult<List<Registration>> { Status = Enums.RequestStatus.Error, Message = "Registracie sa nepodarilo načítať", Detail = ex.Message };
             }
 
 
 
-
+            
         }
 
 
