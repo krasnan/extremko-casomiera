@@ -58,6 +58,7 @@ namespace perfectTiming.View
                 bsCategories.DataSource = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id).ToList();
                 bsCategories.ResetBindings(false);
                 cmbCategories_SelectedValueChanged(null, null);
+                generateStartNumber();
             }
         }
 
@@ -71,6 +72,7 @@ namespace perfectTiming.View
                 if (actualCompetitor != null)
                     cmbCompetitors.SelectedItem = actualCompetitor;
                 bsCompetitors.ResetBindings(false);
+                generateStartNumber();
             }
         }
         private bool isNotRegistered(Category category, Competitor competitor) {
@@ -85,13 +87,19 @@ namespace perfectTiming.View
             DialogResult = DialogResult.OK;
         }
 
-        private void btnGenerateStartNumber_Click(object sender, EventArgs e)
+        private void generateStartNumber()
         {
-            if (cmbCategories.SelectedItem != null)
+            if (cmbRaces.SelectedItem != null)
             {
-                int count = registrations.Where(r => r.category_id == ((Category)cmbCategories.SelectedItem).id).Count();
+                int count = registrations.Where(r => r.Category.race_id == ((Race)cmbRaces.SelectedItem).id).Count();
                 iStartNumber.Text = (count + 1).ToString();
             }
+        }
+
+        private void cmbCompetitors_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            generateStartNumber();
+
         }
     }
 }

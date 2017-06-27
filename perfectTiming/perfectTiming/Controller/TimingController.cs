@@ -11,23 +11,19 @@ namespace perfectTiming.Controller
 {
     public class TimingController : ITimingController
     {
-        public List<Timing> Timings { get { return _timings; } set { _timings = value; } }
-
-        private List<Timing> _timings;           //zoznam merani
+        public List<Timing> Timings { get { return _context.Timings.ToList().Concat(_context.Timings.Local.ToList()).ToList(); } }
         private perfecttimingEntities _context; // context databazy
 
         public TimingController(ref perfecttimingEntities context)
         {
 
             _context = context;
-            _timings = _context.Timings.ToList();
 
         }
 
         public TimingController(List<Timing> range)
         {
             _context = new perfecttimingEntities();
-            _timings = range;
         }
 
         /// <summary>
@@ -41,9 +37,8 @@ namespace perfectTiming.Controller
             try
             {
                 _context.Timings.Add(item);
-                _timings.Add(item);
 
-                return new RequestResult<Timing> { Status = Enums.RequestStatus.Success, Message = "Čas bola pridaný", Data = item };
+                return new RequestResult<Timing> { Status = Enums.RequestStatus.Success, Message = "Čas bol pridaný", Data = item };
             }
             catch (Exception ex )
             {
@@ -63,7 +58,6 @@ namespace perfectTiming.Controller
             {
                 _context.Timings.Attach(item);
                 _context.Timings.Remove(item);
-                _timings.Remove(item);
 
                 return new RequestResult<Timing> { Status = Enums.RequestStatus.Success, Message = "Kategória vymazaná", Data = item };
             }
@@ -81,17 +75,11 @@ namespace perfectTiming.Controller
         {
             try
             {
-                int index = _timings.FindIndex(o => o.id == item.id);
-                if (index != -1){
-                    _context.Timings.Attach(item);
-                    var entry = _context.Entry(item);
-                    entry.State = System.Data.Entity.EntityState.Modified;
-                    _timings[index] = item;
-                }
-                else
-                {
-                    throw new Exception();
-                }
+                _context.Timings.Attach(item);
+                var entry = _context.Entry(item);
+                entry.State = System.Data.Entity.EntityState.Modified;
+                
+
                 return new RequestResult<Timing> { Status = Enums.RequestStatus.Success, Message = "Čas upravený", Data = item };
             }
             catch (Exception ex)

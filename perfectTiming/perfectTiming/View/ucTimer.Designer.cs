@@ -30,19 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.labelResult = new MetroFramework.Controls.MetroLabel();
             this.lblTimer = new System.Windows.Forms.Label();
+            this.txtNumber = new System.Windows.Forms.TextBox();
+            this.gridActualResults = new MetroFramework.Controls.MetroGrid();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Registration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new MetroFramework.Controls.MetroTile();
             this.btnStop = new MetroFramework.Controls.MetroTile();
             this.btnPause = new MetroFramework.Controls.MetroTile();
             this.btnStart = new MetroFramework.Controls.MetroTile();
-            this.txtNumber = new System.Windows.Forms.TextBox();
-            this.gridActualResults = new MetroFramework.Controls.MetroGrid();
-            this.laptimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lapnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.laptimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsTimings = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridActualResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTimings)).BeginInit();
@@ -72,91 +75,17 @@
             this.lblTimer.TabIndex = 11;
             this.lblTimer.Text = "00:00:00.000";
             // 
-            // btnAdd
-            // 
-            this.btnAdd.ActiveControl = null;
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdd.Location = new System.Drawing.Point(315, 411);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(150, 150);
-            this.btnAdd.Style = MetroFramework.MetroColorStyle.Green;
-            this.btnAdd.TabIndex = 11;
-            this.btnAdd.Text = "Pridať";
-            this.btnAdd.TileImage = global::perfectTiming.Properties.Resources.ic_library_add_white_36dp;
-            this.btnAdd.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAdd.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.btnAdd.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.btnAdd.UseSelectable = true;
-            this.btnAdd.UseStyleColors = true;
-            this.btnAdd.UseTileImage = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnStop
-            // 
-            this.btnStop.ActiveControl = null;
-            this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStop.Location = new System.Drawing.Point(694, 411);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(150, 150);
-            this.btnStop.Style = MetroFramework.MetroColorStyle.Orange;
-            this.btnStop.TabIndex = 14;
-            this.btnStop.Text = "Koniec";
-            this.btnStop.TileImage = global::perfectTiming.Properties.Resources.ic_power_settings_new_white_36dp;
-            this.btnStop.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnStop.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.btnStop.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.btnStop.UseSelectable = true;
-            this.btnStop.UseStyleColors = true;
-            this.btnStop.UseTileImage = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
-            // btnPause
-            // 
-            this.btnPause.ActiveControl = null;
-            this.btnPause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPause.Location = new System.Drawing.Point(694, 160);
-            this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(150, 150);
-            this.btnPause.TabIndex = 13;
-            this.btnPause.Text = "Pauza";
-            this.btnPause.TileImage = global::perfectTiming.Properties.Resources.ic_pause_circle_outline_white_36dp;
-            this.btnPause.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnPause.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.btnPause.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.btnPause.UseSelectable = true;
-            this.btnPause.UseStyleColors = true;
-            this.btnPause.UseTileImage = true;
-            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
-            // 
-            // btnStart
-            // 
-            this.btnStart.ActiveControl = null;
-            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStart.Location = new System.Drawing.Point(694, 3);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(150, 150);
-            this.btnStart.TabIndex = 12;
-            this.btnStart.Text = "Štart";
-            this.btnStart.TileImage = global::perfectTiming.Properties.Resources.ic_play_circle_outline_white_36dp;
-            this.btnStart.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnStart.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.btnStart.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.btnStart.UseSelectable = true;
-            this.btnStart.UseStyleColors = true;
-            this.btnStart.UseTileImage = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
             // txtNumber
             // 
             this.txtNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNumber.Font = new System.Drawing.Font("Segoe UI Black", 78F, System.Drawing.FontStyle.Bold);
-            this.txtNumber.Location = new System.Drawing.Point(2, 411);
+            this.txtNumber.Location = new System.Drawing.Point(2, 428);
             this.txtNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumber.Name = "txtNumber";
             this.txtNumber.Size = new System.Drawing.Size(308, 148);
             this.txtNumber.TabIndex = 10;
-            this.txtNumber.Text = "420";
+            this.txtNumber.Text = "#";
             this.txtNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumber_KeyDown);
             // 
             // gridActualResults
@@ -181,17 +110,19 @@
             this.gridActualResults.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridActualResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridActualResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.lapnumberDataGridViewTextBoxColumn,
             this.laptimeDataGridViewTextBoxColumn,
-            this.lapnumberDataGridViewTextBoxColumn});
+            this.Registration});
             this.gridActualResults.DataSource = this.bsTimings;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridActualResults.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridActualResults.DefaultCellStyle = dataGridViewCellStyle3;
             this.gridActualResults.EnableHeadersVisualStyles = false;
             this.gridActualResults.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.gridActualResults.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -200,33 +131,124 @@
             this.gridActualResults.Name = "gridActualResults";
             this.gridActualResults.ReadOnly = true;
             this.gridActualResults.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridActualResults.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridActualResults.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.gridActualResults.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridActualResults.RowTemplate.Height = 24;
             this.gridActualResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridActualResults.Size = new System.Drawing.Size(463, 318);
+            this.gridActualResults.Size = new System.Drawing.Size(463, 335);
             this.gridActualResults.TabIndex = 9;
+            this.gridActualResults.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridActualResults_CellFormatting);
             // 
-            // laptimeDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.laptimeDataGridViewTextBoxColumn.DataPropertyName = "lap_time";
-            this.laptimeDataGridViewTextBoxColumn.HeaderText = "lap_time";
-            this.laptimeDataGridViewTextBoxColumn.Name = "laptimeDataGridViewTextBoxColumn";
-            this.laptimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Registration.start_number";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Štartovné čílo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Registration
+            // 
+            this.Registration.DataPropertyName = "Registration.Competitor.name";
+            this.Registration.HeaderText = "Účastník";
+            this.Registration.Name = "Registration";
+            this.Registration.ReadOnly = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.ActiveControl = null;
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAdd.Location = new System.Drawing.Point(315, 428);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(150, 150);
+            this.btnAdd.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnAdd.TabIndex = 11;
+            this.btnAdd.Text = "Pridať";
+            this.btnAdd.TileImage = global::perfectTiming.Properties.Resources.ic_library_add_white_36dp;
+            this.btnAdd.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnAdd.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.btnAdd.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.btnAdd.UseSelectable = true;
+            this.btnAdd.UseStyleColors = true;
+            this.btnAdd.UseTileImage = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.ActiveControl = null;
+            this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStop.Location = new System.Drawing.Point(1113, 428);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(150, 150);
+            this.btnStop.Style = MetroFramework.MetroColorStyle.Orange;
+            this.btnStop.TabIndex = 14;
+            this.btnStop.Text = "Koniec";
+            this.btnStop.TileImage = global::perfectTiming.Properties.Resources.ic_power_settings_new_white_36dp;
+            this.btnStop.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnStop.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.btnStop.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.btnStop.UseSelectable = true;
+            this.btnStop.UseStyleColors = true;
+            this.btnStop.UseTileImage = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnPause
+            // 
+            this.btnPause.ActiveControl = null;
+            this.btnPause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPause.Location = new System.Drawing.Point(1113, 160);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(150, 150);
+            this.btnPause.TabIndex = 13;
+            this.btnPause.Text = "Pauza";
+            this.btnPause.TileImage = global::perfectTiming.Properties.Resources.ic_pause_circle_outline_white_36dp;
+            this.btnPause.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnPause.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.btnPause.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.btnPause.UseSelectable = true;
+            this.btnPause.UseStyleColors = true;
+            this.btnPause.UseTileImage = true;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+            // 
+            // btnStart
+            // 
+            this.btnStart.ActiveControl = null;
+            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStart.Location = new System.Drawing.Point(1113, 3);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(150, 150);
+            this.btnStart.TabIndex = 12;
+            this.btnStart.Text = "Štart";
+            this.btnStart.TileImage = global::perfectTiming.Properties.Resources.ic_play_circle_outline_white_36dp;
+            this.btnStart.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnStart.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.btnStart.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.btnStart.UseSelectable = true;
+            this.btnStart.UseStyleColors = true;
+            this.btnStart.UseTileImage = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // lapnumberDataGridViewTextBoxColumn
             // 
             this.lapnumberDataGridViewTextBoxColumn.DataPropertyName = "lap_number";
-            this.lapnumberDataGridViewTextBoxColumn.HeaderText = "lap_number";
+            this.lapnumberDataGridViewTextBoxColumn.HeaderText = "Kolo";
             this.lapnumberDataGridViewTextBoxColumn.Name = "lapnumberDataGridViewTextBoxColumn";
             this.lapnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // laptimeDataGridViewTextBoxColumn
+            // 
+            this.laptimeDataGridViewTextBoxColumn.DataPropertyName = "lap_time";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.laptimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.laptimeDataGridViewTextBoxColumn.HeaderText = "Čas kola";
+            this.laptimeDataGridViewTextBoxColumn.Name = "laptimeDataGridViewTextBoxColumn";
+            this.laptimeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bsTimings
             // 
@@ -245,7 +267,7 @@
             this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.labelResult);
             this.Name = "ucTimer";
-            this.Size = new System.Drawing.Size(847, 565);
+            this.Size = new System.Drawing.Size(1266, 582);
             ((System.ComponentModel.ISupportInitialize)(this.gridActualResults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTimings)).EndInit();
             this.ResumeLayout(false);
@@ -264,7 +286,9 @@
         private System.Windows.Forms.TextBox txtNumber;
         private MetroFramework.Controls.MetroGrid gridActualResults;
         private System.Windows.Forms.BindingSource bsTimings;
-        private System.Windows.Forms.DataGridViewTextBoxColumn laptimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn lapnumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn laptimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Registration;
     }
 }

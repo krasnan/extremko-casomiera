@@ -12,6 +12,7 @@ using MetroFramework;
 using perfectTiming.Model;
 using perfectTiming.Controller;
 using perfectTiming.Helpers;
+using System.Reflection;
 
 namespace perfectTiming.View
 {
@@ -42,6 +43,7 @@ namespace perfectTiming.View
             btnStop.Enabled = false;
             btnAdd.Enabled = false;
             txtNumber.Enabled = false;
+            bsTimings.DataSource = app.TimingController.Timings;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -56,31 +58,56 @@ namespace perfectTiming.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            addTiming();
+        }
+
+        private void txtNumber_KeyDown(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (char)13) // Enter key pressed
+            {
+                addTiming();
+            }
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void addTiming()
+        {
 
             Timing item;
-            int cislo_jazdca = Int32.Parse(txtNumber.Text);
-            RequestResult<Registration> reg = app.RegistrationController.GetRegistration(race, cislo_jazdca);
-           // Registration pom =  ;
-          
-            if (reg.Status == Enums.RequestStatus.Success)
+
+            int start_number = Int32.Parse(txtNumber.Text);
+            TimeSpan ts = stopwatch.Elapsed;
+
+            Registration reg = registrations.FirstOrDefault(r => r.start_number == start_number);
+
+            if(reg == null)
             {
-                TimeSpan ts = stopwatch.Elapsed;
-
-                item = registrations.FirstOrDefault(re => re.start_number == cislo_jazdca).Timings.FirstOrDefault();
-                item.lap_number++;
-                item.lap_time = ts.TotalMilliseconds - item.lap_time;
-
-                app.TimingController.Add(item);
+                Console.WriteLine("Zle cislo");
             }
             else
             {
-                // Ak napriklad je vlozene cislo ktore nieje na preteku
-                Console.WriteLine("Zle vstupne cislo");
+                Timing last = reg.Timings.LastOrDefault();
+                if (last == null)
+                    last = new Timing { lap_number = 0, lap_time = 0, Registration = reg, registration_id = reg.id };
+
+                item = new Timing
+                {
+                    lap_number = last.lap_number + 1,
+                    lap_time = ts.TotalMilliseconds - last.lap_time,
+                    Registration = reg,
+                    registration_id = reg.id
+                };
+                app.TimingController.Add(item);
+                bsTimings.DataSource = app.TimingController.Timings;
+                gridActualResults.FirstDisplayedScrollingRowIndex = gridActualResults.RowCount - 1;
             }
             txtNumber.Text = "";
             txtNumber.Focus();
-        }
 
+        }
         private void btnStart_Click(object sender, EventArgs e)
         {
 
@@ -124,47 +151,27 @@ namespace perfectTiming.View
             timer1_Tick(null, null);
         }
 
-        private void txtNumber_KeyDown(object sender, KeyPressEventArgs e)
+
+        private void gridActualResults_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
-            if (e.KeyChar == (char)13) // Enter key pressed
+            DataGridView grid = (DataGridView)sender;
+            DataGridViewRow row = grid.Rows[e.RowIndex];
+            DataGridViewColumn col = grid.Columns[e.ColumnIndex];
+            if (row.DataBoundItem != null && col.DataPropertyName.Contains("."))
             {
-                Timing item;
-                int cislo_jazdca = Int32.Parse(txtNumber.Text);
-                RequestResult<Registration> reg = app.RegistrationController.GetRegistration(race, cislo_jazdca);
-
-                if (reg.Status == Enums.RequestStatus.Success)
+                string[] props = col.DataPropertyName.Split('.');
+                PropertyInfo propInfo = row.DataBoundItem.GetType().GetProperty(props[0]);
+                if (propInfo == null)
+                    return;
+                object val = propInfo.GetValue(row.DataBoundItem, null);
+                for (int i = 1; i < props.Length; i++)
                 {
-                    TimeSpan ts = stopwatch.Elapsed;
-
-                    item = reg.Data.Timings.FirstOrDefault();
-                    item.lap_number++;
-                    item.lap_time = ts.TotalMilliseconds - item.lap_time;
-                    app.TimingController.Add(item);
+                    propInfo = val.GetType().GetProperty(props[i]);
+                    val = propInfo.GetValue(val, null);
                 }
-                else
-                {
-                    // Ak napriklad je vlozene cislo ktore nieje na preteku
-                    Console.WriteLine("Zle vstupne cislo");
-                }
-                txtNumber.Text = "";
-                txtNumber.Focus();
-                e.Handled = true;
+                e.Value = val;
             }
-
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-
-
-
         }
 
         //private void metroTextBox1_KeyPress(object sender, KeyPressEventArgs e)
