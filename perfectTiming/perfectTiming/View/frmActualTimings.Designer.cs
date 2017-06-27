@@ -28,14 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTimer = new System.Windows.Forms.Label();
             this.gridActualResults = new MetroFramework.Controls.MetroGrid();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Registration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lapnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.laptimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.laptimestampDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsTimings = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridActualResults)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsTimings)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTimer
@@ -58,13 +66,14 @@
             this.gridActualResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridActualResults.AutoGenerateColumns = false;
             this.gridActualResults.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.gridActualResults.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridActualResults.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.gridActualResults.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -73,7 +82,12 @@
             this.gridActualResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridActualResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
-            this.Registration});
+            this.Registration,
+            this.dataGridViewTextBoxColumn2,
+            this.lapnumberDataGridViewTextBoxColumn,
+            this.laptimeDataGridViewTextBoxColumn,
+            this.laptimestampDataGridViewTextBoxColumn});
+            this.gridActualResults.DataSource = this.bsTimings;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -101,8 +115,14 @@
             this.gridActualResults.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridActualResults.RowTemplate.Height = 24;
             this.gridActualResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridActualResults.Size = new System.Drawing.Size(631, 566);
+            this.gridActualResults.Size = new System.Drawing.Size(1284, 566);
             this.gridActualResults.TabIndex = 13;
+            this.gridActualResults.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridActualResults_CellFormatting);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 300;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -118,6 +138,38 @@
             this.Registration.Name = "Registration";
             this.Registration.ReadOnly = true;
             // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Registration.Category.name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Kategória";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // lapnumberDataGridViewTextBoxColumn
+            // 
+            this.lapnumberDataGridViewTextBoxColumn.DataPropertyName = "lap_number";
+            this.lapnumberDataGridViewTextBoxColumn.HeaderText = "Kolo č.";
+            this.lapnumberDataGridViewTextBoxColumn.Name = "lapnumberDataGridViewTextBoxColumn";
+            this.lapnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // laptimeDataGridViewTextBoxColumn
+            // 
+            this.laptimeDataGridViewTextBoxColumn.DataPropertyName = "lap_time";
+            this.laptimeDataGridViewTextBoxColumn.HeaderText = "Čas Kola(ms)";
+            this.laptimeDataGridViewTextBoxColumn.Name = "laptimeDataGridViewTextBoxColumn";
+            this.laptimeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // laptimestampDataGridViewTextBoxColumn
+            // 
+            this.laptimestampDataGridViewTextBoxColumn.DataPropertyName = "lap_timestamp";
+            this.laptimestampDataGridViewTextBoxColumn.HeaderText = "Celkový čas(ms)";
+            this.laptimestampDataGridViewTextBoxColumn.Name = "laptimestampDataGridViewTextBoxColumn";
+            this.laptimestampDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bsTimings
+            // 
+            this.bsTimings.DataSource = typeof(perfectTiming.Model.Timing);
+            // 
             // frmActualTimings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,6 +180,7 @@
             this.Name = "frmActualTimings";
             this.Text = "Priebežné výsledky";
             ((System.ComponentModel.ISupportInitialize)(this.gridActualResults)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsTimings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,7 +190,13 @@
 
         private System.Windows.Forms.Label lblTimer;
         private MetroFramework.Controls.MetroGrid gridActualResults;
+        private System.Windows.Forms.BindingSource bsTimings;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Registration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lapnumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn laptimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn laptimestampDataGridViewTextBoxColumn;
     }
 }

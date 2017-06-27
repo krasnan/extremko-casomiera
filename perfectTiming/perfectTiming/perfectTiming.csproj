@@ -146,6 +146,12 @@
     <Compile Include="View\frmCompetitorEditorView.Designer.cs">
       <DependentUpon>frmCompetitorEditorView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmRegistrationEditorView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmCompetitorEditorView.resx">
       <DependentUpon>frmCompetitorEditorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmRegistrationEditorView.resx">
       <DependentUpon>frmRegistrationEditorView.cs</DependentUpon>

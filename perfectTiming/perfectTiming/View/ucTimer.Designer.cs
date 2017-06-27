@@ -38,16 +38,18 @@
             this.lblTimer = new System.Windows.Forms.Label();
             this.txtNumber = new System.Windows.Forms.TextBox();
             this.gridActualResults = new MetroFramework.Controls.MetroGrid();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lapnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.laptimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Registration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsTimings = new System.Windows.Forms.BindingSource(this.components);
             this.btnDiscardCorrection = new MetroFramework.Controls.MetroTile();
             this.btnAdd = new MetroFramework.Controls.MetroTile();
             this.btnStop = new MetroFramework.Controls.MetroTile();
             this.btnPause = new MetroFramework.Controls.MetroTile();
             this.btnStart = new MetroFramework.Controls.MetroTile();
+            this.btnShowResults = new MetroFramework.Controls.MetroTile();
+            this.bsTimings = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Registration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lapnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.laptimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridActualResults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTimings)).BeginInit();
             this.SuspendLayout();
@@ -94,8 +96,9 @@
             this.gridActualResults.AllowUserToAddRows = false;
             this.gridActualResults.AllowUserToDeleteRows = false;
             this.gridActualResults.AllowUserToResizeRows = false;
-            this.gridActualResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gridActualResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridActualResults.AutoGenerateColumns = false;
             this.gridActualResults.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.gridActualResults.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -112,9 +115,10 @@
             this.gridActualResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridActualResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
+            this.Registration,
+            this.dataGridViewTextBoxColumn2,
             this.lapnumberDataGridViewTextBoxColumn,
-            this.laptimeDataGridViewTextBoxColumn,
-            this.Registration});
+            this.laptimeDataGridViewTextBoxColumn});
             this.gridActualResults.DataSource = this.bsTimings;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -143,43 +147,9 @@
             this.gridActualResults.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridActualResults.RowTemplate.Height = 24;
             this.gridActualResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridActualResults.Size = new System.Drawing.Size(463, 335);
+            this.gridActualResults.Size = new System.Drawing.Size(1106, 335);
             this.gridActualResults.TabIndex = 9;
             this.gridActualResults.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridActualResults_CellFormatting);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Registration.start_number";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Štartovné čílo";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // lapnumberDataGridViewTextBoxColumn
-            // 
-            this.lapnumberDataGridViewTextBoxColumn.DataPropertyName = "lap_number";
-            this.lapnumberDataGridViewTextBoxColumn.HeaderText = "Kolo";
-            this.lapnumberDataGridViewTextBoxColumn.Name = "lapnumberDataGridViewTextBoxColumn";
-            this.lapnumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // laptimeDataGridViewTextBoxColumn
-            // 
-            this.laptimeDataGridViewTextBoxColumn.DataPropertyName = "lap_time";
-            dataGridViewCellStyle2.NullValue = "0";
-            this.laptimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.laptimeDataGridViewTextBoxColumn.HeaderText = "Čas kola";
-            this.laptimeDataGridViewTextBoxColumn.Name = "laptimeDataGridViewTextBoxColumn";
-            this.laptimeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Registration
-            // 
-            this.Registration.DataPropertyName = "Registration.Competitor.name";
-            this.Registration.HeaderText = "Účastník";
-            this.Registration.Name = "Registration";
-            this.Registration.ReadOnly = true;
-            // 
-            // bsTimings
-            // 
-            this.bsTimings.DataSource = typeof(perfectTiming.Model.Timing);
             // 
             // btnDiscardCorrection
             // 
@@ -229,10 +199,10 @@
             this.btnStop.Size = new System.Drawing.Size(150, 150);
             this.btnStop.Style = MetroFramework.MetroColorStyle.Red;
             this.btnStop.TabIndex = 14;
-            this.btnStop.Text = "Koniec";
+            this.btnStop.Text = "Synchronizovať\r\na ukončiť";
+            this.btnStop.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnStop.TileImage = global::perfectTiming.Properties.Resources.ic_power_settings_new_white_36dp;
             this.btnStop.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnStop.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.btnStop.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.btnStop.UseSelectable = true;
             this.btnStop.UseStyleColors = true;
@@ -275,10 +245,69 @@
             this.btnStart.UseTileImage = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // btnShowResults
+            // 
+            this.btnShowResults.ActiveControl = null;
+            this.btnShowResults.Location = new System.Drawing.Point(401, 20);
+            this.btnShowResults.Name = "btnShowResults";
+            this.btnShowResults.Size = new System.Drawing.Size(155, 49);
+            this.btnShowResults.TabIndex = 16;
+            this.btnShowResults.Text = "Zobraziť \r\npriebežné výsledky";
+            this.btnShowResults.TileImage = global::perfectTiming.Properties.Resources.ic_assessment_white_18dp;
+            this.btnShowResults.TileImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnShowResults.TileTextFontSize = MetroFramework.MetroTileTextSize.Small;
+            this.btnShowResults.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.btnShowResults.UseSelectable = true;
+            this.btnShowResults.UseStyleColors = true;
+            this.btnShowResults.UseTileImage = true;
+            this.btnShowResults.Click += new System.EventHandler(this.btnShowResults_Click);
+            // 
+            // bsTimings
+            // 
+            this.bsTimings.DataSource = typeof(perfectTiming.Model.Timing);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Registration.start_number";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Číslo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Registration
+            // 
+            this.Registration.DataPropertyName = "Registration.Competitor.name";
+            this.Registration.HeaderText = "Účastník";
+            this.Registration.Name = "Registration";
+            this.Registration.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Registration.Category.name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Kategória";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // lapnumberDataGridViewTextBoxColumn
+            // 
+            this.lapnumberDataGridViewTextBoxColumn.DataPropertyName = "lap_number";
+            this.lapnumberDataGridViewTextBoxColumn.HeaderText = "Kolo";
+            this.lapnumberDataGridViewTextBoxColumn.Name = "lapnumberDataGridViewTextBoxColumn";
+            this.lapnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // laptimeDataGridViewTextBoxColumn
+            // 
+            this.laptimeDataGridViewTextBoxColumn.DataPropertyName = "lap_time";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.laptimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.laptimeDataGridViewTextBoxColumn.HeaderText = "Čas kola";
+            this.laptimeDataGridViewTextBoxColumn.Name = "laptimeDataGridViewTextBoxColumn";
+            this.laptimeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // ucTimer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnShowResults);
             this.Controls.Add(this.btnDiscardCorrection);
             this.Controls.Add(this.gridActualResults);
             this.Controls.Add(this.txtNumber);
@@ -308,10 +337,12 @@
         private System.Windows.Forms.TextBox txtNumber;
         private MetroFramework.Controls.MetroGrid gridActualResults;
         private System.Windows.Forms.BindingSource bsTimings;
+        private MetroFramework.Controls.MetroTile btnDiscardCorrection;
+        private MetroFramework.Controls.MetroTile btnShowResults;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Registration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn lapnumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn laptimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Registration;
-        private MetroFramework.Controls.MetroTile btnDiscardCorrection;
     }
 }

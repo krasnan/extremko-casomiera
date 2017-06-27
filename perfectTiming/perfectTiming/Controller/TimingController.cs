@@ -12,8 +12,10 @@ namespace perfectTiming.Controller
     public class TimingController : ITimingController
     {
         public List<Timing> Timings { get { return _context.Timings.ToList().Concat(_context.Timings.Local.ToList()).ToList(); } }
+        public List<Timing> TimingsLocal { get { return _context.Timings.Local.ToList(); } }
         private perfecttimingEntities _context; // context databazy
-
+        public string ElapsedTime { get { return _elapsedTime; } set { _elapsedTime = value; } }
+        private string _elapsedTime = "";
         public TimingController(ref perfecttimingEntities context)
         {
 

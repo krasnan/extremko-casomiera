@@ -38,20 +38,22 @@ namespace perfectTiming.View
             stopwatch = new Stopwatch();
             btnStart.Enabled = true;
             btnPause.Enabled = false;
-            btnStop.Enabled = false;
+            btnStop.Visible = false;
             btnAdd.Enabled = false;
             btnDiscardCorrection.Visible = false;
             txtNumber.Enabled = false;
-            bsTimings.DataSource = app.TimingController.Timings;
+            bsTimings.DataSource = app.TimingController.TimingsLocal;
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
 
             TimeSpan ts = stopwatch.Elapsed;
-            // Format and display the TimeSpan value.
+            // Format and display the TimeSpan value
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:000}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
             lblTimer.Text = elapsedTime;
+            app.TimingController.ElapsedTime = elapsedTime;
 
         }
 
@@ -63,7 +65,7 @@ namespace perfectTiming.View
         private void txtNumber_KeyDown(object sender, KeyPressEventArgs e)
         {
 
-            if (e.KeyChar == (char)13) // Enter key pressed
+            if (e.KeyChar == (char)13 && txtNumber.Text != "") // Enter key pressed
             {
                 addTiming();
             }
@@ -95,12 +97,13 @@ namespace perfectTiming.View
             {
                 Timing last = reg.Timings.LastOrDefault();
                 if (last == null)
-                    last = new Timing { lap_number = 0, lap_time = 0, Registration = reg, registration_id = reg.id };
+                    last = new Timing { lap_number = 0, lap_time = 0, lap_timestamp = 0, Registration = reg, registration_id = reg.id };
 
                 item = new Timing
                 {
                     lap_number = last.lap_number + 1,
-                    lap_time = ((timeCorrection != 0) ? timeCorrection : ts.TotalMilliseconds) - last.lap_time,
+                    lap_time = ((timeCorrection != 0) ? timeCorrection : ts.TotalMilliseconds) - last.lap_timestamp,
+                    lap_timestamp = ts.TotalMilliseconds,
                     Registration = reg,
                     registration_id = reg.id
                 };
@@ -113,18 +116,17 @@ namespace perfectTiming.View
 
 
                 app.TimingController.Add(item);
-                bsTimings.DataSource = app.TimingController.Timings;
+                bsTimings.DataSource = app.TimingController.TimingsLocal;
                 gridActualResults.FirstDisplayedScrollingRowIndex = gridActualResults.RowCount - 1;
+                txtNumber.Text = "";
+                txtNumber.Focus();
             }
-            txtNumber.Text = "";
-            txtNumber.Focus();
-
         }
         private void btnStart_Click(object sender, EventArgs e)
         {
             btnStart.Enabled = false;
             btnPause.Enabled = true;
-            btnStop.Enabled = true;
+            btnStop.Visible = false;
             btnAdd.Enabled = true;
             txtNumber.Enabled = true;
             txtNumber.Text = "";
@@ -142,7 +144,8 @@ namespace perfectTiming.View
         {
             btnStart.Enabled = true;
             btnPause.Enabled = false;
-            btnStop.Enabled = true;
+            btnStop.Visible = true;
+            btnAdd.Enabled = false;
             txtNumber.Enabled = false;
             stopwatch.Stop();
             timer1.Stop();
@@ -151,15 +154,26 @@ namespace perfectTiming.View
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            var loading = new frmLoading();
+            
             btnStart.Enabled = true;
             btnPause.Enabled = false;
             btnStop.Enabled = false;
+            btnAdd.Enabled = false;
             txtNumber.Enabled = false;
-            stopwatch.Stop();
-            stopwatch.Reset();
 
             timer1.Stop();
             timer1_Tick(null, null);
+            RequestResult<bool> result = app.TimingController.Save();
+          
+            if (result.Status == Enums.RequestStatus.Success)
+                MetroFramework.MetroMessageBox.Show(this, "Pretek ukončený", "Pretek bol ukončený a údaje boli odoslané do databázy.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Nastala chyba pri ukončovaní preteku.", result.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+
         }
 
 
@@ -189,6 +203,14 @@ namespace perfectTiming.View
         {
             timeCorrection = 0;
             btnDiscardCorrection.Visible = false;
+            txtNumber.Text = "";
+            txtNumber.Focus();
+        }
+
+        private void btnShowResults_Click(object sender, EventArgs e)
+        {
+            frmActualTimings frmResults = new frmActualTimings();
+            frmResults.Show();
         }
 
         //private void metroTextBox1_KeyPress(object sender, KeyPressEventArgs e)

@@ -50,6 +50,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="registration_id" Type="int" Nullable="false" />
           <Property Name="lap_time" Type="double" />
+          <Property Name="lap_timestamp" Type="double" Nullable="false" />
           <Property Name="lap_number" Type="int" />
         </EntityType>
         <Association Name="Category_ibfk_1">
@@ -189,6 +190,7 @@
           <Property Name="lap_time" Type="Double" />
           <Property Name="lap_number" Type="Int32" />
           <NavigationProperty Name="Registration" Relationship="Self.Timing_ibfk_3" FromRole="Timing" ToRole="Registration" />
+          <Property Name="lap_timestamp" Type="Double" Nullable="false" />
         </EntityType>
         <Association Name="Registration_ibfk_1">
           <End Role="Category" Type="Self.Category" Multiplicity="1">
@@ -320,6 +322,7 @@
           <EntitySetMapping Name="Timings">
             <EntityTypeMapping TypeName="perfecttimingModel.Timing">
               <MappingFragment StoreEntitySet="Timing">
+                <ScalarProperty Name="lap_timestamp" ColumnName="lap_timestamp" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="registration_id" ColumnName="registration_id" />
                 <ScalarProperty Name="lap_time" ColumnName="lap_time" />

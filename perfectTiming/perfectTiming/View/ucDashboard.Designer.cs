@@ -33,20 +33,22 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tStart = new MetroFramework.Controls.MetroTile();
             this.tQuit = new MetroFramework.Controls.MetroTile();
-            this.tSettings = new MetroFramework.Controls.MetroTile();
             this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
             this.tRaces = new MetroFramework.Controls.MetroTile();
             this.tCompetitors = new MetroFramework.Controls.MetroTile();
             this.tCategories = new MetroFramework.Controls.MetroTile();
             this.tRegistrations = new MetroFramework.Controls.MetroTile();
             this.tResults = new MetroFramework.Controls.MetroTile();
+            this.tSettings = new MetroFramework.Controls.MetroTile();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tCurrentTime
             // 
             this.tCurrentTime.ActiveControl = null;
             this.tCurrentTime.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCurrentTime.Location = new System.Drawing.Point(690, 10);
+            this.tCurrentTime.Location = new System.Drawing.Point(709, 28);
             this.tCurrentTime.Name = "tCurrentTime";
             this.tCurrentTime.Size = new System.Drawing.Size(306, 150);
             this.tCurrentTime.TabIndex = 9999;
@@ -70,7 +72,7 @@
             // 
             this.tStart.ActiveControl = null;
             this.tStart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tStart.Location = new System.Drawing.Point(6, 10);
+            this.tStart.Location = new System.Drawing.Point(25, 28);
             this.tStart.Name = "tStart";
             this.tStart.Size = new System.Drawing.Size(306, 150);
             this.tStart.TabIndex = 1;
@@ -88,7 +90,7 @@
             // 
             this.tQuit.ActiveControl = null;
             this.tQuit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tQuit.Location = new System.Drawing.Point(690, 166);
+            this.tQuit.Location = new System.Drawing.Point(709, 184);
             this.tQuit.Name = "tQuit";
             this.tQuit.Size = new System.Drawing.Size(150, 150);
             this.tQuit.Style = MetroFramework.MetroColorStyle.Orange;
@@ -103,29 +105,11 @@
             this.tQuit.UseTileImage = true;
             this.tQuit.Click += new System.EventHandler(this.tQuit_Click);
             // 
-            // tSettings
-            // 
-            this.tSettings.ActiveControl = null;
-            this.tSettings.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tSettings.Location = new System.Drawing.Point(162, 166);
-            this.tSettings.Name = "tSettings";
-            this.tSettings.Size = new System.Drawing.Size(150, 150);
-            this.tSettings.TabIndex = 3;
-            this.tSettings.Text = "Nastavenia";
-            this.tSettings.TileImage = global::perfectTiming.Properties.Resources.ic_settings_applications_white_36dp;
-            this.tSettings.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.tSettings.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.tSettings.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.tSettings.UseSelectable = true;
-            this.tSettings.UseStyleColors = true;
-            this.tSettings.UseTileImage = true;
-            this.tSettings.Click += new System.EventHandler(this.tSettings_Click);
-            // 
             // metroCheckBox1
             // 
             this.metroCheckBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Location = new System.Drawing.Point(181, 337);
+            this.metroCheckBox1.Location = new System.Drawing.Point(211, 377);
             this.metroCheckBox1.Name = "metroCheckBox1";
             this.metroCheckBox1.Size = new System.Drawing.Size(66, 15);
             this.metroCheckBox1.TabIndex = 1;
@@ -136,7 +120,7 @@
             // 
             this.tRaces.ActiveControl = null;
             this.tRaces.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tRaces.Location = new System.Drawing.Point(349, 10);
+            this.tRaces.Location = new System.Drawing.Point(368, 28);
             this.tRaces.Name = "tRaces";
             this.tRaces.Size = new System.Drawing.Size(150, 150);
             this.tRaces.TabIndex = 4;
@@ -154,7 +138,7 @@
             // 
             this.tCompetitors.ActiveControl = null;
             this.tCompetitors.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCompetitors.Location = new System.Drawing.Point(505, 10);
+            this.tCompetitors.Location = new System.Drawing.Point(524, 28);
             this.tCompetitors.Name = "tCompetitors";
             this.tCompetitors.Size = new System.Drawing.Size(150, 150);
             this.tCompetitors.TabIndex = 5;
@@ -172,7 +156,7 @@
             // 
             this.tCategories.ActiveControl = null;
             this.tCategories.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tCategories.Location = new System.Drawing.Point(349, 166);
+            this.tCategories.Location = new System.Drawing.Point(368, 184);
             this.tCategories.Name = "tCategories";
             this.tCategories.Size = new System.Drawing.Size(150, 150);
             this.tCategories.TabIndex = 6;
@@ -190,7 +174,7 @@
             // 
             this.tRegistrations.ActiveControl = null;
             this.tRegistrations.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tRegistrations.Location = new System.Drawing.Point(505, 166);
+            this.tRegistrations.Location = new System.Drawing.Point(524, 184);
             this.tRegistrations.Name = "tRegistrations";
             this.tRegistrations.Size = new System.Drawing.Size(150, 150);
             this.tRegistrations.TabIndex = 7;
@@ -208,7 +192,7 @@
             // 
             this.tResults.ActiveControl = null;
             this.tResults.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tResults.Location = new System.Drawing.Point(6, 166);
+            this.tResults.Location = new System.Drawing.Point(25, 184);
             this.tResults.Name = "tResults";
             this.tResults.Size = new System.Drawing.Size(150, 150);
             this.tResults.TabIndex = 2;
@@ -222,31 +206,69 @@
             this.tResults.UseTileImage = true;
             this.tResults.Click += new System.EventHandler(this.tResults_Click);
             // 
+            // tSettings
+            // 
+            this.tSettings.ActiveControl = null;
+            this.tSettings.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tSettings.Location = new System.Drawing.Point(181, 184);
+            this.tSettings.Name = "tSettings";
+            this.tSettings.Size = new System.Drawing.Size(150, 150);
+            this.tSettings.TabIndex = 3;
+            this.tSettings.Text = "Nastavenia";
+            this.tSettings.TileImage = global::perfectTiming.Properties.Resources.ic_settings_applications_white_36dp;
+            this.tSettings.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tSettings.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.tSettings.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.tSettings.UseSelectable = true;
+            this.tSettings.UseStyleColors = true;
+            this.tSettings.UseTileImage = true;
+            this.tSettings.Click += new System.EventHandler(this.tSettings_Click);
+            // 
+            // metroPanel1
+            // 
+            this.metroPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroPanel1.AutoScroll = true;
+            this.metroPanel1.Controls.Add(this.tCurrentTime);
+            this.metroPanel1.Controls.Add(this.tStart);
+            this.metroPanel1.Controls.Add(this.tSettings);
+            this.metroPanel1.Controls.Add(this.tQuit);
+            this.metroPanel1.Controls.Add(this.tResults);
+            this.metroPanel1.Controls.Add(this.tRegistrations);
+            this.metroPanel1.Controls.Add(this.tRaces);
+            this.metroPanel1.Controls.Add(this.tCategories);
+            this.metroPanel1.Controls.Add(this.tCompetitors);
+            this.metroPanel1.HorizontalScrollbar = true;
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(23, 3);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(1037, 364);
+            this.metroPanel1.TabIndex = 10000;
+            this.metroPanel1.VerticalScrollbar = true;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
             // ucDashboard
             // 
             this.AccessibleName = "";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.metroCheckBox1);
-            this.Controls.Add(this.tCurrentTime);
-            this.Controls.Add(this.tStart);
-            this.Controls.Add(this.tQuit);
-            this.Controls.Add(this.tRegistrations);
-            this.Controls.Add(this.tCategories);
-            this.Controls.Add(this.tCompetitors);
-            this.Controls.Add(this.tRaces);
-            this.Controls.Add(this.tResults);
-            this.Controls.Add(this.tSettings);
             this.Name = "ucDashboard";
-            this.Size = new System.Drawing.Size(1001, 327);
+            this.Size = new System.Drawing.Size(1060, 367);
+            this.metroPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroTile tSettings;
         private MetroFramework.Controls.MetroTile tStart;
         private MetroFramework.Controls.MetroTile tCurrentTime;
         private System.Windows.Forms.Timer timer1;
@@ -257,5 +279,7 @@
         private MetroFramework.Controls.MetroTile tCategories;
         private MetroFramework.Controls.MetroTile tRegistrations;
         private MetroFramework.Controls.MetroTile tResults;
+        private MetroFramework.Controls.MetroTile tSettings;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
     }
 }
