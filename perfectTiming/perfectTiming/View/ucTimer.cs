@@ -110,7 +110,6 @@ namespace perfectTiming.View
         }
         private void btnStart_Click(object sender, EventArgs e)
         {
-
             btnStart.Enabled = false;
             btnPause.Enabled = true;
             btnStop.Enabled = true;

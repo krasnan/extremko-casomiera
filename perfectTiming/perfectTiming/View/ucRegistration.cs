@@ -145,5 +145,10 @@ namespace perfectTiming.View
                 e.Value = val;
             }
         }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            // Marek Here
+        }
     }
 }

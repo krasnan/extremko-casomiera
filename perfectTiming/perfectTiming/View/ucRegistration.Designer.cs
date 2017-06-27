@@ -33,6 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView = new MetroFramework.Controls.MetroGrid();
+            this.startnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Competitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsItems = new System.Windows.Forms.BindingSource(this.components);
             this.bsCategory = new System.Windows.Forms.BindingSource(this.components);
             this.cmbRaces = new MetroFramework.Controls.MetroComboBox();
@@ -43,9 +46,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.cmbCategories = new MetroFramework.Controls.MetroComboBox();
-            this.startnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Competitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExport = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCategory)).BeginInit();
@@ -111,6 +112,30 @@
             this.dataGridView.TabIndex = 55;
             this.dataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
+            // 
+            // startnumberDataGridViewTextBoxColumn
+            // 
+            this.startnumberDataGridViewTextBoxColumn.DataPropertyName = "start_number";
+            this.startnumberDataGridViewTextBoxColumn.HeaderText = "Štartovné číslo";
+            this.startnumberDataGridViewTextBoxColumn.Name = "startnumberDataGridViewTextBoxColumn";
+            this.startnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            this.startnumberDataGridViewTextBoxColumn.Width = 134;
+            // 
+            // Competitor
+            // 
+            this.Competitor.DataPropertyName = "Competitor.name";
+            this.Competitor.HeaderText = "Meno účastníka";
+            this.Competitor.Name = "Competitor";
+            this.Competitor.ReadOnly = true;
+            this.Competitor.Width = 142;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Competitor.email";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Email účastníka";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 140;
             // 
             // bsItems
             // 
@@ -221,34 +246,27 @@
             this.cmbCategories.ValueMember = "id";
             this.cmbCategories.SelectedValueChanged += new System.EventHandler(this.cmbCategories_SelectedValueChanged);
             // 
-            // startnumberDataGridViewTextBoxColumn
+            // btnExport
             // 
-            this.startnumberDataGridViewTextBoxColumn.DataPropertyName = "start_number";
-            this.startnumberDataGridViewTextBoxColumn.HeaderText = "Štartovné číslo";
-            this.startnumberDataGridViewTextBoxColumn.Name = "startnumberDataGridViewTextBoxColumn";
-            this.startnumberDataGridViewTextBoxColumn.ReadOnly = true;
-            this.startnumberDataGridViewTextBoxColumn.Width = 134;
-            // 
-            // Competitor
-            // 
-            this.Competitor.DataPropertyName = "Competitor.name";
-            this.Competitor.HeaderText = "Meno účastníka";
-            this.Competitor.Name = "Competitor";
-            this.Competitor.ReadOnly = true;
-            this.Competitor.Width = 142;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Competitor.email";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Email účastníka";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 140;
+            this.btnExport.BackColor = System.Drawing.Color.Chartreuse;
+            this.btnExport.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnExport.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnExport.Highlight = true;
+            this.btnExport.Location = new System.Drawing.Point(433, 22);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(206, 29);
+            this.btnExport.Style = MetroFramework.MetroColorStyle.Blue;
+            this.btnExport.TabIndex = 63;
+            this.btnExport.Text = "E&xport";
+            this.btnExport.UseSelectable = true;
+            this.btnExport.UseStyleColors = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // ucRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.cmbCategories);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.cmbRaces);
@@ -285,5 +303,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn startnumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Competitor;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private MetroFramework.Controls.MetroButton btnExport;
     }
 }
