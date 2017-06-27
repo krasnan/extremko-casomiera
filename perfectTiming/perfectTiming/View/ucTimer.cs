@@ -21,9 +21,7 @@ namespace perfectTiming.View
         AppController app = AppController.Instance;
         Stopwatch stopwatch;
         //Chybne zadanie cisla
-        bool incorrectInput = false;
-        double lastCorrectTime;
-        string lastCas;
+        double timeCorrection = 0;
 
         private List<Registration> registrations;
         Race race;
@@ -42,6 +40,7 @@ namespace perfectTiming.View
             btnPause.Enabled = false;
             btnStop.Enabled = false;
             btnAdd.Enabled = false;
+            btnDiscardCorrection.Visible = false;
             txtNumber.Enabled = false;
             bsTimings.DataSource = app.TimingController.Timings;
         }
@@ -80,12 +79,17 @@ namespace perfectTiming.View
 
             int start_number = Int32.Parse(txtNumber.Text);
             TimeSpan ts = stopwatch.Elapsed;
+            
 
             Registration reg = registrations.FirstOrDefault(r => r.start_number == start_number);
 
             if(reg == null)
             {
-                Console.WriteLine("Zle cislo");
+                if ( btnDiscardCorrection.Visible == false)
+                {
+                    timeCorrection = ts.TotalMilliseconds;
+                    btnDiscardCorrection.Visible = true;
+                }
             }
             else
             {
@@ -96,10 +100,18 @@ namespace perfectTiming.View
                 item = new Timing
                 {
                     lap_number = last.lap_number + 1,
-                    lap_time = ts.TotalMilliseconds - last.lap_time,
+                    lap_time = ((timeCorrection != 0) ? timeCorrection : ts.TotalMilliseconds) - last.lap_time,
                     Registration = reg,
                     registration_id = reg.id
                 };
+
+                if(timeCorrection != 0){
+
+                    timeCorrection = 0;
+                    btnDiscardCorrection.Visible = false;
+                }
+
+
                 app.TimingController.Add(item);
                 bsTimings.DataSource = app.TimingController.Timings;
                 gridActualResults.FirstDisplayedScrollingRowIndex = gridActualResults.RowCount - 1;
@@ -171,6 +183,12 @@ namespace perfectTiming.View
                 }
                 e.Value = val;
             }
+        }
+
+        private void btnDiscardCorrection_Click(object sender, EventArgs e)
+        {
+            timeCorrection = 0;
+            btnDiscardCorrection.Visible = false;
         }
 
         //private void metroTextBox1_KeyPress(object sender, KeyPressEventArgs e)

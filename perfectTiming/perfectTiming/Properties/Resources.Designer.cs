@@ -663,6 +663,86 @@ namespace perfectTiming.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ic_highlight_off_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_highlight_off_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_highlight_off_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_highlight_off_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_highlight_off_black_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_highlight_off_black_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_highlight_off_black_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_highlight_off_black_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_highlight_off_white_18dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_highlight_off_white_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_highlight_off_white_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_highlight_off_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_highlight_off_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_highlight_off_white_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_highlight_off_white_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_highlight_off_white_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_library_add_black_18dp {
             get {
                 object obj = ResourceManager.GetObject("ic_library_add_black_18dp", resourceCulture);
@@ -736,6 +816,86 @@ namespace perfectTiming.Properties {
         internal static System.Drawing.Bitmap ic_library_add_white_48dp {
             get {
                 object obj = ResourceManager.GetObject("ic_library_add_white_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_mode_edit_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_mode_edit_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_mode_edit_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_mode_edit_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_mode_edit_black_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_mode_edit_black_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_mode_edit_black_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_mode_edit_black_48dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_mode_edit_white_18dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_mode_edit_white_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_mode_edit_white_24dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_mode_edit_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_mode_edit_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_mode_edit_white_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_mode_edit_white_48dp {
+            get {
+                object obj = ResourceManager.GetObject("ic_mode_edit_white_48dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

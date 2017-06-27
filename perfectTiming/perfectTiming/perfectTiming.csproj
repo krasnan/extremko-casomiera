@@ -296,6 +296,22 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
       <LastGenOutput>DbModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\ic_highlight_off_white_48dp.png" />
+    <None Include="Resources\ic_highlight_off_white_36dp.png" />
+    <None Include="Resources\ic_highlight_off_white_24dp.png" />
+    <None Include="Resources\ic_highlight_off_white_18dp.png" />
+    <None Include="Resources\ic_highlight_off_black_48dp.png" />
+    <None Include="Resources\ic_highlight_off_black_36dp.png" />
+    <None Include="Resources\ic_highlight_off_black_24dp.png" />
+    <None Include="Resources\ic_highlight_off_black_18dp.png" />
+    <None Include="Resources\ic_mode_edit_white_48dp.png" />
+    <None Include="Resources\ic_mode_edit_white_36dp.png" />
+    <None Include="Resources\ic_mode_edit_white_24dp.png" />
+    <None Include="Resources\ic_mode_edit_white_18dp.png" />
+    <None Include="Resources\ic_mode_edit_black_48dp.png" />
+    <None Include="Resources\ic_mode_edit_black_36dp.png" />
+    <None Include="Resources\ic_mode_edit_black_24dp.png" />
+    <None Include="Resources\ic_mode_edit_black_18dp.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
