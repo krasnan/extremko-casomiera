@@ -149,27 +149,25 @@ namespace perfectTiming.View
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-
             var csv = new StringBuilder();
-            csv.AppendLine("Name;Email;Phone Number;Category");
+            csv.AppendLine("Start Number;Name;Email;Phone Number;Category");
             csv.AppendLine("");
-
 
             var allCategories = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id).ToList();
             
             for (int i = 0; i < allCategories.Count; i++)
             {
-                bsItems.DataSource = registrations.Where(r => r.Category.race_id == ((Race)cmbRaces.SelectedItem).id && r.category_id == allCategories[i].id);
-                for (int j = 0; j < bsItems.Count; j++)
+                var list = registrations.Where(r => r.Category.race_id == ((Race)cmbRaces.SelectedItem).id && r.category_id == allCategories[i].id).ToList();
+                for (int j = 0; j < list.Count; j++)
                 {
-
                
-                    object item = bsItems.List[j];
+                    object item = list[j];
                     PropertyInfo propInfo = item.GetType().GetProperty("Competitor");
 
                     object val = propInfo.GetValue(item, null);
-                    
-         
+
+                    propInfo = item.GetType().GetProperty("start_number");
+                    var startNum = propInfo.GetValue(item, null).ToString();
 
                     propInfo = val.GetType().GetProperty("name");
                     var name = propInfo.GetValue(val, null).ToString();
@@ -183,19 +181,15 @@ namespace perfectTiming.View
                     propInfo = val.GetType().GetProperty("name");
                     var categoryName = propInfo.GetValue(val, null).ToString();
 
-                    var newLine = string.Format("{0}; {1} ;{2} ;{3}", name, email, phone, categoryName);
-
-
+                    var newLine = string.Format("{0}; {1} ;{2} ;{3}; {4}", startNum, name, email, phone, categoryName);
                     csv.AppendLine(newLine);    
-                    
-         
                 }
             }
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "csv files (*.csv)|*.csv";
-            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.FilterIndex = 1;
             saveFileDialog1.RestoreDirectory = true;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -203,12 +197,8 @@ namespace perfectTiming.View
                 File.WriteAllText(saveFileDialog1.FileName, csv.ToString());
             }
 
-
         }
  
-
-
-
 
 
 
