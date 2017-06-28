@@ -74,21 +74,15 @@ namespace perfectTiming.View
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-
-                    bsItems.DataSource = app.CategoryController.Categories;
-                    dataGridView.Refresh();
-                    MetroFramework.MetroMessageBox.Show(this, "Registrácia úspešne vložená", "Registrácia vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                    //RequestResult<Registration> result = app.RegistrationController.Add(item);
-                    //if (result.Status == Enums.RequestStatus.Success)
-                    //{
-                    //    MetroFramework.MetroMessageBox.Show(this, "Registrácia úspešne vložená", "Registrácia vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //    bsItems.DataSource = app.CategoryController.Categories;
-                    //    dataGridView.Refresh();
-                    //}
-                    //else
-                    //    MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    RequestResult<Registration> result = app.RegistrationController.Add(item);
+                    if (result.Status == Enums.RequestStatus.Success)
+                    {
+                        MetroFramework.MetroMessageBox.Show(this, "Registrácia úspešne vložená", "Registrácia vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        bsItems.DataSource = app.CategoryController.Categories;
+                        dataGridView.Refresh();
+                    }
+                    else
+                        MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

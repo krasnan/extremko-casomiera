@@ -85,18 +85,20 @@ namespace perfectTiming.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Registration reg = (Registration)bsItem.Current;
+            this.DialogResult = DialogResult.OK;
 
-            RequestResult<Registration> result;
-            if (reg.id != 0)
-                result = app.RegistrationController.Update(reg);
-            else
-                result = app.RegistrationController.Add(reg);
-            if (result.Status == Enums.RequestStatus.Success)
-                this.DialogResult = DialogResult.OK;
+            //Registration reg = (Registration)bsItem.Current;
 
-            else
-                lblErrorHolder.Text = result.Detail;
+            //RequestResult<Registration> result;
+            //if (reg.id != 0)
+            //    result = app.RegistrationController.Update(reg);
+            //else
+            //    result = app.RegistrationController.Add(reg);
+            //if (result.Status == Enums.RequestStatus.Success)
+            //    this.DialogResult = DialogResult.OK;
+
+            //else
+            //    lblErrorHolder.Text = result.Detail;
         }
 
         private void generateStartNumber()
