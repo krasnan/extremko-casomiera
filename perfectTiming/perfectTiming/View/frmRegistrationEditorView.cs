@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Controls;
+using perfectTiming.Helpers;
 using perfectTiming.Controller;
 using perfectTiming.Model;
 using System;
@@ -58,6 +59,7 @@ namespace perfectTiming.View
                 bsCategories.DataSource = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id).ToList();
                 bsCategories.ResetBindings(false);
                 cmbCategories_SelectedValueChanged(null, null);
+                generateStartNumber();
             }
         }
 
@@ -71,6 +73,7 @@ namespace perfectTiming.View
                 if (actualCompetitor != null)
                     cmbCompetitors.SelectedItem = actualCompetitor;
                 bsCompetitors.ResetBindings(false);
+                generateStartNumber();
             }
         }
         private bool isNotRegistered(Category category, Competitor competitor) {
@@ -82,16 +85,35 @@ namespace perfectTiming.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
+
+            //Registration reg = (Registration)bsItem.Current;
+
+            //RequestResult<Registration> result;
+            //if (reg.id != 0)
+            //    result = app.RegistrationController.Update(reg);
+            //else
+            //    result = app.RegistrationController.Add(reg);
+            //if (result.Status == Enums.RequestStatus.Success)
+            //    this.DialogResult = DialogResult.OK;
+
+            //else
+            //    lblErrorHolder.Text = result.Detail;
         }
 
-        private void btnGenerateStartNumber_Click(object sender, EventArgs e)
+        private void generateStartNumber()
         {
-            if (cmbCategories.SelectedItem != null)
+            if (cmbRaces.SelectedItem != null)
             {
-                int count = registrations.Where(r => r.category_id == ((Category)cmbCategories.SelectedItem).id).Count();
+                int count = registrations.Where(r => r.Category.race_id == ((Race)cmbRaces.SelectedItem).id).Count();
                 iStartNumber.Text = (count + 1).ToString();
             }
+        }
+
+        private void cmbCompetitors_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            generateStartNumber();
+
         }
     }
 }

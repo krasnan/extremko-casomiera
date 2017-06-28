@@ -11,7 +11,7 @@ namespace perfectTiming.Controller
     interface ITimingController
     {
 
-        List<Timing> Timings { get; set; }
+        List<Timing> Timings { get; }
 
         RequestResult<Timing> Add(Timing item);
         RequestResult<Timing> Update(Timing item);

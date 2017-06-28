@@ -33,7 +33,6 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.lblErrorHolder = new MetroFramework.Controls.MetroLabel();
-            this.btnGenerateStartNumber = new MetroFramework.Controls.MetroButton();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.cmbCompetitors = new MetroFramework.Controls.MetroComboBox();
             this.bsItem = new System.Windows.Forms.BindingSource(this.components);
@@ -77,7 +76,6 @@
             // 
             this.metroPanel1.AutoScroll = true;
             this.metroPanel1.Controls.Add(this.metroPanel2);
-            this.metroPanel1.Controls.Add(this.btnGenerateStartNumber);
             this.metroPanel1.Controls.Add(this.metroLabel2);
             this.metroPanel1.Controls.Add(this.cmbCompetitors);
             this.metroPanel1.Controls.Add(this.cmbCategories);
@@ -137,22 +135,6 @@
             this.lblErrorHolder.TabIndex = 8;
             this.lblErrorHolder.UseStyleColors = true;
             // 
-            // btnGenerateStartNumber
-            // 
-            this.btnGenerateStartNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerateStartNumber.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnGenerateStartNumber.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.btnGenerateStartNumber.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnGenerateStartNumber.Highlight = true;
-            this.btnGenerateStartNumber.Location = new System.Drawing.Point(233, 184);
-            this.btnGenerateStartNumber.Name = "btnGenerateStartNumber";
-            this.btnGenerateStartNumber.Size = new System.Drawing.Size(136, 35);
-            this.btnGenerateStartNumber.TabIndex = 5;
-            this.btnGenerateStartNumber.Text = "&Generuj";
-            this.btnGenerateStartNumber.UseSelectable = true;
-            this.btnGenerateStartNumber.UseStyleColors = true;
-            this.btnGenerateStartNumber.Click += new System.EventHandler(this.btnGenerateStartNumber_Click);
-            // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
@@ -167,7 +149,6 @@
             this.cmbCompetitors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCompetitors.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bsItem, "Competitor", true));
-            this.cmbCompetitors.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsItem, "competitor_id", true));
             this.cmbCompetitors.DataSource = this.bsCompetitors;
             this.cmbCompetitors.DisplayMember = "name";
             this.cmbCompetitors.FormattingEnabled = true;
@@ -178,6 +159,7 @@
             this.cmbCompetitors.TabIndex = 3;
             this.cmbCompetitors.UseSelectable = true;
             this.cmbCompetitors.ValueMember = "id";
+            this.cmbCompetitors.SelectionChangeCommitted += new System.EventHandler(this.cmbCompetitors_SelectionChangeCommitted);
             // 
             // bsItem
             // 
@@ -191,8 +173,8 @@
             // 
             this.cmbCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCategories.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbCategories.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bsItem, "Category", true));
-            this.cmbCategories.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsItem, "category_id", true));
             this.cmbCategories.DataSource = this.bsCategories;
             this.cmbCategories.DisplayMember = "name";
             this.cmbCategories.FormattingEnabled = true;
@@ -293,7 +275,7 @@
             // 
             // 
             this.iStartNumber.CustomButton.Image = null;
-            this.iStartNumber.CustomButton.Location = new System.Drawing.Point(190, 1);
+            this.iStartNumber.CustomButton.Location = new System.Drawing.Point(102, 1);
             this.iStartNumber.CustomButton.Name = "";
             this.iStartNumber.CustomButton.Size = new System.Drawing.Size(33, 33);
             this.iStartNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -302,6 +284,7 @@
             this.iStartNumber.CustomButton.UseSelectable = true;
             this.iStartNumber.CustomButton.Visible = false;
             this.iStartNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsItem, "start_number", true));
+            this.iStartNumber.Enabled = false;
             this.iStartNumber.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.iStartNumber.Lines = new string[0];
             this.iStartNumber.Location = new System.Drawing.Point(3, 184);
@@ -314,7 +297,7 @@
             this.iStartNumber.SelectionLength = 0;
             this.iStartNumber.SelectionStart = 0;
             this.iStartNumber.ShortcutsEnabled = true;
-            this.iStartNumber.Size = new System.Drawing.Size(224, 35);
+            this.iStartNumber.Size = new System.Drawing.Size(136, 35);
             this.iStartNumber.TabIndex = 4;
             this.iStartNumber.UseSelectable = true;
             this.iStartNumber.WaterMark = "...";
@@ -357,7 +340,6 @@
         private MetroFramework.Controls.MetroComboBox cmbCompetitors;
         private MetroFramework.Controls.MetroComboBox cmbCategories;
         private MetroFramework.Controls.MetroTextBox iStartNumber;
-        private MetroFramework.Controls.MetroButton btnGenerateStartNumber;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private System.Windows.Forms.BindingSource bsCompetitors;
         private MetroFramework.Controls.MetroPanel metroPanel2;

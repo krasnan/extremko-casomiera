@@ -18,6 +18,7 @@ namespace perfectTiming.Model
         public int registration_id { get; set; }
         public Nullable<double> lap_time { get; set; }
         public Nullable<int> lap_number { get; set; }
+        public double lap_timestamp { get; set; }
     
         public virtual Registration Registration { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using perfectTiming.Controller;
+using perfectTiming.Helpers;
 using perfectTiming.Model;
 using System;
 using System.Collections.Generic;
@@ -24,15 +25,16 @@ namespace perfectTiming.View
         private void btnSave_Click(object sender, EventArgs e)
         {
             Competitor comp = (Competitor)bsItem.Current;
-            lblErrorHolder.Text = "";
-
-            lblErrorHolder.Text += app.CompetitorController.IsValidName(comp).Message;
-            lblErrorHolder.Text += app.CompetitorController.IsValidBirthDate(comp).Message;
-            lblErrorHolder.Text += app.CompetitorController.IsValidEmial(comp).Message;
-            lblErrorHolder.Text += app.CompetitorController.IsValidPhone(comp).Message;
-
-            if (lblErrorHolder.Text == "")
+            RequestResult<Competitor> result;
+            if (comp.id != 0)
+                result = app.CompetitorController.Update(comp);
+            else
+                result = app.CompetitorController.Add(comp);
+            if (result.Status == Enums.RequestStatus.Success)
                 this.DialogResult = DialogResult.OK;
+
+            else
+                lblErrorHolder.Text = result.Detail;
         }
     }
 }

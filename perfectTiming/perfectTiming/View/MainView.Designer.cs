@@ -90,7 +90,7 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.mPanel);
-            this.MinimumSize = new System.Drawing.Size(800, 500);
+            this.MinimumSize = new System.Drawing.Size(1100, 500);
             this.Name = "MainView";
             this.Text = "     PerfectTiming";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);

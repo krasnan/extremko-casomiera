@@ -10,32 +10,49 @@ namespace PerfectTimingTest.UnitTests
     [TestClass]
     public class RaceTest
     {
-        perfecttimingEntities _context;
+        private perfecttimingEntities _context;
+        private RaceController ctrl;
+
+        public RaceTest()
+        {
+            this._context = new perfecttimingEntities();
+            this.ctrl = new RaceController(ref _context);
+
+        }
 
         [TestMethod]
-        public void AddRaceTest()
+        public void AddAndRemoveRaceTest()
         {
-            RaceController ctrl = new RaceController(ref _context);
-            Race c = new Race { name = "NewRace", location = "XY", start_date = DateTime.Now, status = (int)Enums.RaceStatus.NotStarted }; 
+            DateTime time = DateTime.Now;
+            time.AddDays(2);
+
+            // Past time 
+            Race c = new Race { name = "Future Event", location = "Future", start_date = time, status = (int)Enums.RaceStatus.NotStarted }; ;
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c).Status);
+            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Remove(c).Status);
         }
 
         [TestMethod]
         public void AddRaceTestVstupDate()
         {
-           RaceController ctrl = new RaceController(ref _context);
+
 
            DateTime time = DateTime.Now;
-           time.AddMinutes(-1);
+           time.AddDays(-1);
 
             // Past time 
-            Race c = new Race { name = "Back to the past", location = "Past", start_date = time, status = (int)Enums.RaceStatus.NotStarted }; ;
+            Race c = new Race { name = "Back to the past", location = "Past", start_date = time, status = (int)Enums.RaceStatus.NotStarted }; 
+            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c).Status);
+            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Remove(c).Status);
+
+
+            c = new Race { name = "Back to the past", location = "Past", start_date = DateTime.Now.AddMonths(-1), status = (int)Enums.RaceStatus.NotStarted };
             Assert.AreEqual(Enums.RequestStatus.Error, ctrl.Add(c).Status);
         }
 
         public void AddRaceTestVstupName()
         {
-            RaceController ctrl = new RaceController(ref _context);
+
 
             Race c = new Race {
                             name = "",
@@ -51,13 +68,14 @@ namespace PerfectTimingTest.UnitTests
             // OK Name
             c.name = new string('a', 255);
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Add(c).Status);
+            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Remove(c).Status);
 
         }
 
         [TestMethod] 
         public void UpdateRace()
         {
-            RaceController ctrl = new RaceController(ref _context);
+
             Race old = new Race
             {
                 name = "OldSuperRace",
@@ -82,6 +100,7 @@ namespace PerfectTimingTest.UnitTests
             old.name = "UpdatedOldSuperRace";
             Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Update(old).Status);
             Assert.AreEqual(nnew.location, ctrl.Races[ctrl.Races.Count - 1].location);
+            Assert.AreEqual(Enums.RequestStatus.Success, ctrl.Remove(old).Status);
         }
 
         [TestMethod]
