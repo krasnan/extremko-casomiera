@@ -36,15 +36,14 @@ namespace perfectTiming.View
 
             bsItem.DataSource = item;
             bsRaces.DataSource = races;
-
-
-
-          //  List<Registration> reg = registrations.Where(r => r.Category.race_id == races.First().id).ToList()
-
             bsCategories.DataSource = categories;
             bsCompetitors.DataSource = competitors;
 
-            cmbRaces.SelectedItem = item.Category.Race;
+            if(item.Category != null)
+                cmbRaces.SelectedItem = item.Category.Race;
+            cmbCategories.SelectedItem = item.Category;
+            cmbCompetitors.SelectedItem = item.Competitor;
+
         }
 
         private void frmRegistrationEditorView_Load(object sender, EventArgs e)
@@ -56,10 +55,8 @@ namespace perfectTiming.View
         {
             if (cmbRaces.SelectedItem != null)
             {
-                bsCategories.DataSource = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id).ToList();
-                bsCategories.ResetBindings(false);
+                bsCategories.DataSource = ((Race)cmbRaces.SelectedItem).Categories.ToList();
                 cmbCategories_SelectedValueChanged(null, null);
-                generateStartNumber();
             }
         }
 
@@ -70,9 +67,12 @@ namespace perfectTiming.View
                 if (actualCompetitor != null && !comp.Contains(actualCompetitor))
                     comp.Add(actualCompetitor);
                 bsCompetitors.DataSource = comp;
+
                 if (actualCompetitor != null)
                     cmbCompetitors.SelectedItem = actualCompetitor;
-                bsCompetitors.ResetBindings(false);
+                //bsCompetitors.ResetBindings(false);
+                //((Registration)bsItem.Current).Category = (Category)cmbCategories.SelectedItem;
+                //bsItem.CurrencyManager.Refresh();*/
                 generateStartNumber();
             }
         }
@@ -106,14 +106,20 @@ namespace perfectTiming.View
             if (cmbRaces.SelectedItem != null)
             {
                 int count = registrations.Where(r => r.Category.race_id == ((Race)cmbRaces.SelectedItem).id).Count();
+                if (actualCompetitor == null)
+                    ((Registration)bsItem.Current).start_number = count + 1;
+                //bsItem.CurrencyManager.Refresh();
+                //bsItem.Current.Row() = 0;
+                /*iStartNumber.Enabled = true;
                 iStartNumber.Text = (count + 1).ToString();
+                iStartNumber.Enabled = false;*/
             }
         }
 
         private void cmbCompetitors_SelectionChangeCommitted(object sender, EventArgs e)
         {
             generateStartNumber();
-
+            
         }
     }
 }

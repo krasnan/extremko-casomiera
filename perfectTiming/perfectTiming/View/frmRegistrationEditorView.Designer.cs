@@ -148,6 +148,7 @@
             // 
             this.cmbCompetitors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCompetitors.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsItem, "competitor_id", true));
             this.cmbCompetitors.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bsItem, "Competitor", true));
             this.cmbCompetitors.DataSource = this.bsCompetitors;
             this.cmbCompetitors.DisplayMember = "name";
@@ -174,6 +175,7 @@
             this.cmbCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCategories.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbCategories.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsItem, "category_id", true));
             this.cmbCategories.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bsItem, "Category", true));
             this.cmbCategories.DataSource = this.bsCategories;
             this.cmbCategories.DisplayMember = "name";

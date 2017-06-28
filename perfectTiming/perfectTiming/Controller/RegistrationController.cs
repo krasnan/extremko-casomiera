@@ -57,6 +57,8 @@ namespace perfectTiming.Controller
             {
                 _context.Registrations.Attach(item);
                 _context.Registrations.Remove(item);
+                _context.SaveChanges();
+
                 return new RequestResult<Registration> { Status = Enums.RequestStatus.Success, Message = "Kategória vymazaná", Data = item };
             }
             catch (Exception ex)

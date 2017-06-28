@@ -32,7 +32,8 @@ namespace perfectTiming.View
             registrations = app.RegistrationController.Registrations;
 
             bsRaces.DataSource = races;
-            dataGridView_SelectionChanged(null, null);
+
+            cmbRaces_SelectedValueChanged(null, null);
         }
 
         private void cmbRaces_SelectedValueChanged(object sender, EventArgs e)
@@ -41,7 +42,8 @@ namespace perfectTiming.View
             {
                 var result = categories.Where(c => c.race_id == ((Race)cmbRaces.SelectedItem).id).ToList();
                 bsCategory.DataSource = (result.Count() > 0) ? result : null;
-                dataGridView.Refresh();
+                //bsCategory.CurrencyManager.Refresh();
+                cmbCategories_SelectedValueChanged(null, null);
             }
         }
 
@@ -49,15 +51,19 @@ namespace perfectTiming.View
         {
             if(registrations != null && cmbCategories.SelectedItem != null && cmbRaces.SelectedItem != null)
             {
-                bsItems.DataSource = registrations.Where(r => r.Category.race_id == ((Race)cmbRaces.SelectedItem).id && r.category_id == ((Category)cmbCategories.SelectedItem).id);
-                dataGridView.ClearSelection();
-                dataGridView.Refresh();
+                refreshDataGridViewItems();
             }
         }
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
             btnDelete.Enabled = (dataGridView.SelectedRows.Count > 0);
             btnEdit.Enabled = (dataGridView.SelectedRows.Count == 1);
+        }
+
+        private void refreshDataGridViewItems() {
+            bsItems.DataSource = app.RegistrationController.Registrations.Where(r => r.Category.race_id == ((Race)cmbRaces.SelectedItem).id && r.category_id == ((Category)cmbCategories.SelectedItem).id).ToList();
+            dataGridView.ClearSelection();
+            dataGridView.Refresh();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -79,11 +85,11 @@ namespace perfectTiming.View
                     if (result.Status == Enums.RequestStatus.Success)
                     {
                         MetroFramework.MetroMessageBox.Show(this, "Registrácia úspešne vložená", "Registrácia vložená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        bsItems.DataSource = app.CategoryController.Categories;
-                        dataGridView.Refresh();
+
+                        refreshDataGridViewItems();
                     }
                     else
-                        MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroFramework.MetroMessageBox.Show(this, result.Detail, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -101,9 +107,9 @@ namespace perfectTiming.View
                         RequestResult<Registration> result = app.RegistrationController.Update(item);
                         if (result.Status == Enums.RequestStatus.Success)
                         {
-                            dataGridView.Refresh();
                             MetroFramework.MetroMessageBox.Show(this, "Registrácia úspešne upravená", "Registrácia upravená", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }else
+                            refreshDataGridViewItems();
+                        } else
                             MetroFramework.MetroMessageBox.Show(this, result.Message, "Chyba: Nastala chyba pri ukladaní", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -122,7 +128,8 @@ namespace perfectTiming.View
                 Registration item = (Registration)r.DataBoundItem;
                 app.RegistrationController.Remove(item);
             }
-            dataGridView.Refresh();
+            refreshDataGridViewItems();
+            //dataGridView.Refresh();
             //bsItems.DataSource = app.CategoryController.Categories;
         }
 
@@ -131,20 +138,27 @@ namespace perfectTiming.View
             DataGridView grid = (DataGridView)sender;
             DataGridViewRow row = grid.Rows[e.RowIndex];
             DataGridViewColumn col = grid.Columns[e.ColumnIndex];
-            if (row.DataBoundItem != null && col.DataPropertyName.Contains("."))
+            try
             {
-                string[] props = col.DataPropertyName.Split('.');
-                PropertyInfo propInfo = row.DataBoundItem.GetType().GetProperty(props[0]);
-                if (propInfo == null)
-                    return;
-                object val = propInfo.GetValue(row.DataBoundItem, null);
-                for (int i = 1; i < props.Length; i++)
+                if (row.DataBoundItem != null && col.DataPropertyName.Contains("."))
                 {
-                    propInfo = val.GetType().GetProperty(props[i]);
-                    val = propInfo.GetValue(val, null);
+                    string[] props = col.DataPropertyName.Split('.');
+                    PropertyInfo propInfo = row.DataBoundItem.GetType().GetProperty(props[0]);
+                    if (propInfo == null)
+                        return;
+                    object val = propInfo.GetValue(row.DataBoundItem, null);
+                    for (int i = 1; i < props.Length; i++)
+                    {
+                        if (val != null)
+                        {
+                            propInfo = val.GetType().GetProperty(props[i]);
+                            val = propInfo.GetValue(val, null);
+                        }
+                    }
+                    e.Value = val;
                 }
-                e.Value = val;
             }
+            catch (Exception ex){ }
         }
 
         private void btnExport_Click(object sender, EventArgs e)
